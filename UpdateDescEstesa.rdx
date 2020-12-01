@@ -1,0 +1,940 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PROCESS Id="RDK:0001" Name="UpdateDescEstesa" Expanded="True">
+	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-12-01T16:04:14" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-01T17:33:53" LanguageVersion="2011.1.1.0" />
+	<GROUP Id="RDK:0002" Name="Declarations" SubType="Declarations" Expanded="True">
+		<GROUP Id="RDK:0003" Name="Types" SubType="TypeSet" IncludeDate="0" Expanded="True">
+			<GROUP Id="RDK:435" Name="MBGEN_Types" SubType="TypeSet" Include="../MBGEN_Types.rdx" IncludeDate="131244631620000000" Suppressed="True">
+				<TYPE Id="RDK:554" Name="INPUT_GEN" SubType="structure">
+					<TYPE_VALUES />
+					<FIELD Id="RDK:436" Name="Categoria" Type="string" />
+					<FIELD Id="RDK:437" Name="Macrofamiglia" Type="string" />
+					<FIELD Id="RDK:438" Name="TipoArticolo" Type="string" />
+					<FIELD Id="RDK:439" Name="IndVar" Type="string" />
+					<FIELD Id="RDK:441" Name="TipoProfilo" DesignTimeTip="o tipoGradino per scale">
+						<TYPE Id="RDK:441" IsInternal="True" DesignTimeTip="o tipoGradino per scale" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Tipo_Profilo")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:443" Name="Lunghezza" DesignTimeRemark="nel caso cb è la lunghezza base">
+						<TYPE Id="RDK:443" IsInternal="True" DesignTimeRemark="nel caso cb è la lunghezza base" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Lunghezza")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:444" Name="TipCon" Type="string" />
+					<FIELD Id="RDK:445" Name="DirezConn" Type="string" />
+					<FIELD Id="RDK:447" Name="Zin">
+						<TYPE Id="RDK:447" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Zincatura")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:449" Name="Ver">
+						<TYPE Id="RDK:449" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Verniciatura")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:450" Name="Kit" Type="boolean" DesignTimeRemark="se è kit non è assemblato per sage." />
+					<FIELD Id="RDK:451" Name="CodiceSpecialita" Type="string" DesignTimeRemark="S0000" />
+					<FIELD Id="RDK:452" Name="Speciale" Type="string" DesignTimeRemark="se art speciale" />
+					<FIELD Id="RDK:453" Name="Specialita" Type="string" DesignTimeRemark="tipo di specialità" />
+					<FIELD Id="RDK:454" Name="Lunghezza1" Type="string" DesignTimeRemark="Lunghezza di un componente (&lt;lunghezza)" />
+					<FIELD Id="RDK:455" Name="Lunghezza2" Type="string" DesignTimeRemark="Lunghezza tipica APG" />
+					<FIELD Id="RDK:457" Name="Larghezza">
+						<TYPE Id="RDK:457" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$C$LNGDB(LDB,LID,"Larghezza")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:458" Name="Altezza" Type="string" />
+					<FIELD Id="RDK:460" Name="Spessore" DesignTimeTip="o spessore piano calpestio per scale">
+						<TYPE Id="RDK:460" IsInternal="True" DesignTimeTip="o spessore piano calpestio per scale" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Spessore")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:462" Name="ID_Staffa" DesignTimeRemark="TIpo staffa">
+						<TYPE Id="RDK:462" IsInternal="True" DesignTimeRemark="TIpo staffa" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$C$LNGDB(LDB,LID,"ID_STAFFA")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:463" Name="Diametro" Type="string" DesignTimeRemark="diametro tubo" />
+					<FIELD Id="RDK:465" Name="Foratura" DesignTimeRemark="si/no">
+						<TYPE Id="RDK:465" IsInternal="True" DesignTimeRemark="si/no" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Foratura")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:467" Name="Foro" DesignTimeRemark="diametro foro">
+						<TYPE Id="RDK:467" IsInternal="True" DesignTimeRemark="diametro foro" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Foro")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:468" Name="CodiceParlante" Type="string" />
+					<FIELD Id="RDK:469" Name="ForTub" Type="string" DesignTimeRemark="Forma del tubo" />
+					<FIELD Id="RDK:470" Name="Inclinazione" Type="string" />
+					<FIELD Id="RDK:472" Name="Materiale_Performante">
+						<TYPE Id="RDK:472" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"M_Prima_STD_SPEC")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:473" Name="OffsetCon" Type="double" />
+					<FIELD Id="RDK:474" Name="OffsetDx" Type="double" />
+					<FIELD Id="RDK:475" Name="OffsetSx" Type="double" />
+					<FIELD Id="RDK:476" Name="TAGLIOCON" Type="string" />
+					<FIELD Id="RDK:477" Name="LAR_CON_SPEC" Type="integer" DesignTimeRemark="Larghezza connettore speciale" />
+					<FIELD Id="RDK:478" Name="AngInterno" Type="boolean" />
+					<FIELD Id="RDK:479" Name="INTAPG" Type="string" DesignTimeRemark="lettera std posizione apg" DesignTimeTip="lettera std posizione apg" />
+					<FIELD Id="RDK:480" Name="AngInterno_Value" Type="string" DesignTimeTip="o tipo agg sup. per scale" />
+					<FIELD Id="RDK:481" Name="AngEsterno" Type="boolean" />
+					<FIELD Id="RDK:482" Name="ESTAPG" Type="string" />
+					<FIELD Id="RDK:483" Name="NumApg" Type="integer" DesignTimeRemark="numero angolari" />
+					<FIELD Id="RDK:484" Name="AngEsterno_Value" Type="string" DesignTimeTip="o tipo agg inf. per scale" />
+					<FIELD Id="RDK:485" Name="ForInterna" Type="boolean" DesignTimeRemark="forcella interna" />
+					<FIELD Id="RDK:486" Name="ForInterna_Value" Type="string" DesignTimeRemark="forcella interna" />
+					<FIELD Id="RDK:487" Name="ForEsterna" Type="boolean" DesignTimeRemark="forcella esterna" />
+					<FIELD Id="RDK:488" Name="ForEsterna_Value" Type="string" DesignTimeRemark="forcella esterna" />
+					<FIELD Id="RDK:489" Name="NumFor" Type="integer" DesignTimeRemark="numero forcelle" />
+					<FIELD Id="RDK:490" Name="Altezza_1" Type="string" DesignTimeRemark="Altezza montante alto" DesignTimeTip="o spessore piano basso per scale" />
+					<FIELD Id="RDK:491" Name="Altezza_PC" Type="string" DesignTimeRemark="Altezza piano di calpestio" />
+					<FIELD Id="RDK:492" Name="Config_Vern" Type="string" DesignTimeRemark="configurazione verniciatura spalla" />
+					<FIELD Id="RDK:493" Name="Config_Tralic" Type="string" DesignTimeRemark="Configurazione tralicciatura" />
+					<FIELD Id="RDK:494" Name="Tipo_piede" Type="string" DesignTimeRemark="se C= compattabiule N= normale S= senza piede" />
+					<FIELD Id="RDK:495" Name="Tappata" Type="string" DesignTimeRemark="colonna tappata" />
+					<FIELD Id="RDK:496" Name="Chiuso" Type="string" DesignTimeRemark="montante chiuso" />
+					<FIELD Id="RDK:497" Name="Passi_Chiusi" Type="string" DesignTimeRemark="Numero di passi (52) chiusi" DesignTimeTip="o numero gradini per scale" />
+					<FIELD Id="RDK:498" Name="Tipo_rinforzo" Type="string" DesignTimeRemark="0 non c'è " />
+					<FIELD Id="RDK:499" Name="Lunghezza_rinforzo" Type="string" DesignTimeRemark="nel cb è metà altezza" />
+					<FIELD Id="RDK:500" Name="Tipo_profilo_base" Type="string" DesignTimeRemark="CB" />
+					<FIELD Id="RDK:501" Name="Tipo_piastra_base" Type="string" DesignTimeRemark="CB" />
+					<FIELD Id="RDK:502" Name="Tipo_bullonatura" Type="string" />
+					<FIELD Id="RDK:503" Name="Mono_bifronte" Type="string" DesignTimeRemark=" M o B" />
+					<FIELD Id="RDK:505" Name="Prof_carico" DesignTimeRemark="profondita di carico CB">
+						<TYPE Id="RDK:505" IsInternal="True" DesignTimeRemark="profondita di carico CB" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Prof_carico")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:506" Name="Bicchiere" Type="string" DesignTimeRemark="0 se non presnete, se no il numero" />
+					<FIELD Id="RDK:507" Name="Tipo_Apertura" Type="string" DesignTimeRemark="destra sinistra doppia" />
+					<FIELD Id="RDK:508" Name="Tipo_men_DI" Type="string" DesignTimeRemark="destra sisnistra doppia" />
+					<FIELD Id="RDK:509" Name="Fermapallet" Type="boolean" DesignTimeRemark="si /no" />
+					<FIELD Id="RDK:510" Name="Stocchetto_CVV" Type="boolean" DesignTimeRemark="si/no" />
+					<FIELD Id="RDK:511" Name="Tipo_tenditore" Type="string" DesignTimeRemark="si/no" />
+					<FIELD Id="RDK:512" Name="Avanzate" Type="string" />
+					<FIELD Id="RDK:513" Name="Salto_Distinta" Type="boolean" />
+					<FIELD Id="RDK:514" Name="Ripiegato" Type="boolean" />
+					<FIELD Id="RDK:516" Name="Tipo_truciolare">
+						<TYPE Id="RDK:516" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"TIPO_TRUCIOLARE")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:518" Name="Fresatura_laterale">
+						<TYPE Id="RDK:518" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Fresatura_laterale")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:520" Name="Superficie">
+						<TYPE Id="RDK:520" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Superficie")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:522" Name="Tipologia_utilizzo">
+						<TYPE Id="RDK:522" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB,LID,"Tipologia_utilizzo")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:524" Name="Z_partenza">
+						<TYPE Id="RDK:524" IsInternal="True" Expanded="True" SubType="base" BaseType="double">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB, LID, "Z_Partenza")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:526" Name="Z_arrivo">
+						<TYPE Id="RDK:526" IsInternal="True" Expanded="True" SubType="base" BaseType="double">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB, LID, "Z_Arrivo")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:528" Name="Alzata">
+						<TYPE Id="RDK:528" IsInternal="True" Expanded="True" SubType="base" BaseType="double">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB, LID, "alzata")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:530" Name="Pedata">
+						<TYPE Id="RDK:530" IsInternal="True" Expanded="True" SubType="base" BaseType="double">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$=$LNGDB(LDB, LID, "pedata")]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:532" Name="bBallatini">
+						<TYPE Id="RDK:532" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:534" Name="bBallatFin">
+						<TYPE Id="RDK:534" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:536" Name="bBallatiniCorrFascPiedeDX">
+						<TYPE Id="RDK:536" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:538" Name="bBallatiniCorrFascPiedeSX">
+						<TYPE Id="RDK:538" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:540" Name="bBallatiniCorrFascPiedeCENTR">
+						<TYPE Id="RDK:540" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:542" Name="bBallatFinCorrFascPiedeDX">
+						<TYPE Id="RDK:542" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:544" Name="bBallatFinCorrFascPiedeSX">
+						<TYPE Id="RDK:544" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:546" Name="bBallatFinCorrFascPiedeCENTR">
+						<TYPE Id="RDK:546" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:548" Name="BallatIniLUNGHEZZA">
+						<TYPE Id="RDK:548" IsInternal="True" Expanded="True" SubType="base" BaseType="double">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:550" Name="BallatFinLUNGHEZZA">
+						<TYPE Id="RDK:550" IsInternal="True" Expanded="True" SubType="base" BaseType="double">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:552" Name="Tipoaggancio" DesignTimeRemark="1: a spalla; 2: su pianerottolo indipendente">
+						<TYPE Id="RDK:552" IsInternal="True" DesignTimeRemark="1: a spalla; 2: su pianerottolo indipendente" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="Text" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT />
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:553" Name="ShapeID" Type="string" />
+				</TYPE>
+				<TYPE Id="RDK:569" Name="TCICLO_GEN" SubType="structure">
+					<TYPE_VALUES />
+					<FIELD Id="RDK:555" Name="TipoArticolo" Type="string" />
+					<FIELD Id="RDK:556" Name="Lunghezza" Type="double" DesignTimeRemark="Lunghezza corrente" />
+					<FIELD Id="RDK:557" Name="Lunghezza2" Type="double" DesignTimeRemark="Lunghezza tipica APG" />
+					<FIELD Id="RDK:558" Name="Lunghezza1" Type="double" DesignTimeRemark="Lunghezza tubo o cmponente" />
+					<FIELD Id="RDK:559" Name="Altezza" Type="double" DesignTimeRemark="Lunghezza corrente" />
+					<FIELD Id="RDK:560" Name="Altezza1" Type="double" DesignTimeRemark="Lunghezza corrente" />
+					<FIELD Id="RDK:561" Name="TipoProfilo" Type="string" />
+					<FIELD Id="RDK:562" Name="ID_Staffa" Type="string" />
+					<FIELD Id="RDK:563" Name="NUMFOR" Type="integer" />
+					<FIELD Id="RDK:564" Name="NUMAPG" Type="integer" />
+					<FIELD Id="RDK:565" Name="Salto_Distinta" Type="boolean" />
+					<FIELD Id="RDK:567" Name="TIPCON">
+						<TYPE Id="RDK:567" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+							<UI_INPUT_TYPE TypeForm="DropDown" />
+							<UI_INPUT_VALIDATION ValidationType="none" />
+							<UI_INPUT_SUPPORT>
+								<PAR Name="InputPromptExp">
+									<EXP><![CDATA[$C$Tipo di connettore]]></EXP>
+								</PAR>
+								<PAR Name="InputImageExp" />
+								<PAR Name="InputTooltipExp" />
+								<PAR Name="InputStyleExp" />
+							</UI_INPUT_SUPPORT>
+							<TYPE_VALUES />
+						</TYPE>
+					</FIELD>
+					<FIELD Id="RDK:568" Name="FORTUB" Type="string" />
+				</TYPE>
+				<TYPE Id="RDK:570" Name="Input_Gen_List" DesignTimeRemark="Lista degli input gen con indice corrispondente al links di myBom" SubType="list" ItemListTypeName="INPUT_GEN">
+					<UI_INPUT_TYPE TypeForm="Text" />
+					<UI_INPUT_VALIDATION ValidationType="none" />
+					<UI_INPUT_SUPPORT />
+					<TYPE_VALUES />
+				</TYPE>
+				<TYPE Id="RDK:575" Name="INPUT_GEN_MASTER" SubType="structure" HasArrayType="True">
+					<TYPE_VALUES />
+					<FIELD Id="RDK:571" Name="Key" Type="string" />
+					<FIELD Id="RDK:572" Name="Qty" Type="integer" />
+					<FIELD Id="RDK:573" Name="InputGen" Type="INPUT_GEN" />
+					<FIELD Id="RDK:574" Name="InputGen_IN" Type="INPUT_GEN" />
+				</TYPE>
+			</GROUP>
+			<GROUP Id="RDK:295" Name="TABPDM_Types" SubType="TypeSet" Include="../TAB_PDM_Types.rdx" IncludeDate="132025792620000000" Expanded="True">
+				<TYPE Id="RDK:353" Name="TabDATIType" SubType="structure">
+					<TYPE_VALUES />
+					<FIELD Id="RDK:296" Name="TipoArticolo" Type="string" />
+					<FIELD Id="RDK:297" Name="IndVar" Type="string" />
+					<FIELD Id="RDK:298" Name="TipoProfilo" Type="string" />
+					<FIELD Id="RDK:299" Name="Lunghezza" Type="double" DesignTimeRemark="nel caso cb è la lunghezza base" />
+					<FIELD Id="RDK:300" Name="TipCon" Type="string" />
+					<FIELD Id="RDK:301" Name="DirezConn" Type="string" />
+					<FIELD Id="RDK:302" Name="Zin" Type="string" />
+					<FIELD Id="RDK:303" Name="Ver" Type="string" />
+					<FIELD Id="RDK:304" Name="Kit" Type="boolean" DesignTimeRemark="se è kit non è assemblato per sage." />
+					<FIELD Id="RDK:305" Name="Speciale" Type="string" DesignTimeRemark="se art speciale" />
+					<FIELD Id="RDK:306" Name="Specialita" Type="string" DesignTimeRemark="tipo di specialità" />
+					<FIELD Id="RDK:307" Name="Lunghezza1" Type="double" />
+					<FIELD Id="RDK:308" Name="Larghezza" Type="double" />
+					<FIELD Id="RDK:309" Name="Altezza" Type="double" />
+					<FIELD Id="RDK:310" Name="Spessore" Type="double" />
+					<FIELD Id="RDK:311" Name="ID_Staffa" Type="string" DesignTimeRemark="diametro tubo" />
+					<FIELD Id="RDK:312" Name="Diametro" Type="double" DesignTimeRemark="diametro tubo" />
+					<FIELD Id="RDK:313" Name="Foratura" Type="string" DesignTimeRemark="si/no" />
+					<FIELD Id="RDK:314" Name="Foro" Type="string" DesignTimeRemark="diametro foro" />
+					<FIELD Id="RDK:315" Name="CodiceParlante" Type="string" />
+					<FIELD Id="RDK:316" Name="ForTub" Type="string" DesignTimeRemark="Forma del tubo" />
+					<FIELD Id="RDK:317" Name="Inclinazione" Type="string" />
+					<FIELD Id="RDK:318" Name="OffsetCon" Type="double" />
+					<FIELD Id="RDK:319" Name="OffsetDx" Type="double" />
+					<FIELD Id="RDK:320" Name="OffsetSx" Type="double" />
+					<FIELD Id="RDK:321" Name="TAGLIOCON" Type="string" />
+					<FIELD Id="RDK:322" Name="LAR_CON_SPEC" Type="integer" DesignTimeRemark="Larghezza connettore speciale" />
+					<FIELD Id="RDK:323" Name="AngInterno" Type="string" />
+					<FIELD Id="RDK:324" Name="AngInterno_Value" Type="string" />
+					<FIELD Id="RDK:325" Name="AngEsterno" Type="string" />
+					<FIELD Id="RDK:326" Name="AngEsterno_Value" Type="string" />
+					<FIELD Id="RDK:327" Name="ForInterna" Type="boolean" DesignTimeRemark="forcella interna" />
+					<FIELD Id="RDK:328" Name="ForInterna_Value" Type="string" DesignTimeRemark="forcella interna" />
+					<FIELD Id="RDK:329" Name="ForEsterna" Type="boolean" DesignTimeRemark="forcella esterna" />
+					<FIELD Id="RDK:330" Name="ForEsterna_Value" Type="string" DesignTimeRemark="forcella esterna" />
+					<FIELD Id="RDK:331" Name="Altezza_1" Type="string" DesignTimeRemark="Altezza montante basso" />
+					<FIELD Id="RDK:332" Name="Altezza_PC" Type="string" DesignTimeRemark="piano di calpestio" />
+					<FIELD Id="RDK:333" Name="Config_Vern" Type="string" DesignTimeRemark="configurazione verniciatura spalla" />
+					<FIELD Id="RDK:334" Name="Config_Tralic" Type="string" DesignTimeRemark="Configurazione tralicciatura" />
+					<FIELD Id="RDK:335" Name="Tipo_piede" Type="string" DesignTimeRemark="se C= compattabiule N= normale S= senza piede" />
+					<FIELD Id="RDK:336" Name="Tappata" Type="string" DesignTimeRemark="colonna tappata" />
+					<FIELD Id="RDK:337" Name="Chiuso" Type="string" DesignTimeRemark="montante chiuso" />
+					<FIELD Id="RDK:338" Name="Passi_Chiusi" Type="string" DesignTimeRemark="Numero di passi (52) chiusi" />
+					<FIELD Id="RDK:339" Name="Tipo_rinforzo" Type="string" DesignTimeRemark="0 non c'è " />
+					<FIELD Id="RDK:340" Name="Lunghezza_rinforzo" Type="string" DesignTimeRemark="nel cb è metà altezza" />
+					<FIELD Id="RDK:341" Name="Tipo_profilo_base" Type="string" DesignTimeRemark="CB" />
+					<FIELD Id="RDK:342" Name="Tipo_piastra_base" Type="string" DesignTimeRemark="CB" />
+					<FIELD Id="RDK:343" Name="Tipo_bullonatura" Type="string" />
+					<FIELD Id="RDK:344" Name="Mono_bifronte" Type="string" DesignTimeRemark=" M o B" />
+					<FIELD Id="RDK:345" Name="Prof_carico" Type="string" DesignTimeRemark="profondita di carico CB" />
+					<FIELD Id="RDK:346" Name="Bicchiere" Type="string" DesignTimeRemark="0 se non presnete, se no il numero" />
+					<FIELD Id="RDK:347" Name="Tipo_Apertura" Type="string" DesignTimeRemark="destra sinistra doppia" />
+					<FIELD Id="RDK:348" Name="Tipo_men_DI" Type="string" DesignTimeRemark="destra sisnistra doppia" />
+					<FIELD Id="RDK:349" Name="Fermapallet" Type="boolean" DesignTimeRemark="si /no" />
+					<FIELD Id="RDK:350" Name="Stocchetto_CVV" Type="boolean" DesignTimeRemark="si/no" />
+					<FIELD Id="RDK:351" Name="Tipo_tenditore" Type="string" DesignTimeRemark="si/no" />
+					<FIELD Id="RDK:352" Name="Tipologia_utilizzo" Type="string" DesignTimeRemark="Tipo utilizzo articolo (es T per Tamponamenti, P per Pavimentazione)" />
+				</TYPE>
+				<TYPE Id="RDK:404" Name="TabSAGEType" SubType="structure">
+					<TYPE_VALUES />
+					<FIELD Id="RDK:354" Name="Categoria_Sage" Type="string" />
+					<FIELD Id="RDK:355" Name="Descrizione" Type="string" />
+					<FIELD Id="RDK:356" Name="Descrizione_ITA" Type="string" />
+					<FIELD Id="RDK:357" Name="Descrizione_ENG" Type="string" />
+					<FIELD Id="RDK:358" Name="Descrizione_DEU" Type="string" />
+					<FIELD Id="RDK:359" Name="Descrizione_FRA" Type="string" />
+					<FIELD Id="RDK:360" Name="Descrizione_ESP" Type="string" />
+					<FIELD Id="RDK:361" Name="DescEstesa" Type="string" />
+					<FIELD Id="RDK:362" Name="DescEstesa_ITA" Type="string" />
+					<FIELD Id="RDK:363" Name="DescEstesa_ENG" Type="string" />
+					<FIELD Id="RDK:364" Name="DescEstesa_DEU" Type="string" />
+					<FIELD Id="RDK:365" Name="DescEstesa_FRA" Type="string" />
+					<FIELD Id="RDK:366" Name="DescEstesa_ESP" Type="string" />
+					<FIELD Id="RDK:367" Name="ArtGlam" Type="string" />
+					<FIELD Id="RDK:368" Name="Settore" Type="string" />
+					<FIELD Id="RDK:369" Name="Ragg_DetSeq" Type="string" />
+					<FIELD Id="RDK:370" Name="Dest_Uso" Type="string" />
+					<FIELD Id="RDK:371" Name="Tipo_Disegno" Type="string" />
+					<FIELD Id="RDK:372" Name="Codice_Disegno" Type="string" />
+					<FIELD Id="RDK:373" Name="ArtAlias" Type="string" />
+					<FIELD Id="RDK:374" Name="Qta_Ver" Type="string" />
+					<FIELD Id="RDK:375" Name="Tempo_medio_vern" Type="string" />
+					<FIELD Id="RDK:376" Name="Superfice" Type="string" />
+					<FIELD Id="RDK:377" Name="N_Ganci" Type="string" />
+					<FIELD Id="RDK:378" Name="N_Pezzi" Type="string" />
+					<FIELD Id="RDK:379" Name="Colore" Type="string" DesignTimeRemark="codice per stampe esteso colore" />
+					<FIELD Id="RDK:380" Name="Colore_ITA" Type="string" DesignTimeRemark="codice per stampe esteso colore" />
+					<FIELD Id="RDK:381" Name="Colore_ENG" Type="string" DesignTimeRemark="codice per stampe esteso colore" />
+					<FIELD Id="RDK:382" Name="Colore_DEU" Type="string" DesignTimeRemark="codice per stampe esteso colore" />
+					<FIELD Id="RDK:383" Name="Colore_FRA" Type="string" DesignTimeRemark="codice per stampe esteso colore" />
+					<FIELD Id="RDK:384" Name="Colore_ESP" Type="string" DesignTimeRemark="codice per stampe esteso colore" />
+					<FIELD Id="RDK:385" Name="CodNastroGen" Type="string" />
+					<FIELD Id="RDK:386" Name="Materiale" Type="string" />
+					<FIELD Id="RDK:387" Name="Utilizzo" Type="string" />
+					<FIELD Id="RDK:388" Name="Peso" Type="string" />
+					<FIELD Id="RDK:389" Name="Portata" Type="string" />
+					<FIELD Id="RDK:390" Name="Unita_Mag" Type="string" />
+					<FIELD Id="RDK:391" Name="Unita_Peso" Type="string" />
+					<FIELD Id="RDK:392" Name="Unita_acq" Type="string" />
+					<FIELD Id="RDK:393" Name="Coeff_UA_UM" Type="string" />
+					<FIELD Id="RDK:394" Name="Unita_ven" Type="string" />
+					<FIELD Id="RDK:395" Name="Coeff_UV_UM" Type="string" />
+					<FIELD Id="RDK:396" Name="Unita_conf1" Type="string" />
+					<FIELD Id="RDK:397" Name="Coeff_Con1_UM" Type="string" />
+					<FIELD Id="RDK:398" Name="Unita_conf2" Type="string" />
+					<FIELD Id="RDK:399" Name="Coeff_Con2_UM" Type="string" />
+					<FIELD Id="RDK:400" Name="Unita_conf3" Type="string" />
+					<FIELD Id="RDK:401" Name="Coeff_Con3_UM" Type="string" />
+					<FIELD Id="RDK:402" Name="Temporaneo" Type="string" />
+					<FIELD Id="RDK:403" Name="Strutturale" Type="boolean" />
+				</TYPE>
+				<TYPE Id="RDK:413" Name="TabCOSTIType" SubType="structure">
+					<TYPE_VALUES />
+					<FIELD Id="RDK:405" Name="Prezzo" Type="string" />
+					<FIELD Id="RDK:406" Name="PrezzoMagg" Type="string" DesignTimeRemark="prezzo della maggiorazione" />
+					<FIELD Id="RDK:407" Name="Costo_Tot" Type="string" />
+					<FIELD Id="RDK:408" Name="Costo_Tot_Materiali" Type="string" />
+					<FIELD Id="RDK:409" Name="Costo_Tot_Macchina" Type="string" />
+					<FIELD Id="RDK:410" Name="Costo_Tot_CL" Type="string" />
+					<FIELD Id="RDK:411" Name="Prezzo_da_Costo" Type="boolean" />
+					<FIELD Id="RDK:412" Name="Data_agg_prezzo" Type="date" />
+				</TYPE>
+				<TYPE Id="RDK:419" Name="TabCICLOType" SubType="structure">
+					<TYPE_VALUES />
+					<FIELD Id="RDK:414" Name="CDL" Type="string" />
+					<FIELD Id="RDK:415" Name="Tempo" Type="string" />
+					<FIELD Id="RDK:416" Name="UM" Type="string" DesignTimeRemark="um del ciclo" />
+					<FIELD Id="RDK:417" Name="Qty" Type="string" DesignTimeRemark="qty di riferimento ciclo" />
+					<FIELD Id="RDK:418" Name="CostoLAV" Type="string" />
+				</TYPE>
+				<TYPE Id="RDK:432" Name="TABDATI_PType" SubType="structure">
+					<TYPE_VALUES />
+					<FIELD Id="RDK:420" Name="TipoArticolo" Type="string" />
+					<FIELD Id="RDK:421" Name="TipoProfilo" Type="string" />
+					<FIELD Id="RDK:422" Name="Lunghezza" Type="integer" />
+					<FIELD Id="RDK:423" Name="Lunghezza1" Type="integer" />
+					<FIELD Id="RDK:424" Name="Altezza" Type="integer" />
+					<FIELD Id="RDK:425" Name="Larghezza" Type="integer" />
+					<FIELD Id="RDK:426" Name="Spessore" Type="double" />
+					<FIELD Id="RDK:427" Name="TipoConn" Type="string" />
+					<FIELD Id="RDK:428" Name="Diametro" Type="double" />
+					<FIELD Id="RDK:429" Name="ID_staffa" Type="string" />
+					<FIELD Id="RDK:430" Name="VER" Type="string" />
+					<FIELD Id="RDK:431" Name="ZIN" Type="string" />
+				</TYPE>
+			</GROUP>
+			<TYPE Id="RDK:599" Name="InputType" Expanded="True" SubType="structure">
+				<TYPE_VALUES />
+				<FIELD Id="RDK:600" Name="Input" Type="string" />
+				<FIELD Id="RDK:602" Name="NomeF" Type="string" />
+				<FIELD Id="RDK:612" Name="NomeA">
+					<TYPE Id="RDK:612" Name="string" Expanded="True" SubType="base" BaseType="string">
+						<UI_INPUT_TYPE TypeForm="Text" />
+						<UI_INPUT_VALIDATION ValidationType="none" />
+						<UI_INPUT_SUPPORT />
+						<TYPE_VALUES />
+					</TYPE>
+				</FIELD>
+			</TYPE>
+		</GROUP>
+		<GROUP Id="RDK:0004" Name="Parameters" SubType="ParameterDefs" Expanded="True" />
+		<GROUP Id="RDK:0005" Name="Global Variables" SubType="VarSet" IncludeDate="0" Expanded="True">
+			<GROUP Id="RDK:630" Name="CONN STRINGS" SubType="VarSet" IncludeDate="0" Expanded="True">
+				<VAR Id="RDK:631" Name="conn_PDMtest" Type="string" Expanded="True">
+					<SET Id="RDK:632" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=PDMTest;Data Source=SRV-DB06\TSINT;User Id=sa;Password=Ruled2014;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+			</GROUP>
+			<VAR Id="RDK:583" Name="ITMREF" Type="string" Expanded="True" />
+			<VAR Id="RDK:586" Name="TABDATI" Type="TabDATIType" Expanded="True" />
+			<VAR Id="RDK:588" Name="TABSAGE" Type="TabSAGEType" />
+			<VAR Id="RDK:590" Name="INTAPG" Type="string" />
+			<VAR Id="RDK:592" Name="ESTAPG" Type="string" />
+			<VAR Id="RDK:607" Name="Input" Type="InputType" Expanded="True" />
+			<VAR Id="RDK:617" Name="ListArticoli" Type="string[]" Expanded="True" />
+			<VAR Id="RDK:619" Name="ListFam" Type="string[]" />
+			<VAR Id="RDK:625" Name="Button" Type="string" Expanded="True" DesignTimeRemark="Generated by RD" />
+		</GROUP>
+		<GROUP Id="RDK:0006" Name="Profiles" SubType="ProfileSet" Expanded="True">
+			<PROFILE Id="RDK:12" Name="InputProfile" TypeName="InputType" Expanded="True" />
+		</GROUP>
+		<GROUP Id="RDK:0007" Name="Functions" SubType="FunctionSet" IncludeDate="0" Expanded="True" />
+	</GROUP>
+	<GROUP Id="RDK:0008" Name="Main Group" SubType="Generic" Expanded="True">
+		<GROUP Id="RDK:633" Name="INIT" SubType="Generic" Expanded="True">
+			<ACTION_CALL Id="RDK:636" Name="RDEngineering_DBOpen">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$DB_PDM]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionString">
+					<EXP><![CDATA[$=$conn_PDMtest]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$-1]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+			<ACTION_CALL Id="RDK:639" Name="RDEngineering_DBSelect">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$DB_PDM]]></EXP>
+				</PAR>
+				<PAR Name="SelectQuery">
+					<EXP><![CDATA[$C$
+  SELECT distinct cvalValore FROM CODVAL  where cvalValore not in ( '', '##', '####', '#####') order by cvalValore]]></EXP>
+				</PAR>
+				<PAR Name="SelectQueryType">
+					<EXP><![CDATA[$C$2]]></EXP>
+				</PAR>
+				<PAR Name="FirstValue">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="FirstRow">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="AllRows">
+					<EXP><![CDATA[$V$ListArticoli]]></EXP>
+				</PAR>
+				<PAR Name="FirstColumn">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="NumRows">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="ColumnHeader">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="ColumnHeaders">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+			<ACTION_CALL Id="RDK:1155" Name="RDEngineering_DBSelect">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$DB_PDM]]></EXP>
+				</PAR>
+				<PAR Name="SelectQuery">
+					<EXP><![CDATA[$C$SELECT DISTINCT Macrofamiglia
+  FROM INPUTGEN where Macrofamiglia<>'' order by Macrofamiglia]]></EXP>
+				</PAR>
+				<PAR Name="SelectQueryType">
+					<EXP><![CDATA[$C$2]]></EXP>
+				</PAR>
+				<PAR Name="FirstValue">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="FirstRow">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="AllRows">
+					<EXP><![CDATA[$V$ListFam]]></EXP>
+				</PAR>
+				<PAR Name="FirstColumn">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="NumRows">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="ColumnHeader">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="ColumnHeaders">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+		</GROUP>
+		<ACTION_CALL Id="RDK:624" Name="RDEngineering_RemoteGetInput" DesignTimeRemark="{VarName}">
+			<PAR Name="RDLibraryName">
+				<EXP><![CDATA[$C$RDEngineering_UI]]></EXP>
+			</PAR>
+			<PAR Name="InputVar">
+				<EXP><![CDATA[$=$Input]]></EXP>
+			</PAR>
+			<PAR Name="ProfileName">
+				<EXP><![CDATA[$C$InputProfile]]></EXP>
+			</PAR>
+			<PAR Name="RunTimeRemark">
+				<EXP><![CDATA[$C$Scegliere di cosa si vuole fare l'update della descrizione estesa]]></EXP>
+			</PAR>
+			<PAR Name="WebResourcePath" />
+			<PAR Name="ImgTop" />
+			<PAR Name="ImgBottom" />
+			<PAR Name="ImgLeft" />
+			<PAR Name="ImgRight" />
+			<PAR Name="CSSStyle" />
+			<PAR Name="RDActionTimeOut" />
+			<PAR Name="LayoutMode">
+				<EXP><![CDATA[$C$0]]></EXP>
+			</PAR>
+			<PAR Name="ButtonsMode">
+				<EXP><![CDATA[$C$3]]></EXP>
+			</PAR>
+			<PAR Name="ButtonList">
+				<EXP><![CDATA[$C$CALCOLA, ESCI]]></EXP>
+			</PAR>
+			<PAR Name="ButtonImgs" />
+			<PAR Name="ButtonAction" />
+			<PAR Name="ButtonOptions" />
+			<PAR Name="ButtonDefs" />
+			<PAR Name="ButtonPressed">
+				<EXP><![CDATA[$V$Button]]></EXP>
+			</PAR>
+			<PAR Name="HeaderData" />
+			<PAR Name="InputTree">
+				<EXP><![CDATA[$=$]]></EXP>
+			</PAR>
+			<PAR Name="Options" />
+		</ACTION_CALL>
+		<GROUP Id="RDK:626" Name="CALCOLO" SubType="Generic" Expanded="True">
+			<VALUECONDITION Value="true">
+				<EXP><![CDATA[$=$Button="CALCOLA"]]></EXP>
+			</VALUECONDITION>
+		</GROUP>
+		<ACTION_CALL Id="RDK:640" Name="RDEngineering_DBClose">
+			<PAR Name="RDLibraryName">
+				<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+			</PAR>
+			<PAR Name="ConnectionName">
+				<EXP><![CDATA[$C$DB_PDM]]></EXP>
+			</PAR>
+			<PAR Name="Transaction" />
+		</ACTION_CALL>
+	</GROUP>
+	<EXTERNAL_DATA>
+		<PROFILES_DATA>
+			<RELPROFILE Id="RDK:14" TypeName="InputType" Expanded="True">
+				<PNODE NodeType="profile" ProfileName="InputProfile" />
+				<PNODE NodeType="field_variant" FieldName="Input" VariantName="Variant" />
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_TYPE TypeForm="DropDown" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Scegli il tipo di input]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:15" TypeName="InputType" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Input" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
+					<EXP><![CDATA[$C$Articolo]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:16" TypeName="InputType" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Input" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
+					<EXP><![CDATA[$C$Famiglia]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:17" TypeName="InputType" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Input" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
+					<EXP><![CDATA[$C$Tutto]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:611" TypeName="InputType" Expanded="True">
+				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
+					<EXP><![CDATA[$C$Articolo]]></EXP>
+				</PNODE>
+				<PNODE NodeType="field_variant" FieldName="NomeA" VariantName="Variant" />
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_TYPE TypeForm="DropDown" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Scegli l'articolo]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:615" TypeName="InputType" Expanded="True">
+				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
+					<EXP><![CDATA[$C$Famiglia]]></EXP>
+				</PNODE>
+				<PNODE NodeType="field_variant" FieldName="NomeF" VariantName="Variant" />
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_TYPE TypeForm="DropDown" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Segli la famiglia]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:613" TypeName="InputType">
+				<PNODE NodeType="field_variant" FieldName="NomeA" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="NomeA" VariantName="Variant">
+					<EXP><![CDATA[$=$ListArticoli]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:616" TypeName="InputType" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="NomeF" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="NomeF" VariantName="Variant">
+					<EXP><![CDATA[$=$ListFam]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+		</PROFILES_DATA>
+		<BOM_DATA />
+	</EXTERNAL_DATA>
+</PROCESS>
