@@ -1,0 +1,2284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PROCESS Id="RDK:0001" Name="MigrateToLocalDB" SystemProcess="True" Expanded="True">
+	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-11-19T09:15:44" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-03T16:08:00" LanguageVersion="2011.1.1.0" />
+	<GROUP Id="RDK:0002" Name="Declarations" SubType="Declarations" Expanded="True">
+		<GROUP Id="RDK:0003" Name="Types" SubType="TypeSet" IncludeDate="0" Expanded="True" />
+		<GROUP Id="RDK:0004" Name="Parameters" SubType="ParameterDefs" Expanded="True" />
+		<GROUP Id="RDK:0005" Name="Global Variables" SubType="VarSet" IncludeDate="0" Expanded="True">
+			<GROUP Id="RDK:15" Name="PDM" SubType="VarSet" IncludeDate="0" Expanded="True">
+				<VAR Id="RDK:12" Name="CreateCODVAL" Type="string" Expanded="True">
+					<SET Id="RDK:50" VarRef="Me">
+						<EXP><![CDATA[$C$CREATE TABLE [dbo].[CODVAL](
+	[cvalID] [int] NOT NULL,
+	[cpID] [int] NOT NULL,
+	[cvalValore] [nvarchar](255) NOT NULL,
+	[cvalCodice] [nvarchar](15) NULL,
+	[cvalTags] [nvarchar](128) NULL,
+	[cvalTrans1] [nvarchar](255) NULL,
+	[cvalTrans2] [nvarchar](255) NULL,
+	[cvalTrans3] [nvarchar](255) NULL,
+	[cvalTrans4] [nvarchar](255) NULL,
+	[cvalTrans5] [nvarchar](255) NULL,
+	[cvalMountTime] [float] NULL,
+	[cvalPos] [int] NOT NULL,
+	[cvalImageUrl] [nvarchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cvalID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:364" Name="CreateCAMPI" Type="string" Expanded="True">
+					<SET Id="RDK:365" VarRef="Me">
+						<EXP><![CDATA[$C$CREATE TABLE [dbo].[CAMPI](
+	[cpID] [int] NOT NULL,
+	[cpNome] [nvarchar](64) NOT NULL,
+	[cpTipo] [smallint] NOT NULL,
+	[cpForm] [int] NOT NULL,
+	[cpLock] [bit] NULL,
+	[cpReq] [bit] NULL,
+	[cpInit] [bit] NULL,
+	[cpUM] [nvarchar](10) NULL,
+	[cpAbb] [nvarchar](20) NULL,
+	[cpSep] [nvarchar](10) NULL,
+	[cpUso] [smallint] NOT NULL,
+	[cpDesc] [nvarchar](255) NULL,
+	[cpPermission] [int] NULL,
+	[cpTags] [nvarchar](128) NULL,
+	[cpTrans1] [nvarchar](64) NULL,
+	[cpTrans2] [nvarchar](64) NULL,
+	[cpTrans3] [nvarchar](64) NULL,
+	[cpTrans4] [nvarchar](64) NULL,
+	[cpTrans5] [nvarchar](64) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[cpID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:408" Name="CreateCODICI" Type="string" Expanded="True">
+					<SET Id="RDK:407" VarRef="Me">
+						<EXP><![CDATA[$C$CREATE TABLE [dbo].[CODICI](
+	[codID] [int] NOT NULL,
+	[codCodice] [nvarchar](30) NOT NULL,
+	[codRevisione] [smallint] NULL,
+	[codLastRev] [bit] NULL,
+	[codTitle] [nvarchar](128) NULL,
+	[codStatus] [smallint] NULL,
+	[codStUser] [nvarchar](50) NULL,
+	[codStDate] [datetime] NULL,
+	[codModUser] [nvarchar](50) NULL,
+	[codModDate] [datetime] NULL,
+	[codCrUser] [nvarchar](50) NULL,
+	[codCrDate] [datetime] NULL,
+	[catID] [int] NULL,
+	[codAnaUpd] [smallint] NULL,
+	[codExtract] [bit] NULL,
+	[codExtHost] [nvarchar](255) NULL,
+	[codSvrPath] [nvarchar](512) NULL,
+	[codBackup] [bit] NULL,
+	[codFullDesc] [nvarchar](255) NULL,
+	[codNote] [nvarchar](255) NULL,
+	[codArchived] [bit] NULL,
+	[codNoteArchived] [nvarchar](255) NULL,
+	[codVaulted] [bit] NULL,
+	[codIsVersion] [bit] NULL,
+	[codVersion] [smallint] NULL,
+	[codVersDesc] [nvarchar](255) NULL,
+	[binID] [int] NULL,
+	[codTags] [nvarchar](128) NULL,
+	[codWFPending] [bit] NULL,
+	[codProcessed] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[codID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:412" Name="CreatePROPCOD" Type="string" Expanded="True">
+					<SET Id="RDK:411" VarRef="Me">
+						<EXP><![CDATA[$C$CREATE TABLE [dbo].[PROPCOD](
+	[codID] [int] NOT NULL,
+	[cpID] [int] NOT NULL,
+	[cpIDAlias] [int] NULL,
+	[propValore] [nvarchar](255) NULL,
+	[propValDec] [float] NULL,
+	[propValDate] [datetime] NULL,
+	[propPos] [smallint] NOT NULL,
+	[propTransl1] [nvarchar](255) NULL,
+	[propTransl2] [nvarchar](255) NULL,
+	[propTransl3] [nvarchar](255) NULL,
+	[propTransl4] [nvarchar](255) NULL,
+	[propTransl5] [nvarchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[codID] ASC,
+	[cpID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:18" Name="PDMServer" Type="string" Expanded="True">
+					<SET Id="RDK:35" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=PDMTest;Data Source=SRV-DB06\TSINT;User Id=sa;Password=Ruled2014;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:20" Name="PDMLocal" Type="string" Expanded="True">
+					<SET Id="RDK:36" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=PDMtest;Data Source=LAPT-IT07\RULEDESIGNER;User Id=SA;Password=MBOffline$;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+			</GROUP>
+			<GROUP Id="RDK:632" Name="SAGE" SubType="VarSet" IncludeDate="0" Expanded="True">
+				<VAR Id="RDK:637" Name="CreateITMMASTERT" Type="string" Expanded="True">
+					<SET Id="RDK:638" VarRef="Me">
+						<EXP><![CDATA[$C$CREATE TABLE [ITMMASTER](
+	[ITMREF_0] [nvarchar](20) NOT NULL,
+	[TSICOD_0] [nvarchar](20) NOT NULL,
+	[TSICOD_1] [nvarchar](20) NOT NULL,
+	[TSICOD_2] [nvarchar](20) NOT NULL,
+	[TSICOD_3] [nvarchar](20) NOT NULL,
+	[TSICOD_4] [nvarchar](20) NOT NULL,
+	[TCLCOD_0] [nvarchar](5) NOT NULL,
+	[SEAKEY_0] [nvarchar](20) NOT NULL,
+	[DIE_0] [nvarchar](3) NOT NULL,
+	[DIE_1] [nvarchar](3) NOT NULL,
+	[DIE_2] [nvarchar](3) NOT NULL,
+	[DIE_3] [nvarchar](3) NOT NULL,
+	[DIE_4] [nvarchar](3) NOT NULL,
+	[DIE_5] [nvarchar](3) NOT NULL,
+	[DIE_6] [nvarchar](3) NOT NULL,
+	[DIE_7] [nvarchar](3) NOT NULL,
+	[DIE_8] [nvarchar](3) NOT NULL,
+	[DIE_9] [nvarchar](3) NOT NULL,
+	[DIE_10] [nvarchar](3) NOT NULL,
+	[DIE_11] [nvarchar](3) NOT NULL,
+	[DIE_12] [nvarchar](3) NOT NULL,
+	[DIE_13] [nvarchar](3) NOT NULL,
+	[DIE_14] [nvarchar](3) NOT NULL,
+	[DIE_15] [nvarchar](3) NOT NULL,
+	[DIE_16] [nvarchar](3) NOT NULL,
+	[DIE_17] [nvarchar](3) NOT NULL,
+	[DIE_18] [nvarchar](3) NOT NULL,
+	[DIE_19] [nvarchar](3) NOT NULL,
+	[CCE_0] [nvarchar](15) NOT NULL,
+	[CCE_1] [nvarchar](15) NOT NULL,
+	[CCE_2] [nvarchar](15) NOT NULL,
+	[CCE_3] [nvarchar](15) NOT NULL,
+	[CCE_4] [nvarchar](15) NOT NULL,
+	[CCE_5] [nvarchar](15) NOT NULL,
+	[CCE_6] [nvarchar](15) NOT NULL,
+	[CCE_7] [nvarchar](15) NOT NULL,
+	[CCE_8] [nvarchar](15) NOT NULL,
+	[CCE_9] [nvarchar](15) NOT NULL,
+	[CCE_10] [nvarchar](15) NOT NULL,
+	[CCE_11] [nvarchar](15) NOT NULL,
+	[CCE_12] [nvarchar](15) NOT NULL,
+	[CCE_13] [nvarchar](15) NOT NULL,
+	[CCE_14] [nvarchar](15) NOT NULL,
+	[CCE_15] [nvarchar](15) NOT NULL,
+	[CCE_16] [nvarchar](15) NOT NULL,
+	[CCE_17] [nvarchar](15) NOT NULL,
+	[CCE_18] [nvarchar](15) NOT NULL,
+	[CCE_19] [nvarchar](15) NOT NULL,
+	[ACCCOD_0] [nvarchar](10) NOT NULL,
+	[ITMDES1_0] [nvarchar](60) NOT NULL,
+	[ITMDES2_0] [nvarchar](60) NOT NULL,
+	[ITMDES3_0] [nvarchar](60) NOT NULL,
+	[STDFLG_0] [tinyint] NOT NULL,
+	[ITMSTD_0] [nvarchar](20) NOT NULL,
+	[EANCOD_0] [nvarchar](20) NOT NULL,
+	[ITMSTA_0] [tinyint] NOT NULL,
+	[DEFPOT_0] [numeric](14, 5) NOT NULL,
+	[DEFACT_0] [numeric](14, 5) NOT NULL,
+	[LIFSTRDAT_0] [datetime] NOT NULL,
+	[LIFENDDAT_0] [datetime] NOT NULL,
+	[STOCRD_0] [nvarchar](8) NOT NULL,
+	[STU_0] [nvarchar](3) NOT NULL,
+	[PUU_0] [nvarchar](3) NOT NULL,
+	[SAU_0] [nvarchar](3) NOT NULL,
+	[SSU_0] [nvarchar](3) NOT NULL,
+	[EEU_0] [nvarchar](3) NOT NULL,
+	[PUUSTUCOE_0] [numeric](18, 7) NOT NULL,
+	[DACPUUCOE_0] [tinyint] NOT NULL,
+	[SAUSTUCOE_0] [numeric](18, 7) NOT NULL,
+	[DACSAUCOE_0] [tinyint] NOT NULL,
+	[SSUSTUCOE_0] [numeric](18, 7) NOT NULL,
+	[EEUSTUCOE_0] [numeric](18, 7) NOT NULL,
+	[WEU_0] [nvarchar](3) NOT NULL,
+	[ITMWEI_0] [numeric](17, 6) NOT NULL,
+	[VOU_0] [nvarchar](3) NOT NULL,
+	[ITMVOU_0] [numeric](12, 4) NOT NULL,
+	[PCU_0] [nvarchar](3) NOT NULL,
+	[PCU_1] [nvarchar](3) NOT NULL,
+	[PCU_2] [nvarchar](3) NOT NULL,
+	[PCU_3] [nvarchar](3) NOT NULL,
+	[PCUSTUCOE_0] [numeric](18, 7) NOT NULL,
+	[PCUSTUCOE_1] [numeric](18, 7) NOT NULL,
+	[PCUSTUCOE_2] [numeric](18, 7) NOT NULL,
+	[PCUSTUCOE_3] [numeric](18, 7) NOT NULL,
+	[DACPCUCOE_0] [tinyint] NOT NULL,
+	[DACPCUCOE_1] [tinyint] NOT NULL,
+	[DACPCUCOE_2] [tinyint] NOT NULL,
+	[DACPCUCOE_3] [tinyint] NOT NULL,
+	[PCURUL_0] [tinyint] NOT NULL,
+	[PCURUL_1] [tinyint] NOT NULL,
+	[PCURUL_2] [tinyint] NOT NULL,
+	[PCURUL_3] [tinyint] NOT NULL,
+	[LBEFMT_0] [nvarchar](15) NOT NULL,
+	[LBEFMT_1] [nvarchar](15) NOT NULL,
+	[LBEFMT_2] [nvarchar](15) NOT NULL,
+	[LBEFMT_3] [nvarchar](15) NOT NULL,
+	[STOMGTCOD_0] [tinyint] NOT NULL,
+	[LOTMGTCOD_0] [tinyint] NOT NULL,
+	[LOTCOU_0] [nvarchar](5) NOT NULL,
+	[SERCOU_0] [nvarchar](5) NOT NULL,
+	[SERMGTCOD_0] [tinyint] NOT NULL,
+	[EXYMGTCOD_0] [tinyint] NOT NULL,
+	[EXYSTA_0] [nvarchar](1) NOT NULL,
+	[SHL_0] [smallint] NOT NULL,
+	[SHLLTI_0] [smallint] NOT NULL,
+	[NEGSTO_0] [tinyint] NOT NULL,
+	[CSTGRP_0] [nvarchar](10) NOT NULL,
+	[BRDCOD_0] [tinyint] NOT NULL,
+	[PLAACS_0] [nvarchar](10) NOT NULL,
+	[RPLITM_0] [nvarchar](20) NOT NULL,
+	[EECGES_0] [tinyint] NOT NULL,
+	[CUSREF_0] [nvarchar](12) NOT NULL,
+	[VACITM_0] [nvarchar](20) NOT NULL,
+	[VACITM_1] [nvarchar](20) NOT NULL,
+	[VACITM_2] [nvarchar](20) NOT NULL,
+	[FRTHORUOM_0] [tinyint] NOT NULL,
+	[FRTHOR_0] [smallint] NOT NULL,
+	[FIMHOR_0] [smallint] NOT NULL,
+	[FIMHORUOM_0] [tinyint] NOT NULL,
+	[BUY_0] [nvarchar](5) NOT NULL,
+	[PLANNER_0] [nvarchar](5) NOT NULL,
+	[OFS_0] [smallint] NOT NULL,
+	[MINRMNPRC_0] [numeric](8, 3) NOT NULL,
+	[RCPFLG_0] [tinyint] NOT NULL,
+	[PRQFLG_0] [tinyint] NOT NULL,
+	[PURTEX_0] [nvarchar](12) NOT NULL,
+	[MFGTEX_0] [nvarchar](12) NOT NULL,
+	[ITMEXNFLG_0] [nvarchar](1) NOT NULL,
+	[STATAXFLG_0] [nvarchar](1) NOT NULL,
+	[CFGLIN_0] [nvarchar](5) NOT NULL,
+	[CFGFLDNUM1_0] [numeric](28, 13) NOT NULL,
+	[CFGFLDNUM2_0] [numeric](28, 13) NOT NULL,
+	[CFGFLDNUM3_0] [numeric](28, 13) NOT NULL,
+	[CFGFLDNUM4_0] [numeric](28, 13) NOT NULL,
+	[CFGFLDNUM5_0] [numeric](28, 13) NOT NULL,
+	[CFGFLDNUM6_0] [numeric](28, 13) NOT NULL,
+	[CFGFLDALP1_0] [nvarchar](20) NOT NULL,
+	[CFGFLDALP2_0] [nvarchar](20) NOT NULL,
+	[CFGFLDALP3_0] [nvarchar](20) NOT NULL,
+	[CFGFLDALP4_0] [nvarchar](20) NOT NULL,
+	[CFGFLDALP5_0] [nvarchar](20) NOT NULL,
+	[CFGFLDALP6_0] [nvarchar](20) NOT NULL,
+	[CFGVCRNUM_0] [nvarchar](20) NOT NULL,
+	[CFGBPRNUM_0] [nvarchar](15) NOT NULL,
+	[CFGBPRREF_0] [nvarchar](20) NOT NULL,
+	[CFGITMREF_0] [nvarchar](20) NOT NULL,
+	[CFGDELDAT_0] [datetime] NOT NULL,
+	[CREMAC_0] [tinyint] NOT NULL,
+	[FLYCAT_0] [nvarchar](20) NOT NULL,
+	[TPLCONLND_0] [nvarchar](20) NOT NULL,
+	[TPLCONGUA_0] [nvarchar](20) NOT NULL,
+	[TPLCONSRV_0] [nvarchar](20) NOT NULL,
+	[PITCDT_0] [int] NOT NULL,
+	[PITCDTUOM_0] [nvarchar](3) NOT NULL,
+	[STULBEFMT_0] [nvarchar](15) NOT NULL,
+	[ALTBOMHDK_0] [smallint] NOT NULL,
+	[HDKITMTYP_0] [tinyint] NOT NULL,
+	[STOISSDEF_0] [tinyint] NOT NULL,
+	[DAYUOM_0] [nvarchar](3) NOT NULL,
+	[HOUUOM_0] [nvarchar](3) NOT NULL,
+	[MNTUOM_0] [nvarchar](3) NOT NULL,
+	[DTY_0] [numeric](18, 7) NOT NULL,
+	[TRKCOD_0] [tinyint] NOT NULL,
+	[PURFLG_0] [tinyint] NOT NULL,
+	[MFGFLG_0] [tinyint] NOT NULL,
+	[SCPFLG_0] [tinyint] NOT NULL,
+	[SCSFLG_0] [tinyint] NOT NULL,
+	[PHAFLG_0] [tinyint] NOT NULL,
+	[GENFLG_0] [tinyint] NOT NULL,
+	[TOOFLG_0] [tinyint] NOT NULL,
+	[DLVFLG_0] [tinyint] NOT NULL,
+	[SALFLG_0] [tinyint] NOT NULL,
+	[INTFLG_0] [tinyint] NOT NULL,
+	[FLGFAS_0] [tinyint] NOT NULL,
+	[NEWLTISTA_0] [nvarchar](1) NOT NULL,
+	[DLU_0] [numeric](18, 7) NOT NULL,
+	[SHLUOM_0] [tinyint] NOT NULL,
+	[SHLLTIUOM_0] [tinyint] NOT NULL,
+	[EXPNUM_0] [int] NOT NULL,
+	[XINTRACPA_0] [nvarchar](10) NOT NULL,
+	[CREDAT_0] [datetime] NOT NULL,
+	[CREUSR_0] [nvarchar](5) NOT NULL,
+	[XINTRCPADE_0] [nvarchar](100) NOT NULL,
+	[UPDDAT_0] [datetime] NOT NULL,
+	[UPDUSR_0] [nvarchar](5) NOT NULL,
+	[XINTRAEROG_0] [tinyint] NOT NULL,
+	[STAFED_0] [nvarchar](20) NOT NULL,
+	[PLMITMREF_0] [nvarchar](70) NOT NULL,
+	[PLMATTURL_0] [nvarchar](250) NOT NULL,
+	[PLMHISURL_0] [nvarchar](250) NOT NULL,
+	[CRESTP_0] [nvarchar](14) NOT NULL,
+	[UPDSTP_0] [nvarchar](14) NOT NULL,
+	[IDTSGL_0] [nvarchar](36) NOT NULL,
+	[MATTOL_0] [nvarchar](5) NOT NULL,
+	[YCOLOR_0] [nvarchar](10) NOT NULL,
+	[YDIMLUN_0] [numeric](11, 3) NOT NULL,
+	[YDIMALT_0] [numeric](11, 3) NOT NULL,
+	[YDIMLAR_0] [numeric](11, 3) NOT NULL,
+	[YDIAMETRO_0] [numeric](11, 3) NOT NULL,
+	[YMATPRI_0] [nvarchar](4) NOT NULL,
+	[YMRP_0] [tinyint] NOT NULL,
+	[YPAINTQTY_0] [numeric](15, 4) NOT NULL,
+	[YPAINTUN_0] [int] NOT NULL,
+	[YUTILMAT_0] [nvarchar](20) NOT NULL,
+	[YSPESFLG_0] [tinyint] NOT NULL,
+	[YPROVFLG_0] [tinyint] NOT NULL,
+	[YPESAFLG_0] [tinyint] NOT NULL,
+	[YLA6FLG_0] [tinyint] NOT NULL,
+	[YPCERTFLG_0] [tinyint] NOT NULL,
+	[YCERT_0] [tinyint] NOT NULL,
+	[YFAMALTM_0] [nvarchar](20) NOT NULL,
+	[YPACKFLG_0] [tinyint] NOT NULL,
+	[YCOEFALTM_0] [numeric](15, 4) NOT NULL,
+	[YDEST_0] [nvarchar](20) NOT NULL,
+	[YKANQTY_0] [numeric](28, 13) NOT NULL,
+	[YKANRPL_0] [numeric](28, 13) NOT NULL,
+	[YKANLBL_0] [numeric](28, 13) NOT NULL,
+	[YKANMFG_0] [nvarchar](12) NOT NULL,
+	[YOFFSET_0] [numeric](6, 1) NOT NULL,
+	[YSPESS_0] [numeric](11, 4) NOT NULL,
+	[YLAVSUPP_0] [nvarchar](4) NOT NULL,
+	[YTPCONN_0] [nvarchar](5) NOT NULL,
+	[YCOSTOMB_0] [numeric](24, 7) NOT NULL,
+	[YTYPSUP_0] [tinyint] NOT NULL,
+	[YCMQTY_0] [numeric](14, 3) NOT NULL,
+	[YCMTOLL_0] [numeric](8, 3) NOT NULL,
+	[YNASTRO_0] [nvarchar](20) NOT NULL,
+	[YIMBBPS_0] [nvarchar](20) NOT NULL,
+	[YFAMIGLIA_0] [nvarchar](20) NOT NULL,
+	[YMAT_0] [nvarchar](20) NOT NULL,
+	[YPDMPJTREF_0] [nvarchar](20) NOT NULL,
+	[YCLALC_0] [nvarchar](20) NOT NULL,
+	[YFINIT_0] [nvarchar](1) NOT NULL,
+	[YTMVER_0] [numeric](12, 4) NOT NULL,
+	[YSPECIALE_0] [tinyint] NOT NULL,
+	[YLTROU_0] [tinyint] NOT NULL,
+	[YASSEMB_0] [tinyint] NOT NULL,
+	[YFORAT_0] [nvarchar](4) NOT NULL,
+	[YINCLINAZ_0] [numeric](8, 3) NOT NULL,
+	[YINDVAR_0] [nvarchar](4) NOT NULL,
+	[YTIPOPROF_0] [nvarchar](5) NOT NULL,
+	[YSUPERF_0] [numeric](14, 3) NOT NULL,
+	[YCODRIELAB_0] [nvarchar](20) NOT NULL,
+	[YNGANCI_0] [smallint] NOT NULL,
+	[YNPEZZI_0] [smallint] NOT NULL,
+	[YFLG_YCSOH_0] [tinyint] NOT NULL,
+	[YDESEST_0] [nvarchar](250) NOT NULL,
+	[CRETIM_0] [int] NOT NULL,
+	[UPDTIM_0] [int] NOT NULL,
+	[YCPINFINT_0] [tinyint] NOT NULL,
+	[MCRFAM_0] [nvarchar](2) NOT NULL,
+	[REFITMMAS_0] [nvarchar](20) NOT NULL,
+	[YSTULBEFMT_0] [nvarchar](15) NOT NULL,
+	[YPROVINT_0] [tinyint] NOT NULL,
+	[YGLAM_0] [tinyint] NOT NULL,
+	[OFSCYB_0] [smallint] NOT NULL,
+	[YTIPSPEC_0] [tinyint] NOT NULL,
+	[YTIPODIS_0] [tinyint] NOT NULL,
+	[YCODDIS_0] [nvarchar](10) NOT NULL,
+	[YSTRUTTURALE_0] [tinyint] NOT NULL,
+	[YIDENT_0] [nvarchar](250) NOT NULL,
+	[YMATCUM_0] [nvarchar](60) NOT NULL,
+	[YPORTATA_0] [int] NOT NULL,
+	[YSAMPLER_0] [tinyint] NOT NULL,
+	[YWEISAMPLE_0] [numeric](17, 6) NOT NULL,
+	[ROWID] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [ITMMASTER_ROWID] PRIMARY KEY NONCLUSTERED 
+(
+	[ROWID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:634" Name="SAGEServer" Type="string" Expanded="True">
+					<SET Id="RDK:639" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=x3v64;Data Source=SRV-DB02\AX3V6;User Id=sa;Password=FormulaDB;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:636" Name="SAGELocal" Type="string" Expanded="True">
+					<SET Id="RDK:640" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=x3v64;Data Source=LAPT-IT07\RULEDESIGNER;User Id=SA;Password=MBOffline$;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+			</GROUP>
+			<GROUP Id="RDK:16" Name="Fusion" SubType="VarSet" IncludeDate="0" Suppressed="True">
+				<VAR Id="RDK:22" Name="FusionServer" Type="string">
+					<SET Id="RDK:37" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=FUSIONTEST;Data Source=192.168.0.27;User Id=SA;Password=Ruled2014;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:24" Name="FusionLocal" Type="string">
+					<SET Id="RDK:38" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=FUSIONTEST;Data Source=LAPT-IT07\RULEDESIGNER;User Id=SA;Password=MBOffline$;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:359" Name="dateformat" Type="string">
+					<SET Id="RDK:361" VarRef="Me">
+						<EXP><![CDATA[$C$SET DATEFORMAT dmy;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:25" Name="FusionTables" Type="string[]">
+					<SET Id="RDK:40" VarRef="Me">
+						<EXP><![CDATA[$C$LIST { 
+"ba_activitytype",
+"ba_properties",
+"ba_prop_value",
+"ba_activity_category",
+"wo_state",
+"pr_item",
+"pr_type",
+"dm_class",
+"dm_folder_001",
+"ba_source",
+"LANGUAGE",
+"pr_project_001",
+"dm_folder_prop_001"
+}]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:95" Name="FusionCreateTables" Type="string[]" Expanded="True" />
+				<VAR Id="RDK:88" Name="F_table" Type="string" Expanded="True" />
+			</GROUP>
+			<GROUP Id="RDK:48" Name="Helper" SubType="VarSet" IncludeDate="0" Expanded="True">
+				<VAR Id="RDK:49" Name="table" Type="string[][]" Expanded="True" />
+				<VAR Id="RDK:54" Name="row" Type="string[]" Expanded="True" />
+				<VAR Id="RDK:60" Name="field" Type="string" Expanded="True" />
+				<VAR Id="RDK:56" Name="query_insert" Type="string" Expanded="True" />
+				<VAR Id="RDK:68" Name="i" Type="integer" Expanded="True" DesignTimeRemark="Generated by RD" />
+				<VAR Id="RDK:108" Name="j" Type="integer" Expanded="True" DesignTimeRemark="Generated by RD" />
+				<VAR Id="RDK:207" Name="MinCounter" Type="integer" Expanded="True" />
+				<VAR Id="RDK:209" Name="MaxCounter" Type="integer" Expanded="True" />
+				<VAR Id="RDK:218" Name="endwhile" Type="boolean" Expanded="True">
+					<SET Id="RDK:224" VarRef="Me">
+						<EXP><![CDATA[$C$False]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:278" Name="k" Type="integer" Expanded="True" />
+				<VAR Id="RDK:705" Name="headers" Type="string[]" Expanded="True" />
+			</GROUP>
+		</GROUP>
+		<GROUP Id="RDK:0006" Name="Profiles" SubType="ProfileSet" Expanded="True" />
+		<GROUP Id="RDK:0007" Name="Functions" SubType="FunctionSet" IncludeDate="0" Expanded="True" />
+	</GROUP>
+	<GROUP Id="RDK:0008" Name="Main Group" SubType="Generic" Expanded="True" LogDisable="$C$True">
+		<GROUP Id="RDK:27" Name="PDM" SubType="Generic" Expanded="True" LogDisable="$C$False">
+			<ACTION_CALL Id="RDK:45" Name="RDEngineering_DBOpen" DesignTimeRemark="PDM SERVER">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$PDMTest]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionString">
+					<EXP><![CDATA[$=$PDMServer]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$1]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+			<ACTION_CALL Id="RDK:46" Name="RDEngineering_DBOpen" DesignTimeRemark="PDM LOCAL">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$PDM_Local]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionString">
+					<EXP><![CDATA[$=$PDMLocal]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$-1]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+			<GROUP Id="RDK:366" Name="CODVAL" SubType="Generic">
+				<ACTION_CALL Id="RDK:51" Name="RDEngineering_DBSelect">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$PDMTest]]></EXP>
+					</PAR>
+					<PAR Name="SelectQuery">
+						<EXP><![CDATA[$C$SELECT * FROM CODVAL]]></EXP>
+					</PAR>
+					<PAR Name="SelectQueryType">
+						<EXP><![CDATA[$C$2]]></EXP>
+					</PAR>
+					<PAR Name="FirstValue">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="FirstRow">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="AllRows">
+						<EXP><![CDATA[$V$table]]></EXP>
+					</PAR>
+					<PAR Name="FirstColumn">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="NumRows">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="ColumnHeader">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="ColumnHeaders">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<ACTION_CALL Id="RDK:44" Name="RDEngineering_DBExecuteStatement">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$PDM_Local]]></EXP>
+					</PAR>
+					<PAR Name="SqlStatement">
+						<EXP><![CDATA[$=$"IF NOT EXISTS (SELECT * 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='CODVAL')"
++CreateCODVAL+"
+ELSE
+TRUNCATE TABLE CODVAL"]]></EXP>
+					</PAR>
+					<PAR Name="StatementResult">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<FOREACHLOOP Id="RDK:55" ItemVarRef="row" ByRefMode="True">
+					<PAR Name="ArrayValueExp">
+						<EXP><![CDATA[$V$table]]></EXP>
+					</PAR>
+					<PAR Name="ExitCondExp">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<SET Id="RDK:57" VarRef="query_insert">
+						<EXP><![CDATA[$C$INSERT INTO CODVAL VALUES(]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<FOREACHLOOP Id="RDK:66" ItemVarRef="field" CountVarRef="i" ByRefMode="True">
+						<PAR Name="ArrayValueExp">
+							<EXP><![CDATA[$V$row]]></EXP>
+						</PAR>
+						<PAR Name="ExitCondExp">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<SET Id="RDK:67" VarRef="query_insert" Suppressed="True">
+							<EXP><![CDATA[$=$query_insert+"'"+IIF(row[i-1]<>"",StrSql(row[i-1]), "")+"'"+IIF(i=Count(row), ")", ",")]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<IFTHENELSE Id="RDK:258">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$i>1]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:259" SubType="Then">
+								<SET Id="RDK:268" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+","]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+						</IFTHENELSE>
+						<IFTHENELSE Id="RDK:236">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$row[i-1]<>""]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:237" SubType="Then">
+								<SET Id="RDK:246" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+"'"+StrSql(row[i-1])+"'"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+							<GROUP Id="RDK:238" SubType="Else">
+								<SET Id="RDK:257" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+"''"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+						</IFTHENELSE>
+					</FOREACHLOOP>
+					<SET Id="RDK:288" VarRef="query_insert">
+						<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<ACTION_CALL Id="RDK:58" Name="RDEngineering_DBExecuteStatement">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$PDM_Local]]></EXP>
+						</PAR>
+						<PAR Name="SqlStatement">
+							<EXP><![CDATA[$=$query_insert]]></EXP>
+						</PAR>
+						<PAR Name="StatementResult">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+				</FOREACHLOOP>
+			</GROUP>
+			<GROUP Id="RDK:403" Name="CAMPI" SubType="Generic">
+				<ACTION_CALL Id="RDK:387" Name="RDEngineering_DBSelect">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$PDMTest]]></EXP>
+					</PAR>
+					<PAR Name="SelectQuery">
+						<EXP><![CDATA[$C$SELECT * FROM CAMPI]]></EXP>
+					</PAR>
+					<PAR Name="SelectQueryType">
+						<EXP><![CDATA[$C$2]]></EXP>
+					</PAR>
+					<PAR Name="FirstValue">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="FirstRow">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="AllRows">
+						<EXP><![CDATA[$V$table]]></EXP>
+					</PAR>
+					<PAR Name="FirstColumn">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="NumRows">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="ColumnHeader">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="ColumnHeaders">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<ACTION_CALL Id="RDK:388" Name="RDEngineering_DBExecuteStatement">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$PDM_Local]]></EXP>
+					</PAR>
+					<PAR Name="SqlStatement">
+						<EXP><![CDATA[$=$"IF NOT EXISTS (SELECT * 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='CAMPI')"
++CreateCAMPI+"
+ELSE
+TRUNCATE TABLE CAMPI"]]></EXP>
+					</PAR>
+					<PAR Name="StatementResult">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<FOREACHLOOP Id="RDK:402" ItemVarRef="row" ByRefMode="True">
+					<PAR Name="ArrayValueExp">
+						<EXP><![CDATA[$V$table]]></EXP>
+					</PAR>
+					<PAR Name="ExitCondExp">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<SET Id="RDK:389" VarRef="query_insert">
+						<EXP><![CDATA[$C$INSERT INTO CAMPI VALUES(]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<FOREACHLOOP Id="RDK:399" ItemVarRef="field" CountVarRef="i" ByRefMode="True">
+						<PAR Name="ArrayValueExp">
+							<EXP><![CDATA[$V$row]]></EXP>
+						</PAR>
+						<PAR Name="ExitCondExp">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<SET Id="RDK:390" VarRef="query_insert" Suppressed="True">
+							<EXP><![CDATA[$=$query_insert+"'"+IIF(row[i-1]<>"",StrSql(row[i-1]), "")+"'"+IIF(i=Count(row), ")", ",")]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<IFTHENELSE Id="RDK:393">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$i>1]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:392" SubType="Then">
+								<SET Id="RDK:391" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+","]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+						</IFTHENELSE>
+						<IFTHENELSE Id="RDK:398">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$row[i-1]<>""]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:395" SubType="Then">
+								<SET Id="RDK:394" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+"'"+StrSql(row[i-1])+"'"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+							<GROUP Id="RDK:397" SubType="Else">
+								<SET Id="RDK:396" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+"''"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+						</IFTHENELSE>
+					</FOREACHLOOP>
+					<SET Id="RDK:400" VarRef="query_insert">
+						<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<ACTION_CALL Id="RDK:401" Name="RDEngineering_DBExecuteStatement">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$PDM_Local]]></EXP>
+						</PAR>
+						<PAR Name="SqlStatement">
+							<EXP><![CDATA[$=$query_insert]]></EXP>
+						</PAR>
+						<PAR Name="StatementResult">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+				</FOREACHLOOP>
+			</GROUP>
+			<GROUP Id="RDK:464" Name="CODICI" SubType="Generic">
+				<ACTION_CALL Id="RDK:449" Name="RDEngineering_DBExecuteStatement">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$PDM_Local]]></EXP>
+					</PAR>
+					<PAR Name="SqlStatement">
+						<EXP><![CDATA[$=$"IF NOT EXISTS (SELECT * 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='CODICI')"
++CreateCODICI+"
+ELSE
+TRUNCATE TABLE CODICI"]]></EXP>
+					</PAR>
+					<PAR Name="StatementResult">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<SET Id="RDK:541" VarRef="MinCounter">
+					<EXP><![CDATA[$C$55000]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:543" VarRef="MaxCounter">
+					<EXP><![CDATA[$C$165000]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:545" VarRef="endwhile">
+					<EXP><![CDATA[$=$False]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<WHILELOOP Id="RDK:575">
+					<VALUECONDITION Value="false">
+						<EXP><![CDATA[$=$endwhile]]></EXP>
+					</VALUECONDITION>
+					<ACTION_CALL Id="RDK:562" Name="RDEngineering_DBSelect">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$PDMTest]]></EXP>
+						</PAR>
+						<PAR Name="SelectQuery">
+							<EXP><![CDATA[$=$"SELECT * FROM CODICI WHERE  codID>="+ToString(MinCounter)+" AND codID<"+ToString(MaxCounter)]]></EXP>
+						</PAR>
+						<PAR Name="SelectQueryType">
+							<EXP><![CDATA[$C$2]]></EXP>
+						</PAR>
+						<PAR Name="FirstValue">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FirstRow">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="AllRows">
+							<EXP><![CDATA[$V$table]]></EXP>
+						</PAR>
+						<PAR Name="FirstColumn">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="NumRows">
+							<EXP><![CDATA[$V$k]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeader">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeaders">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+					<SET Id="RDK:563" VarRef="endwhile">
+						<EXP><![CDATA[$=$IIF(k=0, True, False)]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<SET Id="RDK:564" VarRef="MinCounter">
+						<EXP><![CDATA[$=$MaxCounter]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<SET Id="RDK:565" VarRef="MaxCounter">
+						<EXP><![CDATA[$=$MaxCounter+100000]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<FOREACHLOOP Id="RDK:574" ItemVarRef="row" ByRefMode="True">
+						<PAR Name="ArrayValueExp">
+							<EXP><![CDATA[$V$table]]></EXP>
+						</PAR>
+						<PAR Name="ExitCondExp">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<SET Id="RDK:566" VarRef="query_insert">
+							<EXP><![CDATA[$=$"SET DATEFORMAT dmy;
+INSERT INTO CODICI VALUES("]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<FOREACHLOOP Id="RDK:571" ItemVarRef="field" CountVarRef="j" ByRefMode="True">
+							<PAR Name="ArrayValueExp">
+								<EXP><![CDATA[$V$row]]></EXP>
+							</PAR>
+							<PAR Name="ExitCondExp">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<IFTHENELSE Id="RDK:569">
+								<VALUECONDITION Value="true">
+									<EXP><![CDATA[$=$j>1]]></EXP>
+								</VALUECONDITION>
+								<GROUP Id="RDK:568" SubType="Then">
+									<SET Id="RDK:567" VarRef="query_insert">
+										<EXP><![CDATA[$=$query_insert+","]]></EXP>
+										<PAR Name="AdvancedOptions" />
+									</SET>
+								</GROUP>
+							</IFTHENELSE>
+							<SET Id="RDK:570" VarRef="query_insert">
+								<EXP><![CDATA[$=$query_insert+IIF(field<>"","'"+StrSql(field)+"'", "null")]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+						</FOREACHLOOP>
+						<SET Id="RDK:572" VarRef="query_insert">
+							<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<ACTION_CALL Id="RDK:573" Name="RDEngineering_DBExecuteStatement">
+							<PAR Name="RDLibraryName">
+								<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+							</PAR>
+							<PAR Name="ConnectionName">
+								<EXP><![CDATA[$C$PDM_Local]]></EXP>
+							</PAR>
+							<PAR Name="SqlStatement">
+								<EXP><![CDATA[$=$query_insert]]></EXP>
+							</PAR>
+							<PAR Name="StatementResult">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="Options" />
+						</ACTION_CALL>
+					</FOREACHLOOP>
+				</WHILELOOP>
+				<ACTION_CALL Id="RDK:448" Name="RDEngineering_DBSelect" Suppressed="True">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$PDMTest]]></EXP>
+					</PAR>
+					<PAR Name="SelectQuery">
+						<EXP><![CDATA[$C$SELECT * FROM CODICI]]></EXP>
+					</PAR>
+					<PAR Name="SelectQueryType">
+						<EXP><![CDATA[$C$2]]></EXP>
+					</PAR>
+					<PAR Name="FirstValue">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="FirstRow">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="AllRows">
+						<EXP><![CDATA[$V$table]]></EXP>
+					</PAR>
+					<PAR Name="FirstColumn">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="NumRows">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="ColumnHeader">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="ColumnHeaders">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<FOREACHLOOP Id="RDK:463" Suppressed="True" ItemVarRef="row" ByRefMode="True">
+					<PAR Name="ArrayValueExp">
+						<EXP><![CDATA[$V$table]]></EXP>
+					</PAR>
+					<PAR Name="ExitCondExp">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<SET Id="RDK:450" VarRef="query_insert">
+						<EXP><![CDATA[$C$INSERT INTO CODICI VALUES(]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<FOREACHLOOP Id="RDK:460" ItemVarRef="field" CountVarRef="i" ByRefMode="True">
+						<PAR Name="ArrayValueExp">
+							<EXP><![CDATA[$V$row]]></EXP>
+						</PAR>
+						<PAR Name="ExitCondExp">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<SET Id="RDK:451" VarRef="query_insert" Suppressed="True">
+							<EXP><![CDATA[$=$query_insert+"'"+IIF(row[i-1]<>"",StrSql(row[i-1]), "")+"'"+IIF(i=Count(row), ")", ",")]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<IFTHENELSE Id="RDK:454">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$i>1]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:453" SubType="Then">
+								<SET Id="RDK:452" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+","]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+						</IFTHENELSE>
+						<IFTHENELSE Id="RDK:459">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$row[i-1]<>""]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:456" SubType="Then">
+								<SET Id="RDK:455" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+"'"+StrSql(row[i-1])+"'"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+							<GROUP Id="RDK:458" SubType="Else">
+								<SET Id="RDK:457" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+"''"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+						</IFTHENELSE>
+					</FOREACHLOOP>
+					<SET Id="RDK:461" VarRef="query_insert">
+						<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<ACTION_CALL Id="RDK:462" Name="RDEngineering_DBExecuteStatement">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$PDM_Local]]></EXP>
+						</PAR>
+						<PAR Name="SqlStatement">
+							<EXP><![CDATA[$=$query_insert]]></EXP>
+						</PAR>
+						<PAR Name="StatementResult">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+				</FOREACHLOOP>
+			</GROUP>
+			<GROUP Id="RDK:500" Name="PROPCOD" SubType="Generic" Expanded="True" LogDisable="$C$True">
+				<ACTION_CALL Id="RDK:485" Name="RDEngineering_DBExecuteStatement" Suppressed="True">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$PDM_Local]]></EXP>
+					</PAR>
+					<PAR Name="SqlStatement">
+						<EXP><![CDATA[$=$"IF NOT EXISTS (SELECT * 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='PROPCOD')"
++CreatePROPCOD+"
+ELSE
+TRUNCATE TABLE PROPCOD"]]></EXP>
+					</PAR>
+					<PAR Name="StatementResult">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<SET Id="RDK:585" VarRef="MinCounter">
+					<EXP><![CDATA[$C$0]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:587" VarRef="MaxCounter">
+					<EXP><![CDATA[$C$20000]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:589" VarRef="endwhile">
+					<EXP><![CDATA[$=$False]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<WHILELOOP Id="RDK:627" Expanded="True">
+					<VALUECONDITION Value="false">
+						<EXP><![CDATA[$=$endwhile]]></EXP>
+					</VALUECONDITION>
+					<ACTION_CALL Id="RDK:614" Name="RDEngineering_DBSelect">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$PDMTest]]></EXP>
+						</PAR>
+						<PAR Name="SelectQuery">
+							<EXP><![CDATA[$=$"SELECT * FROM PROPCOD ORDER BY codID OFFSET "+ToString(MinCounter)+" ROWS FETCH FIRST 20000 ROWS ONLY"]]></EXP>
+						</PAR>
+						<PAR Name="SelectQueryType">
+							<EXP><![CDATA[$C$2]]></EXP>
+						</PAR>
+						<PAR Name="FirstValue">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FirstRow">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="AllRows">
+							<EXP><![CDATA[$V$table]]></EXP>
+						</PAR>
+						<PAR Name="FirstColumn">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="NumRows">
+							<EXP><![CDATA[$V$k]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeader">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeaders">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+					<SET Id="RDK:615" VarRef="endwhile">
+						<EXP><![CDATA[$=$IIF(k=0, True, False)]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<SET Id="RDK:616" VarRef="MinCounter">
+						<EXP><![CDATA[$=$MaxCounter]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<SET Id="RDK:617" VarRef="MaxCounter">
+						<EXP><![CDATA[$=$MaxCounter+20000]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<FOREACHLOOP Id="RDK:626" Expanded="True" ItemVarRef="row" ByRefMode="True">
+						<PAR Name="ArrayValueExp">
+							<EXP><![CDATA[$V$table]]></EXP>
+						</PAR>
+						<PAR Name="ExitCondExp">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<SET Id="RDK:618" VarRef="query_insert">
+							<EXP><![CDATA[$=$"SET DATEFORMAT dmy;
+INSERT INTO PROPCOD VALUES("]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<FOREACHLOOP Id="RDK:623" Expanded="True" ItemVarRef="field" CountVarRef="j" ByRefMode="True">
+							<PAR Name="ArrayValueExp">
+								<EXP><![CDATA[$V$row]]></EXP>
+							</PAR>
+							<PAR Name="ExitCondExp">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<IFTHENELSE Id="RDK:621" Expanded="True">
+								<VALUECONDITION Value="true">
+									<EXP><![CDATA[$=$j>1]]></EXP>
+								</VALUECONDITION>
+								<GROUP Id="RDK:620" SubType="Then" Expanded="True">
+									<SET Id="RDK:619" VarRef="query_insert">
+										<EXP><![CDATA[$=$query_insert+","]]></EXP>
+										<PAR Name="AdvancedOptions" />
+									</SET>
+								</GROUP>
+							</IFTHENELSE>
+							<SET Id="RDK:622" VarRef="query_insert">
+								<EXP><![CDATA[$=$query_insert+IIF(field<>"","'"+StrSql(StrReplace(field, ",", "."))+"'", "null")]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+						</FOREACHLOOP>
+						<SET Id="RDK:624" VarRef="query_insert">
+							<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<ACTION_CALL Id="RDK:625" Name="RDEngineering_DBExecuteStatement">
+							<PAR Name="RDLibraryName">
+								<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+							</PAR>
+							<PAR Name="ConnectionName">
+								<EXP><![CDATA[$C$PDM_Local]]></EXP>
+							</PAR>
+							<PAR Name="SqlStatement">
+								<EXP><![CDATA[$=$query_insert]]></EXP>
+							</PAR>
+							<PAR Name="StatementResult">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="Options" />
+						</ACTION_CALL>
+					</FOREACHLOOP>
+				</WHILELOOP>
+				<ACTION_CALL Id="RDK:484" Name="RDEngineering_DBSelect" Suppressed="True">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$PDMTest]]></EXP>
+					</PAR>
+					<PAR Name="SelectQuery">
+						<EXP><![CDATA[$C$SELECT * FROM PROPCOD]]></EXP>
+					</PAR>
+					<PAR Name="SelectQueryType">
+						<EXP><![CDATA[$C$2]]></EXP>
+					</PAR>
+					<PAR Name="FirstValue">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="FirstRow">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="AllRows">
+						<EXP><![CDATA[$V$table]]></EXP>
+					</PAR>
+					<PAR Name="FirstColumn">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="NumRows">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="ColumnHeader">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="ColumnHeaders">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<FOREACHLOOP Id="RDK:499" Expanded="True" Suppressed="True" ItemVarRef="row" ByRefMode="True">
+					<PAR Name="ArrayValueExp">
+						<EXP><![CDATA[$V$table]]></EXP>
+					</PAR>
+					<PAR Name="ExitCondExp">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<SET Id="RDK:486" VarRef="query_insert">
+						<EXP><![CDATA[$C$INSERT INTO PROPCOD VALUES(]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<FOREACHLOOP Id="RDK:496" ItemVarRef="field" CountVarRef="i" ByRefMode="True">
+						<PAR Name="ArrayValueExp">
+							<EXP><![CDATA[$V$row]]></EXP>
+						</PAR>
+						<PAR Name="ExitCondExp">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<SET Id="RDK:487" VarRef="query_insert" Suppressed="True">
+							<EXP><![CDATA[$=$query_insert+"'"+IIF(row[i-1]<>"",StrSql(row[i-1]), "")+"'"+IIF(i=Count(row), ")", ",")]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<IFTHENELSE Id="RDK:490">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$i>1]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:489" SubType="Then">
+								<SET Id="RDK:488" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+","]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+						</IFTHENELSE>
+						<IFTHENELSE Id="RDK:495">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$row[i-1]<>""]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:492" SubType="Then">
+								<SET Id="RDK:491" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+"'"+StrSql(row[i-1])+"'"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+							<GROUP Id="RDK:494" SubType="Else">
+								<SET Id="RDK:493" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+"''"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</GROUP>
+						</IFTHENELSE>
+					</FOREACHLOOP>
+					<SET Id="RDK:497" VarRef="query_insert">
+						<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<ACTION_CALL Id="RDK:498" Name="RDEngineering_DBExecuteStatement">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$PDM_Local]]></EXP>
+						</PAR>
+						<PAR Name="SqlStatement">
+							<EXP><![CDATA[$=$query_insert]]></EXP>
+						</PAR>
+						<PAR Name="StatementResult">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+				</FOREACHLOOP>
+			</GROUP>
+			<ACTION_CALL Id="RDK:52" Name="RDEngineering_DBClose" DesignTimeRemark="PDM SERVER">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$PDMTest]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$2]]></EXP>
+				</PAR>
+			</ACTION_CALL>
+			<ACTION_CALL Id="RDK:65" Name="RDEngineering_DBClose" DesignTimeRemark="PDM LOCAL">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$PDM_Local]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$-1]]></EXP>
+				</PAR>
+			</ACTION_CALL>
+		</GROUP>
+		<GROUP Id="RDK:75" Name="FUSION" SubType="Generic" Suppressed="True" LogDisable="$C$True">
+			<ACTION_CALL Id="RDK:79" Name="RDEngineering_DBOpen" DesignTimeRemark="FUSION SERVER">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$FusionTest]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionString">
+					<EXP><![CDATA[$=$FusionServer]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$1]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+			<ACTION_CALL Id="RDK:81" Name="RDEngineering_DBOpen" DesignTimeRemark="FUSION LOCAL">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$Fusion_Local]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionString">
+					<EXP><![CDATA[$=$FusionLocal]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$-1]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+			<LIST_ADD Id="RDK:137" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[ba_activitytype](
+	[ATTYPEID] [char](5) NOT NULL,
+	[ATDESCRI] [varchar](50) NULL,
+	[ATINITIAL] [char](5) NULL,
+	[ATIMAGE] [varchar](50) NULL,
+	[ATCOLOR] [char](10) NULL,
+	[ATSHOWTYPE] [char](1) NULL,
+	[ATFLAGRES] [char](1) NULL,
+	[ATFLAGPART] [char](1) NULL,
+	[ATFLAGCOMPANY] [char](1) NULL,
+	[ATFLAGOPPO] [char](1) NULL,
+	[ATFLAGPERSON] [char](1) NULL,
+	[ATFLAGPRJ] [char](1) NULL,
+	[ATFLAGITEM] [char](1) NULL,
+	[ATFLAGLOCATION] [char](1) NULL,
+	[ATFLAGLOCK] [char](1) NULL,
+	[ATFLAGTRAN] [char](1) NULL,
+	[ATFLAGSTAT] [char](1) NULL,
+	[ATSYSTEM] [char](1) NULL,
+	[ATPRJTIME] [int] NULL,
+	[ATPRJCOST] [int] NULL,
+	[ATFLAGPRJTIME] [char](1) NULL,
+	[ATNOCHECK] [char](1) NULL,
+	[ATTASKOBJ] [varchar](50) NULL,
+	[ATCATID] [char](3) NULL,
+	[ATOBS] [char](1) NULL,
+	[ATICAL] [char](1) NULL,
+	[ATFLAGPROD] [char](1) NULL,
+	[ATFLAGINCIDENT] [char](1) NULL,
+	[cpccchk] [char](10) NULL,
+	[ATDEFATTSEC] [char](1) NULL,
+	[ATFLAGDEFNOTIFY] [char](1) NULL,
+	[cpupdtms] [datetime] NULL,
+	[ATDESCRI_ITA] [varchar](50) NULL,
+	[ATDESCRI_ENG] [varchar](50) NULL,
+	[ATDESCRI_FRA] [varchar](50) NULL,
+	[ATDESCRI_DEU] [varchar](50) NULL,
+	[ATDESCRI_ESP] [varchar](50) NULL,
+	[ATFLAGMODIFY] [char](1) NULL,
+	[ATFLAGLOCKRES] [char](1) NULL,
+	[ATTASKNOTE] [text] NULL,
+	[ATFLAGINITGROUP] [char](1) NULL,
+ CONSTRAINT [pk_ba_activitytype] PRIMARY KEY CLUSTERED 
+(
+	[ATTYPEID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:139" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[ba_properties](
+	[PRCODEID] [char](10) NOT NULL,
+	[PRDESCRI] [varchar](200) NULL,
+	[PRTAG] [char](20) NULL,
+	[PRSYSTEM] [char](1) NULL,
+	[PRFORMAT] [char](1) NULL,
+	[PRMODULE] [char](6) NULL,
+	[PRFORM] [int] NULL,
+	[PRLINKTO] [varchar](255) NULL,
+	[PREDIT] [char](1) NULL,
+	[PRTARGET] [char](20) NULL,
+	[PRDECODED] [char](1) NULL,
+	[PRDESEXT] [varchar](200) NULL,
+	[cpccchk] [char](10) NULL,
+	[cpupdtms] [datetime] NULL,
+	[PRDESCRI_ITA] [varchar](200) NULL,
+	[PRDESCRI_ENG] [varchar](200) NULL,
+	[PRDESCRI_FRA] [varchar](200) NULL,
+	[PRDESCRI_DEU] [varchar](200) NULL,
+	[PRDESCRI_ESP] [varchar](200) NULL,
+ CONSTRAINT [pk_ba_properties] PRIMARY KEY CLUSTERED 
+(
+	[PRCODEID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:141" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[ba_prop_value](
+	[PVPROPID] [char](10) NOT NULL,
+	[CPROWNUM] [int] NOT NULL,
+	[PVDEFAULT] [char](1) NULL,
+	[PVVALUE] [varchar](50) NULL,
+	[PVDESCRI] [varchar](200) NULL,
+	[cpccchk] [char](10) NULL,
+	[cpupdtms] [datetime] NULL,
+	[PVDESCRI_ITA] [varchar](200) NULL,
+	[PVDESCRI_ENG] [varchar](200) NULL,
+	[PVDESCRI_FRA] [varchar](200) NULL,
+	[PVDESCRI_DEU] [varchar](200) NULL,
+	[PVDESCRI_ESP] [varchar](200) NULL,
+ CONSTRAINT [pk_ba_prop_value] PRIMARY KEY CLUSTERED 
+(
+	[PVPROPID] ASC,
+	[CPROWNUM] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:143" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[ba_activity_category](
+	[ACCATID] [char](3) NOT NULL,
+	[ACDESCRI] [varchar](50) NULL,
+	[ACSEQUENCE] [int] NULL,
+	[cpccchk] [char](10) NULL,
+	[cpupdtms] [datetime] NULL,
+	[ACDESCRI_ENG] [varchar](50) NULL,
+	[ACDESCRI_FRA] [varchar](50) NULL,
+	[ACDESCRI_ITA] [varchar](50) NULL,
+	[ACDESCRI_DEU] [varchar](50) NULL,
+	[ACDESCRI_ESP] [varchar](50) NULL,
+	[ACPARENTCAT] [char](3) NULL,
+ CONSTRAINT [pk_ba_activity_category] PRIMARY KEY CLUSTERED 
+(
+	[ACCATID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:145" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[wo_state](
+	[STCODEID] [char](5) NOT NULL,
+	[STNAME] [char](20) NULL,
+	[STDESCRI] [varchar](200) NULL,
+	[STTYPE] [char](2) NULL,
+	[STIMAGE] [varchar](100) NULL,
+	[STDEFAULT] [char](1) NULL,
+	[STCANCLOSE] [char](1) NULL,
+	[STREFID] [decimal](10, 0) NULL,
+	[STOBS] [char](1) NULL,
+	[STPROCESS] [varchar](100) NULL,
+	[STSYSTEM] [char](1) NULL,
+	[STWARNING] [char](1) NULL,
+	[STNOTIFY] [char](1) NULL,
+	[cpccchk] [char](10) NULL,
+	[STSEQUENCE] [int] NULL,
+	[cpupdtms] [datetime] NULL,
+	[STNAME_ITA] [char](20) NULL,
+	[STDESCRI_ITA] [varchar](200) NULL,
+	[STNAME_ENG] [char](20) NULL,
+	[STDESCRI_ENG] [varchar](200) NULL,
+	[STNAME_FRA] [char](20) NULL,
+	[STDESCRI_FRA] [varchar](200) NULL,
+	[STNAME_DEU] [char](20) NULL,
+	[STNAME_ESP] [char](20) NULL,
+	[STDESCRI_DEU] [varchar](200) NULL,
+	[STDESCRI_ESP] [varchar](200) NULL,
+ CONSTRAINT [pk_wo_state] PRIMARY KEY CLUSTERED 
+(
+	[STCODEID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:147" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[pr_item](
+	[ITITEMID] [char](10) NOT NULL,
+	[ITDESCRI] [varchar](255) NULL,
+	[ITNOTE] [text] NULL,
+	[ITCAT] [char](3) NULL,
+	[ITPRJTYPE] [char](5) NULL,
+	[ITPLANNER] [char](1) NULL,
+	[ITESTPLANNER] [char](1) NULL,
+	[cpccchk] [char](10) NULL,
+	[cpupdtms] [datetime] NULL,
+	[ITDESCRI_ITA] [varchar](255) NULL,
+	[ITDESCRI_ENG] [varchar](255) NULL,
+	[ITDESCRI_FRA] [varchar](255) NULL,
+	[ITDESCRI_DEU] [varchar](255) NULL,
+	[ITDESCRI_ESP] [varchar](255) NULL,
+	[ITNOTIFYGROUP] [char](1) NULL,
+ CONSTRAINT [pk_pr_item] PRIMARY KEY CLUSTERED 
+(
+	[ITITEMID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:149" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[pr_type](
+	[PTTYPEID] [char](5) NOT NULL,
+	[PTDESCRI] [varchar](50) NULL,
+	[PTWORKFLOW] [char](2) NULL,
+	[PTCODEGEN] [varchar](50) NULL,
+	[PTFLAGGROUP] [char](1) NULL,
+	[cpccchk] [char](10) NULL,
+	[PTCOLOR] [char](10) NULL,
+	[cpupdtms] [datetime] NULL,
+	[PTDESCRI_ITA] [varchar](50) NULL,
+	[PTDESCRI_ENG] [varchar](50) NULL,
+	[PTDESCRI_FRA] [varchar](50) NULL,
+	[PTDESCRI_DEU] [varchar](50) NULL,
+	[PTDESCRI_ESP] [varchar](50) NULL,
+	[PTRUNTYPE] [char](1) NOT NULL,
+	[PTCODEGENJSP] [varchar](100) NULL,
+	[PTBLOCKREAL] [char](1) NOT NULL,
+	[PTBLOCKEST] [char](1) NULL,
+	[PTEDITGROUP] [int] NULL,
+	[PTEDITCODE] [char](1) NULL,
+	[PTBLOCKDATEPH] [char](1) NULL,
+	[PTNOTOPENPH] [char](1) NULL,
+	[PTREPLAN] [char](1) NULL,
+	[PTREPLANIF] [char](1) NULL,
+ CONSTRAINT [pk_pr_type] PRIMARY KEY CLUSTERED 
+(
+	[PTTYPEID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:151" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[dm_class](
+	[CDCLASSID] [char](10) NOT NULL,
+	[CDDESCRI] [varchar](50) NULL,
+	[CDTYPE] [char](1) NULL,
+	[CDFLGPATH] [char](1) NULL,
+	[CDPATH] [decimal](10, 0) NULL,
+	[CDTEMPLATE] [varchar](50) NULL,
+	[CDVERSIONABLE] [char](1) NULL,
+	[CDEDITPROP] [char](1) NULL,
+	[CDIMAGE] [varchar](100) NULL,
+	[CDPROTOCOL] [varchar](50) NULL,
+	[CDDEFAULT] [char](1) NULL,
+	[CDPDF] [char](1) NULL,
+	[CDMERGE] [char](1) NULL,
+	[CDSCRIPT] [varchar](50) NULL,
+	[CDIMAGELINK] [varchar](100) NULL,
+	[CDWORKFLOW] [char](2) NULL,
+	[CDTAG] [text] NULL,
+	[CDRESERVED] [int] NULL,
+	[CDOBSOLETE] [char](1) NULL,
+	[CDENTITYLINK] [char](1) NULL,
+	[CDATTACH] [char](1) NULL,
+	[CDMAILBCC] [char](1) NULL,
+	[CDCANMODIFY] [char](1) NULL,
+	[CDDOCTITLE] [varchar](50) NULL,
+	[cpccchk] [char](10) NULL,
+	[CDINHERITSEC] [char](1) NULL,
+	[cpupdtms] [datetime] NULL,
+	[CDDESCRI_ITA] [varchar](50) NULL,
+	[CDDESCRI_ENG] [varchar](50) NULL,
+	[CDDESCRI_FRA] [varchar](50) NULL,
+	[CDDESCRI_GER] [varchar](50) NULL,
+	[CDDESCRI_SPA] [varchar](50) NULL,
+	[CDDESCRI_DEU] [varchar](50) NULL,
+	[CDDESCRI_ESP] [varchar](50) NULL,
+	[CDCAT] [char](5) NULL,
+ CONSTRAINT [pk_dm_class] PRIMARY KEY CLUSTERED 
+(
+	[CDCLASSID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:153" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[dm_folder_001](
+	[DMCODEID] [decimal](10, 0) NOT NULL,
+	[DMVERID] [int] NOT NULL,
+	[DMDESCRI] [varchar](100) NULL,
+	[DMTYPE] [char](1) NULL,
+	[DMPROTOCOL] [char](20) NULL,
+	[DMPARENT] [decimal](10, 0) NULL,
+	[DMNUMELEMENT] [int] NULL,
+	[DMKEYWORD] [varchar](100) NULL,
+	[DMLINKTO] [decimal](10, 0) NULL,
+	[DMCLASS] [char](10) NULL,
+	[DMRESERVED] [int] NULL,
+	[DMCREATE] [int] NULL,
+	[DMCREATEAT] [datetime] NULL,
+	[DMMODIFY] [int] NULL,
+	[DMMODIFYAT] [datetime] NULL,
+	[DMNOTE] [text] NULL,
+	[DMSIZE] [decimal](12, 0) NULL,
+	[DMSPECIAL] [char](1) NULL,
+	[DMSTATEBY] [int] NULL,
+	[DMSTATE] [char](5) NULL,
+	[DMLASTVER] [char](1) NULL,
+	[DMWORKFLOW] [char](2) NULL,
+	[DMSECURITY] [char](1) NULL,
+	[DMLANGUAGE] [char](3) NULL,
+	[DMSTARTVALDT] [datetime] NULL,
+	[DMENDVALDT] [datetime] NULL,
+	[DMSOCKET] [char](1) NULL,
+	[cpccchk] [char](10) NULL,
+	[cpupdtms] [datetime] NULL,
+	[offlineupd] [char](1) NULL,
+	[DMDESCRI_DEU] [varchar](100) NULL,
+	[DMDESCRI_ENG] [varchar](100) NULL,
+	[DMDESCRI_ESP] [varchar](100) NULL,
+	[DMDESCRI_FRA] [varchar](100) NULL,
+	[DMDESCRI_ITA] [varchar](100) NULL,
+ CONSTRAINT [pk_dm_folder_001] PRIMARY KEY CLUSTERED 
+(
+	[DMCODEID] ASC,
+	[DMVERID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:155" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[ba_source](
+	[SOID] [int] NOT NULL,
+	[SODESCRI] [varchar](50) NULL,
+	[cpccchk] [char](10) NULL,
+	[cpupdtms] [datetime] NULL,
+	[SODESCRI_ITA] [varchar](50) NULL,
+	[SODESCRI_ENG] [varchar](50) NULL,
+	[SODESCRI_FRA] [varchar](50) NULL,
+	[SODESCRI_ESP] [varchar](50) NULL,
+	[SODESCRI_DEU] [varchar](50) NULL,
+ CONSTRAINT [pk_ba_source] PRIMARY KEY CLUSTERED 
+(
+	[SOID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:157" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[LANGUAGE](
+	[TAG] [varchar](255) NOT NULL,
+	[ENG] [varchar](255) NULL,
+	[ITA] [varchar](255) NULL,
+	[ESP] [varchar](255) NULL,
+	[FRA] [varchar](255) NULL,
+	[DEU] [varchar](255) NULL,
+	[cpupdtms] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[TAG] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:159" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[pr_project_001](
+	[PJPRJID] [char](10) NOT NULL,
+	[PJDESCRI] [varchar](80) NULL,
+	[PJCREATE] [int] NULL,
+	[PJCREATEAT] [datetime] NULL,
+	[PJOBSOLETE] [char](1) NULL,
+	[PJMANAGER] [int] NULL,
+	[PJSTATE] [char](5) NULL,
+	[PJPERCCOM] [int] NULL,
+	[PJTYPE] [char](5) NULL,
+	[PJTEXT] [text] NULL,
+	[PJPRIORITY] [int] NULL,
+	[PJBEGIN] [datetime] NULL,
+	[PJEND] [datetime] NULL,
+	[PJCOMPANY] [char](15) NULL,
+	[PJOPPID] [char](10) NULL,
+	[PJHOUR] [decimal](10, 0) NULL,
+	[PJESTHOUR] [decimal](10, 0) NULL,
+	[PJNOTE] [text] NULL,
+	[PJTEMPLATE] [char](1) NULL,
+	[PJTEMPID] [char](10) NULL,
+	[PJOFFERHOUR] [decimal](10, 0) NULL,
+	[PJMODIFY] [int] NULL,
+	[PJMODIFYAT] [datetime] NULL,
+	[PJESTBEGIN] [datetime] NULL,
+	[PJESTEND] [datetime] NULL,
+	[PJAMOUNT] [decimal](20, 4) NULL,
+	[PJPREVPRJ] [char](10) NULL,
+	[PJPREVITEM] [char](10) NULL,
+	[PJPDMWORKFLOW] [char](2) NULL,
+	[PJPDMECO] [char](1) NULL,
+	[PJSECURITY] [char](1) NULL,
+	[cpccchk] [char](10) NULL,
+	[MBK_CODOFFER] [char](20) NULL,
+	[pjdescr_good] [char](80) NULL,
+	[PJCODE] [varchar](30) NOT NULL,
+	[cpupdtms] [datetime] NULL,
+	[offlineupd] [char](1) NULL,
+	[MBLASTVER] [char](1) NULL,
+	[PJICON] [varchar](100) NULL,
+	[PJORIGID] [char](10) NULL,
+	[PJSIMORIGID] [char](10) NULL,
+	[PJBU] [int] NULL,
+	[MB_STARTREPLAN] [char](1) NULL,
+ CONSTRAINT [pk_pr_project_001] PRIMARY KEY CLUSTERED 
+(
+	[PJPRJID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<LIST_ADD Id="RDK:168" ListRef="FusionCreateTables">
+				<PAR Name="VALUE_TO_ADD">
+					<EXP><![CDATA[$C$CREATE TABLE [dbo].[dm_folder_prop_001](
+	[PPNODEID] [decimal](10, 0) NOT NULL,
+	[PPVERID] [int] NOT NULL,
+	[CPROWNUM] [int] NOT NULL,
+	[PPNAMEID] [char](10) NULL,
+	[PPVALUE] [varchar](200) NULL,
+	[PPVALUEHTML] [text] NULL,
+	[cpccchk] [char](10) NULL,
+	[cpupdtms] [datetime] NULL,
+ CONSTRAINT [pk_dm_folder_prop_001] PRIMARY KEY CLUSTERED 
+(
+	[PPNODEID] ASC,
+	[PPVERID] ASC,
+	[CPROWNUM] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]]]></EXP>
+				</PAR>
+				<PAR Name="POS_TO_ADD" />
+			</LIST_ADD>
+			<FOREACHLOOP Id="RDK:89" ItemVarRef="F_table" CountVarRef="i" ByRefMode="True">
+				<PAR Name="ArrayValueExp">
+					<EXP><![CDATA[$V$FusionTables]]></EXP>
+				</PAR>
+				<PAR Name="ExitCondExp">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<ACTION_CALL Id="RDK:97" Name="RDEngineering_DBExecuteStatement">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$Fusion_Local]]></EXP>
+					</PAR>
+					<PAR Name="SqlStatement">
+						<EXP><![CDATA[$=$"IF NOT EXISTS (SELECT * 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='"+F_table+"') "
++FusionCreateTables[i-1]+" 
+ELSE
+TRUNCATE TABLE "+F_table]]></EXP>
+					</PAR>
+					<PAR Name="StatementResult">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<IFTHENELSE Id="RDK:178">
+					<VALUECONDITION Value="true" Oper="OR">
+						<EXP><![CDATA[$=$F_table="dm_folder_001"]]></EXP>
+					</VALUECONDITION>
+					<VALUECONDITION Value="true">
+						<EXP><![CDATA[$=$F_table="dm_folder_prop_001"]]></EXP>
+					</VALUECONDITION>
+					<GROUP Id="RDK:179" SubType="Then">
+						<SET Id="RDK:346" VarRef="MinCounter">
+							<EXP><![CDATA[$C$0]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<SET Id="RDK:348" VarRef="MaxCounter">
+							<EXP><![CDATA[$C$10000]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<SET Id="RDK:356" VarRef="endwhile">
+							<EXP><![CDATA[$=$False]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<WHILELOOP Id="RDK:219">
+							<VALUECONDITION Value="false">
+								<EXP><![CDATA[$=$endwhile]]></EXP>
+							</VALUECONDITION>
+							<ACTION_CALL Id="RDK:91" Name="RDEngineering_DBSelect">
+								<PAR Name="RDLibraryName">
+									<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+								</PAR>
+								<PAR Name="ConnectionName">
+									<EXP><![CDATA[$C$FusionTest]]></EXP>
+								</PAR>
+								<PAR Name="SelectQuery">
+									<EXP><![CDATA[$=$"SELECT * FROM "+F_table+" WHERE "+
+IIF(F_table="dm_folder_001", 
+    "DMCODEID>"+ToString(MinCounter)+" AND DMCODEID<"+ToString(MaxCounter),
+    "PPNODEID>"+ToString(MinCounter)+" AND PPNODEID<"+ToString(MaxCounter)
+)]]></EXP>
+								</PAR>
+								<PAR Name="SelectQueryType">
+									<EXP><![CDATA[$C$2]]></EXP>
+								</PAR>
+								<PAR Name="FirstValue">
+									<EXP><![CDATA[$V$]]></EXP>
+								</PAR>
+								<PAR Name="FirstRow">
+									<EXP><![CDATA[$V$]]></EXP>
+								</PAR>
+								<PAR Name="AllRows">
+									<EXP><![CDATA[$V$table]]></EXP>
+								</PAR>
+								<PAR Name="FirstColumn">
+									<EXP><![CDATA[$V$]]></EXP>
+								</PAR>
+								<PAR Name="NumRows">
+									<EXP><![CDATA[$V$k]]></EXP>
+								</PAR>
+								<PAR Name="ColumnHeader">
+									<EXP><![CDATA[$V$]]></EXP>
+								</PAR>
+								<PAR Name="ColumnHeaders">
+									<EXP><![CDATA[$V$]]></EXP>
+								</PAR>
+								<PAR Name="Options" />
+							</ACTION_CALL>
+							<SET Id="RDK:225" VarRef="endwhile">
+								<EXP><![CDATA[$=$IIF(k=0, True, False)]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+							<SET Id="RDK:226" VarRef="MinCounter">
+								<EXP><![CDATA[$=$MaxCounter]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+							<SET Id="RDK:228" VarRef="MaxCounter">
+								<EXP><![CDATA[$=$MaxCounter+10000]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+							<FOREACHLOOP Id="RDK:203" ItemVarRef="row" ByRefMode="True">
+								<PAR Name="ArrayValueExp">
+									<EXP><![CDATA[$V$table]]></EXP>
+								</PAR>
+								<PAR Name="ExitCondExp">
+									<EXP><![CDATA[$V$]]></EXP>
+								</PAR>
+								<SET Id="RDK:199" VarRef="query_insert">
+									<EXP><![CDATA[$=$dateformat+"
+
+INSERT INTO "+F_table+" VALUES("]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+								<FOREACHLOOP Id="RDK:201" ItemVarRef="field" CountVarRef="j" ByRefMode="True">
+									<PAR Name="ArrayValueExp">
+										<EXP><![CDATA[$V$row]]></EXP>
+									</PAR>
+									<PAR Name="ExitCondExp">
+										<EXP><![CDATA[$V$]]></EXP>
+									</PAR>
+									<IFTHENELSE Id="RDK:303">
+										<VALUECONDITION Value="true">
+											<EXP><![CDATA[$=$j>1]]></EXP>
+										</VALUECONDITION>
+										<GROUP Id="RDK:302" SubType="Then">
+											<SET Id="RDK:301" VarRef="query_insert">
+												<EXP><![CDATA[$=$query_insert+","]]></EXP>
+												<PAR Name="AdvancedOptions" />
+											</SET>
+										</GROUP>
+									</IFTHENELSE>
+									<SET Id="RDK:200" VarRef="query_insert">
+										<EXP><![CDATA[$=$query_insert+IIF(field<>"","'"+StrSql(field)+"'", "null")]]></EXP>
+										<PAR Name="AdvancedOptions" />
+									</SET>
+								</FOREACHLOOP>
+								<SET Id="RDK:309" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+								<ACTION_CALL Id="RDK:202" Name="RDEngineering_DBExecuteStatement">
+									<PAR Name="RDLibraryName">
+										<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+									</PAR>
+									<PAR Name="ConnectionName">
+										<EXP><![CDATA[$C$Fusion_Local]]></EXP>
+									</PAR>
+									<PAR Name="SqlStatement">
+										<EXP><![CDATA[$=$query_insert]]></EXP>
+									</PAR>
+									<PAR Name="StatementResult">
+										<EXP><![CDATA[$V$]]></EXP>
+									</PAR>
+									<PAR Name="Options" />
+								</ACTION_CALL>
+							</FOREACHLOOP>
+						</WHILELOOP>
+					</GROUP>
+					<GROUP Id="RDK:180" SubType="Else">
+						<ACTION_CALL Id="RDK:188" Name="RDEngineering_DBSelect">
+							<PAR Name="RDLibraryName">
+								<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+							</PAR>
+							<PAR Name="ConnectionName">
+								<EXP><![CDATA[$C$FusionTest]]></EXP>
+							</PAR>
+							<PAR Name="SelectQuery">
+								<EXP><![CDATA[$=$"SELECT * FROM "+F_table]]></EXP>
+							</PAR>
+							<PAR Name="SelectQueryType">
+								<EXP><![CDATA[$C$2]]></EXP>
+							</PAR>
+							<PAR Name="FirstValue">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="FirstRow">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="AllRows">
+								<EXP><![CDATA[$V$table]]></EXP>
+							</PAR>
+							<PAR Name="FirstColumn">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="NumRows">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="ColumnHeader">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="ColumnHeaders">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="Options" />
+						</ACTION_CALL>
+						<FOREACHLOOP Id="RDK:107" ItemVarRef="row" ByRefMode="True">
+							<PAR Name="ArrayValueExp">
+								<EXP><![CDATA[$V$table]]></EXP>
+							</PAR>
+							<PAR Name="ExitCondExp">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<SET Id="RDK:103" VarRef="query_insert">
+								<EXP><![CDATA[$=$"SET DATEFORMAT dmy;
+
+INSERT INTO "+F_table+" VALUES("]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+							<FOREACHLOOP Id="RDK:105" ItemVarRef="field" CountVarRef="j" ByRefMode="True">
+								<PAR Name="ArrayValueExp">
+									<EXP><![CDATA[$V$row]]></EXP>
+								</PAR>
+								<PAR Name="ExitCondExp">
+									<EXP><![CDATA[$V$]]></EXP>
+								</PAR>
+								<IFTHENELSE Id="RDK:319">
+									<VALUECONDITION Value="true">
+										<EXP><![CDATA[$=$j>1]]></EXP>
+									</VALUECONDITION>
+									<GROUP Id="RDK:318" SubType="Then">
+										<SET Id="RDK:317" VarRef="query_insert">
+											<EXP><![CDATA[$=$query_insert+","]]></EXP>
+											<PAR Name="AdvancedOptions" />
+										</SET>
+									</GROUP>
+								</IFTHENELSE>
+								<IFTHENELSE Id="RDK:328">
+									<VALUECONDITION Value="true">
+										<EXP><![CDATA[$=$F_table="pr_project_001"]]></EXP>
+									</VALUECONDITION>
+									<VALUECONDITION Value="true">
+										<EXP><![CDATA[$=$j=26]]></EXP>
+									</VALUECONDITION>
+									<GROUP Id="RDK:329" SubType="Then">
+										<SET Id="RDK:338" VarRef="field">
+											<EXP><![CDATA[$=$StrReplace(field, ",", ".")]]></EXP>
+											<PAR Name="AdvancedOptions" />
+										</SET>
+									</GROUP>
+								</IFTHENELSE>
+								<SET Id="RDK:104" VarRef="query_insert">
+									<EXP><![CDATA[$=$query_insert+IIF(field<>"","'"+StrSql(field)+"'", IIF(j=35, "''", "null"))]]></EXP>
+									<PAR Name="AdvancedOptions" />
+								</SET>
+							</FOREACHLOOP>
+							<SET Id="RDK:311" VarRef="query_insert">
+								<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+							<ACTION_CALL Id="RDK:106" Name="RDEngineering_DBExecuteStatement">
+								<PAR Name="RDLibraryName">
+									<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+								</PAR>
+								<PAR Name="ConnectionName">
+									<EXP><![CDATA[$C$Fusion_Local]]></EXP>
+								</PAR>
+								<PAR Name="SqlStatement">
+									<EXP><![CDATA[$=$query_insert]]></EXP>
+								</PAR>
+								<PAR Name="StatementResult">
+									<EXP><![CDATA[$V$]]></EXP>
+								</PAR>
+								<PAR Name="Options" />
+							</ACTION_CALL>
+						</FOREACHLOOP>
+					</GROUP>
+				</IFTHENELSE>
+			</FOREACHLOOP>
+			<ACTION_CALL Id="RDK:85" Name="RDEngineering_DBClose" DesignTimeRemark="FUSION SERVER">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$FusionTest]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$2]]></EXP>
+				</PAR>
+			</ACTION_CALL>
+			<ACTION_CALL Id="RDK:87" Name="RDEngineering_DBClose" DesignTimeRemark="FUSION LOCAL">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$Fusion_Local]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$-1]]></EXP>
+				</PAR>
+			</ACTION_CALL>
+		</GROUP>
+		<GROUP Id="RDK:629" Name="SAGE" SubType="Generic" Expanded="True">
+			<ACTION_CALL Id="RDK:644" Name="RDEngineering_DBOpen" DesignTimeRemark="SAGE SERVER">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$SAGETest]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionString">
+					<EXP><![CDATA[$=$SAGEServer]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$1]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+			<ACTION_CALL Id="RDK:648" Name="RDEngineering_DBOpen" DesignTimeRemark="SAGE LOCAL">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$SAGE_Local]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionString">
+					<EXP><![CDATA[$=$SAGELocal]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$-1]]></EXP>
+				</PAR>
+				<PAR Name="Options" />
+			</ACTION_CALL>
+			<GROUP Id="RDK:653" Name="ITMMASTER" SubType="Generic" Expanded="True">
+				<ACTION_CALL Id="RDK:658" Name="RDEngineering_DBExecuteStatement">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+					</PAR>
+					<PAR Name="ConnectionName">
+						<EXP><![CDATA[$C$SAGE_Local]]></EXP>
+					</PAR>
+					<PAR Name="SqlStatement">
+						<EXP><![CDATA[$=$"IF NOT EXISTS (SELECT * 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='ITMMASTER')"
++CreateITMMASTERT+"
+ELSE
+TRUNCATE TABLE ITMMASTER"]]></EXP>
+					</PAR>
+					<PAR Name="StatementResult">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<SET Id="RDK:660" VarRef="MinCounter">
+					<EXP><![CDATA[$C$0]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:662" VarRef="MaxCounter">
+					<EXP><![CDATA[$C$100000]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:664" VarRef="endwhile">
+					<EXP><![CDATA[$=$False]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<WHILELOOP Id="RDK:694" Expanded="True">
+					<VALUECONDITION Value="false">
+						<EXP><![CDATA[$=$endwhile]]></EXP>
+					</VALUECONDITION>
+					<ACTION_CALL Id="RDK:681" Name="RDEngineering_DBSelect">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$SAGETest]]></EXP>
+						</PAR>
+						<PAR Name="SelectQuery">
+							<EXP><![CDATA[$=$"SELECT * FROM [MBKPROD].[ITMMASTER] WHERE ROWID>="+ToString(MinCounter)+" AND ROWID<"+ToString(MaxCounter)]]></EXP>
+						</PAR>
+						<PAR Name="SelectQueryType">
+							<EXP><![CDATA[$C$2]]></EXP>
+						</PAR>
+						<PAR Name="FirstValue">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FirstRow">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="AllRows">
+							<EXP><![CDATA[$V$table]]></EXP>
+						</PAR>
+						<PAR Name="FirstColumn">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="NumRows">
+							<EXP><![CDATA[$V$k]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeader">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeaders">
+							<EXP><![CDATA[$V$headers]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+					<SET Id="RDK:682" VarRef="endwhile">
+						<EXP><![CDATA[$=$IIF(k=0, True, False)]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<SET Id="RDK:683" VarRef="MinCounter">
+						<EXP><![CDATA[$=$MaxCounter]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<SET Id="RDK:684" VarRef="MaxCounter">
+						<EXP><![CDATA[$=$MaxCounter+20000]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+					<FOREACHLOOP Id="RDK:693" Expanded="True" ItemVarRef="row" ByRefMode="True">
+						<PAR Name="ArrayValueExp">
+							<EXP><![CDATA[$V$table]]></EXP>
+						</PAR>
+						<PAR Name="ExitCondExp">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<SET Id="RDK:685" VarRef="query_insert">
+							<EXP><![CDATA[$=$"SET IDENTITY_INSERT ITMMASTER ON;
+SET DATEFORMAT dmy;
+INSERT INTO ITMMASTER  ("+StrListToStr(headers, ", ")+")
+VALUES("]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<FOREACHLOOP Id="RDK:690" Expanded="True" ItemVarRef="field" CountVarRef="j" ByRefMode="True">
+							<PAR Name="ArrayValueExp">
+								<EXP><![CDATA[$V$row]]></EXP>
+							</PAR>
+							<PAR Name="ExitCondExp">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<IFTHENELSE Id="RDK:688">
+								<VALUECONDITION Value="true">
+									<EXP><![CDATA[$=$j>1]]></EXP>
+								</VALUECONDITION>
+								<GROUP Id="RDK:687" SubType="Then">
+									<SET Id="RDK:686" VarRef="query_insert">
+										<EXP><![CDATA[$=$query_insert+","]]></EXP>
+										<PAR Name="AdvancedOptions" />
+									</SET>
+								</GROUP>
+							</IFTHENELSE>
+							<SET Id="RDK:689" VarRef="query_insert">
+								<EXP><![CDATA[$=$query_insert+IIF(field<>"","'"+StrSql(StrReplace(field, ",", "."))+"'", "null")]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+						</FOREACHLOOP>
+						<SET Id="RDK:691" VarRef="query_insert">
+							<EXP><![CDATA[$=$query_insert+")"]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<ACTION_CALL Id="RDK:692" Name="RDEngineering_DBExecuteStatement">
+							<PAR Name="RDLibraryName">
+								<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+							</PAR>
+							<PAR Name="ConnectionName">
+								<EXP><![CDATA[$C$SAGE_Local]]></EXP>
+							</PAR>
+							<PAR Name="SqlStatement">
+								<EXP><![CDATA[$=$query_insert]]></EXP>
+							</PAR>
+							<PAR Name="StatementResult">
+								<EXP><![CDATA[$V$]]></EXP>
+							</PAR>
+							<PAR Name="Options" />
+						</ACTION_CALL>
+					</FOREACHLOOP>
+				</WHILELOOP>
+			</GROUP>
+			<ACTION_CALL Id="RDK:650" Name="RDEngineering_DBClose" DesignTimeRemark="SAGE SERVER">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$SAGETest]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$2]]></EXP>
+				</PAR>
+			</ACTION_CALL>
+			<ACTION_CALL Id="RDK:652" Name="RDEngineering_DBClose" DesignTimeRemark="SAGE LOCAL">
+				<PAR Name="RDLibraryName">
+					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+				</PAR>
+				<PAR Name="ConnectionName">
+					<EXP><![CDATA[$C$SAGE_Local]]></EXP>
+				</PAR>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$-1]]></EXP>
+				</PAR>
+			</ACTION_CALL>
+		</GROUP>
+	</GROUP>
+	<EXTERNAL_DATA>
+		<PROFILES_DATA />
+		<BOM_DATA />
+	</EXTERNAL_DATA>
+</PROCESS>

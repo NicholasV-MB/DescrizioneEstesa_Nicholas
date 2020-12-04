@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PROCESS Id="RDK:1" Name="import_caller" Expanded="True">
+	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-11-10T13:56:22" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-02T15:36:00" LanguageVersion="2011.1.1.0" />
+	<GROUP Id="RDK:2" Name="Declarations" SubType="Declarations" Expanded="True">
+		<GROUP Id="RDK:5" Name="Types" SubType="TypeSet" IncludeDate="0" Expanded="True" />
+		<GROUP Id="RDK:6" Name="Parameters" SubType="ParameterDefs" Expanded="True" />
+		<GROUP Id="RDK:7" Name="Global Variables" SubType="VarSet" IncludeDate="0" Expanded="True">
+			<VAR Id="RDK:12" Name="INIZIO" Type="date" Expanded="True">
+				<SET Id="RDK:15" VarRef="Me">
+					<EXP><![CDATA[$=$Now()]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+			</VAR>
+			<VAR Id="RDK:14" Name="FINE" Type="date" />
+		</GROUP>
+		<GROUP Id="RDK:8" Name="Profiles" SubType="ProfileSet" Expanded="True" />
+		<GROUP Id="RDK:9" Name="Functions" SubType="FunctionSet" IncludeDate="0" Expanded="True" />
+	</GROUP>
+	<GROUP Id="RDK:4" Name="Main Group" SubType="Generic" Expanded="True">
+		<PROCESS_CALL Id="RDK:10" Expanded="True">
+			<EXP><![CDATA[$C$MigrateToLocalDB.rdx]]></EXP>
+		</PROCESS_CALL>
+		<SET Id="RDK:17" VarRef="FINE">
+			<EXP><![CDATA[$=$Now()]]></EXP>
+			<PAR Name="AdvancedOptions" />
+		</SET>
+		<ACTION_CALL Id="RDK:18" Name="RDEngineering_MsgBox" DesignTimeRemark="{Text}">
+			<PAR Name="RDLibraryName">
+				<EXP><![CDATA[$C$RDEngineering_UI]]></EXP>
+			</PAR>
+			<PAR Name="MsgText">
+				<EXP><![CDATA[$=$"execution took "+DateTimeSpan(INIZIO, FINE, "min") +" minutes"]]></EXP>
+			</PAR>
+			<PAR Name="MsgStyle" />
+			<PAR Name="BtnLayout" />
+			<PAR Name="MsgCaption" />
+			<PAR Name="BaloonType" />
+			<PAR Name="BtnPressed">
+				<EXP><![CDATA[$V$]]></EXP>
+			</PAR>
+		</ACTION_CALL>
+	</GROUP>
+	<EXTERNAL_DATA>
+		<PROFILES_DATA />
+		<BOM_DATA />
+	</EXTERNAL_DATA>
+</PROCESS>

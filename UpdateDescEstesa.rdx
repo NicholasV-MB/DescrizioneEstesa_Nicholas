@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PROCESS Id="RDK:0001" Name="UpdateDescEstesa" Expanded="True">
-	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-12-01T16:04:14" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-01T17:33:53" LanguageVersion="2011.1.1.0" />
+	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-12-01T16:04:14" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-04T10:37:03" LanguageVersion="2011.1.1.0" />
 	<GROUP Id="RDK:0002" Name="Declarations" SubType="Declarations" Expanded="True">
 		<GROUP Id="RDK:0003" Name="Types" SubType="TypeSet" IncludeDate="0" Expanded="True">
 			<GROUP Id="RDK:435" Name="MBGEN_Types" SubType="TypeSet" Include="../MBGEN_Types.rdx" IncludeDate="131244631620000000" Suppressed="True">
@@ -631,12 +631,12 @@
 					<FIELD Id="RDK:431" Name="ZIN" Type="string" />
 				</TYPE>
 			</GROUP>
-			<TYPE Id="RDK:599" Name="InputType" Expanded="True" SubType="structure">
+			<TYPE Id="RDK:599" Name="InputType" Suppressed="True" SubType="structure">
 				<TYPE_VALUES />
 				<FIELD Id="RDK:600" Name="Input" Type="string" />
 				<FIELD Id="RDK:602" Name="NomeF" Type="string" />
 				<FIELD Id="RDK:612" Name="NomeA">
-					<TYPE Id="RDK:612" Name="string" Expanded="True" SubType="base" BaseType="string">
+					<TYPE Id="RDK:612" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
 						<UI_INPUT_TYPE TypeForm="Text" />
 						<UI_INPUT_VALIDATION ValidationType="none" />
 						<UI_INPUT_SUPPORT />
@@ -644,33 +644,212 @@
 					</TYPE>
 				</FIELD>
 			</TYPE>
+			<TYPE Id="RDK:65011550" Name="input1" Expanded="True" SubType="structure">
+				<TYPE_VALUES />
+				<FIELD Id="RDK:65011539" Name="ITMREF" Type="string" />
+				<FIELD Id="RDK:65011540" Name="Tipo_agg" Type="string" DesignTimeRemark="A:articolo; 0: solo nulli; T:Tutti" />
+				<FIELD Id="RDK:65011542" Name="Agg_param">
+					<TYPE Id="RDK:65011542" IsInternal="True" Expanded="True" SubType="base" BaseType="boolean">
+						<UI_INPUT_TYPE TypeForm="Yes_No" />
+						<UI_INPUT_VALIDATION ValidationType="none" />
+						<UI_INPUT_SUPPORT>
+							<PAR Name="InputPromptExp">
+								<EXP><![CDATA[$C$Aggiorno anche i parametri?]]></EXP>
+							</PAR>
+							<PAR Name="InputImageExp" />
+							<PAR Name="InputTooltipExp" />
+							<PAR Name="InputStyleExp" />
+						</UI_INPUT_SUPPORT>
+						<TYPE_VALUES />
+					</TYPE>
+				</FIELD>
+				<FIELD Id="RDK:65011544" Name="TipoArt">
+					<TYPE Id="RDK:65011544" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+						<UI_INPUT_TYPE TypeForm="Text" />
+						<UI_INPUT_VALIDATION ValidationType="none" />
+						<UI_INPUT_SUPPORT />
+						<TYPE_VALUES />
+					</TYPE>
+				</FIELD>
+				<FIELD Id="RDK:65011546" Name="Origine">
+					<TYPE Id="RDK:65011546" IsInternal="True" Expanded="True" SubType="base" BaseType="string">
+						<UI_INPUT_TYPE TypeForm="Text" />
+						<UI_INPUT_VALIDATION ValidationType="none" />
+						<UI_INPUT_SUPPORT />
+						<TYPE_VALUES />
+					</TYPE>
+				</FIELD>
+				<FIELD Id="RDK:65011547" Name="Macrofamiglia" Type="string" />
+				<FIELD Id="RDK:65011548" Name="Agg_Sage" Type="boolean" />
+				<FIELD Id="RDK:65011549" Name="Speciali" Type="boolean" DesignTimeRemark="Se si devono considerare anche gli art speciali" />
+			</TYPE>
 		</GROUP>
-		<GROUP Id="RDK:0004" Name="Parameters" SubType="ParameterDefs" Expanded="True" />
+		<GROUP Id="RDK:0004" Name="Parameters" SubType="ParameterDefs" Expanded="True">
+			<PAR_DEF Id="RDK:65034569" Name="OutDescEst" TypeRD="string" Direction="IN" Panel="Parameters" UseDataFile="False" Suppressed="True">
+				<LABEL />
+				<DESCRIPTION />
+			</PAR_DEF>
+			<PAR_DEF Id="RDK:65034570" Name="bResult" TypeRD="boolean" Direction="IN" Panel="Parameters" UseDataFile="False" Suppressed="True">
+				<LABEL />
+				<DESCRIPTION />
+			</PAR_DEF>
+			<PAR_DEF Id="RDK:65034571" Name="ErrorMessage" TypeRD="string" Direction="IN" Panel="Parameters" UseDataFile="False" Suppressed="True">
+				<LABEL />
+				<DESCRIPTION />
+			</PAR_DEF>
+		</GROUP>
 		<GROUP Id="RDK:0005" Name="Global Variables" SubType="VarSet" IncludeDate="0" Expanded="True">
 			<GROUP Id="RDK:630" Name="CONN STRINGS" SubType="VarSet" IncludeDate="0" Expanded="True">
-				<VAR Id="RDK:631" Name="conn_PDMtest" Type="string" Expanded="True">
+				<VAR Id="RDK:631" Name="PDMConnString" Type="string" Expanded="True">
 					<SET Id="RDK:632" VarRef="Me">
-						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=PDMTest;Data Source=SRV-DB06\TSINT;User Id=sa;Password=Ruled2014;]]></EXP>
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=PDMtest;Data Source=LAPT-IT07\RULEDESIGNER;User Id=sa;Password=MBOffline$;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:65011955" Name="SAGEConnString" Type="string" Expanded="True">
+					<SET Id="RDK:65011956" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=x3v64;Data Source=LAPT-IT07\RULEDESIGNER;User Id=SA;Password=MBOffline$;]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</VAR>
+				<VAR Id="RDK:65017099" Name="MBKConnString" Type="string" Expanded="True">
+					<SET Id="RDK:65017100" VarRef="Me">
+						<EXP><![CDATA[$C$Provider=sqloledb;Initial Catalog=MBKOffline;Data Source=LAPT-IT07\RULEDESIGNER;User Id=SA;Password=MBOffline$;]]></EXP>
 						<PAR Name="AdvancedOptions" />
 					</SET>
 				</VAR>
 			</GROUP>
-			<VAR Id="RDK:583" Name="ITMREF" Type="string" Expanded="True" />
-			<VAR Id="RDK:586" Name="TABDATI" Type="TabDATIType" Expanded="True" />
-			<VAR Id="RDK:588" Name="TABSAGE" Type="TabSAGEType" />
-			<VAR Id="RDK:590" Name="INTAPG" Type="string" />
-			<VAR Id="RDK:592" Name="ESTAPG" Type="string" />
-			<VAR Id="RDK:607" Name="Input" Type="InputType" Expanded="True" />
+			<VAR Id="RDK:607" Name="Input" Type="input1" Expanded="True" />
 			<VAR Id="RDK:617" Name="ListArticoli" Type="string[]" Expanded="True" />
 			<VAR Id="RDK:619" Name="ListFam" Type="string[]" />
 			<VAR Id="RDK:625" Name="Button" Type="string" Expanded="True" DesignTimeRemark="Generated by RD" />
+			<VAR Id="RDK:65011939" Name="LogFileName" Type="string" Expanded="True">
+				<SET Id="RDK:65011941" VarRef="Me">
+					<EXP><![CDATA[$=$ProcPath()+ "LOG\" + File2Base(ProcFile()) + "_"+FormatDate(Now(), "yyyy-MM-dd_HH-mm-ss")]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+			</VAR>
+			<VAR Id="RDK:65011994" Name="List_ITMREF" Type="string[]" Expanded="True" />
+			<GROUP Id="RDK:50644984" Name="InProcess" SubType="VarSet" IncludeDate="0" Expanded="True">
+				<VAR Id="RDK:583" Name="ITMREF" Type="string" Expanded="True" />
+				<VAR Id="RDK:586" Name="TABDATI" Type="TabDATIType" Expanded="True" />
+				<VAR Id="RDK:588" Name="TABSAGE" Type="TabSAGEType" />
+				<VAR Id="RDK:590" Name="INTAPG" Type="string" />
+				<VAR Id="RDK:592" Name="ESTAPG" Type="string" />
+				<VAR Id="RDK:65014983" Name="URL" Type="string" Expanded="True" />
+			</GROUP>
+			<VAR Id="RDK:65012072" Name="URLFusion" Type="string" Expanded="True" Suppressed="True" DesignTimeRemark="Generated by RD" />
+			<VAR Id="RDK:65015192" Name="LoginSuccess" Type="boolean" Expanded="True" DesignTimeRemark="Generated by RD" />
+			<VAR Id="RDK:65019044" Name="i" Type="integer" Expanded="True" DesignTimeRemark="Generated by RD" />
+			<VAR Id="RDK:65302385" Name="upd_rows" Type="integer" Expanded="True">
+				<SET Id="RDK:65303384" VarRef="Me">
+					<EXP><![CDATA[$C$0]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+			</VAR>
+			<GROUP Id="RDK:50644985" Name="OutProcess" SubType="VarSet" IncludeDate="0" Expanded="True">
+				<VAR Id="RDK:50644986" Name="OutDescEst" Type="string" Expanded="True" />
+				<VAR Id="RDK:50644987" Name="bResult" Type="boolean" Expanded="True" />
+				<VAR Id="RDK:50644988" Name="ErrorMessage" Type="string" Expanded="True" />
+			</GROUP>
 		</GROUP>
 		<GROUP Id="RDK:0006" Name="Profiles" SubType="ProfileSet" Expanded="True">
-			<PROFILE Id="RDK:12" Name="InputProfile" TypeName="InputType" Expanded="True" />
+			<PROFILE Id="RDK:12" Name="InputProfile" TypeName="InputType" Suppressed="True" />
+			<PROFILE Id="RDK:65011526" Name="INPUT_IDENT" TypeName="input1" Expanded="True" />
 		</GROUP>
 		<GROUP Id="RDK:0007" Name="Functions" SubType="FunctionSet" IncludeDate="0" Expanded="True" />
 	</GROUP>
 	<GROUP Id="RDK:0008" Name="Main Group" SubType="Generic" Expanded="True">
+		<GROUP Id="RDK:65011924" Name="Inizializzazione" SubType="Generic" Expanded="True" Bookmarked="True">
+			<VALUECONDITION Value="true">
+				<EXP><![CDATA[$=$IsDebugMode()]]></EXP>
+			</VALUECONDITION>
+			<PROCESS_CALL Id="RDK:65011920" Expanded="True" Suppressed="True">
+				<EXP><![CDATA[$C$..\..\..\SYSTEM\Process.rdx]]></EXP>
+				<PAR Name="PDMConnString">
+					<EXP><![CDATA[$V$PDMConnString]]></EXP>
+				</PAR>
+				<PAR Name="MBKConnString">
+					<EXP><![CDATA[$V$MBKConnString]]></EXP>
+				</PAR>
+				<PAR Name="SAGEConnString">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="FUSIONConnString">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="URLFusion">
+					<EXP><![CDATA[$V$URL]]></EXP>
+				</PAR>
+				<PAR Name="SAGETestConnString">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="URLPDM">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="PDMDBName">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="MBKDBName">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="FUSIONDBName">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<PAR Name="OfflineBaseFolder">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+			</PROCESS_CALL>
+			<IFTHENELSE Id="RDK:65015003">
+				<VALUECONDITION Value="true">
+					<EXP><![CDATA[$=$IsEmpty(URL)]]></EXP>
+				</VALUECONDITION>
+				<GROUP Id="RDK:65015002" SubType="Then">
+					<SET Id="RDK:65015001" VarRef="URL">
+						<EXP><![CDATA[$C$http://testsint.modulblok.com/FUSIONTEST/]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</GROUP>
+			</IFTHENELSE>
+			<GROUP Id="RDK:65011923" Name="Login e SnapShot" SubType="Generic" Expanded="True" Bookmarked="True" ErrorProtected="True">
+				<ACTION_CALL Id="RDK:65011921" Name="RDEngineering_FUSIONLogin">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_RULEDESIGNER]]></EXP>
+					</PAR>
+					<PAR Name="serverUrl">
+						<EXP><![CDATA[$=$URL]]></EXP>
+					</PAR>
+					<PAR Name="clientID" />
+					<PAR Name="username">
+						<EXP><![CDATA[$C$configuratoruser]]></EXP>
+					</PAR>
+					<PAR Name="companyID">
+						<EXP><![CDATA[$C$001]]></EXP>
+					</PAR>
+					<PAR Name="password">
+						<EXP><![CDATA[$C$configuratoruser]]></EXP>
+					</PAR>
+					<PAR Name="outContextID">
+						<EXP><![CDATA[$V$]]></EXP>
+					</PAR>
+					<PAR Name="loginType">
+						<EXP><![CDATA[$C$0]]></EXP>
+					</PAR>
+					<PAR Name="contextID" />
+					<PAR Name="options" />
+					<PAR Name="success">
+						<EXP><![CDATA[$V$LoginSuccess]]></EXP>
+					</PAR>
+					<PAR Name="pdmUrl" />
+					<PAR Name="docUrl" />
+				</ACTION_CALL>
+				<GROUP Id="RDK:65011922" Name="Check Login" SubType="Generic">
+					<VALUECONDITION Value="false">
+						<EXP><![CDATA[$=$LoginSuccess]]></EXP>
+					</VALUECONDITION>
+				</GROUP>
+			</GROUP>
+		</GROUP>
 		<GROUP Id="RDK:633" Name="INIT" SubType="Generic" Expanded="True">
 			<ACTION_CALL Id="RDK:636" Name="RDEngineering_DBOpen">
 				<PAR Name="RDLibraryName">
@@ -680,84 +859,25 @@
 					<EXP><![CDATA[$C$DB_PDM]]></EXP>
 				</PAR>
 				<PAR Name="ConnectionString">
-					<EXP><![CDATA[$=$conn_PDMtest]]></EXP>
+					<EXP><![CDATA[$=$PDMConnString]]></EXP>
 				</PAR>
 				<PAR Name="Transaction">
 					<EXP><![CDATA[$C$-1]]></EXP>
 				</PAR>
 				<PAR Name="Options" />
 			</ACTION_CALL>
-			<ACTION_CALL Id="RDK:639" Name="RDEngineering_DBSelect">
+			<ACTION_CALL Id="RDK:65011982" Name="RDEngineering_DBOpen">
 				<PAR Name="RDLibraryName">
 					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
 				</PAR>
 				<PAR Name="ConnectionName">
-					<EXP><![CDATA[$C$DB_PDM]]></EXP>
+					<EXP><![CDATA[$C$DB_SAGE]]></EXP>
 				</PAR>
-				<PAR Name="SelectQuery">
-					<EXP><![CDATA[$C$
-  SELECT distinct cvalValore FROM CODVAL  where cvalValore not in ( '', '##', '####', '#####') order by cvalValore]]></EXP>
+				<PAR Name="ConnectionString">
+					<EXP><![CDATA[$=$SAGEConnString]]></EXP>
 				</PAR>
-				<PAR Name="SelectQueryType">
-					<EXP><![CDATA[$C$2]]></EXP>
-				</PAR>
-				<PAR Name="FirstValue">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="FirstRow">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="AllRows">
-					<EXP><![CDATA[$V$ListArticoli]]></EXP>
-				</PAR>
-				<PAR Name="FirstColumn">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="NumRows">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="ColumnHeader">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="ColumnHeaders">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="Options" />
-			</ACTION_CALL>
-			<ACTION_CALL Id="RDK:1155" Name="RDEngineering_DBSelect">
-				<PAR Name="RDLibraryName">
-					<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
-				</PAR>
-				<PAR Name="ConnectionName">
-					<EXP><![CDATA[$C$DB_PDM]]></EXP>
-				</PAR>
-				<PAR Name="SelectQuery">
-					<EXP><![CDATA[$C$SELECT DISTINCT Macrofamiglia
-  FROM INPUTGEN where Macrofamiglia<>'' order by Macrofamiglia]]></EXP>
-				</PAR>
-				<PAR Name="SelectQueryType">
-					<EXP><![CDATA[$C$2]]></EXP>
-				</PAR>
-				<PAR Name="FirstValue">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="FirstRow">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="AllRows">
-					<EXP><![CDATA[$V$ListFam]]></EXP>
-				</PAR>
-				<PAR Name="FirstColumn">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="NumRows">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="ColumnHeader">
-					<EXP><![CDATA[$V$]]></EXP>
-				</PAR>
-				<PAR Name="ColumnHeaders">
-					<EXP><![CDATA[$V$]]></EXP>
+				<PAR Name="Transaction">
+					<EXP><![CDATA[$C$-1]]></EXP>
 				</PAR>
 				<PAR Name="Options" />
 			</ACTION_CALL>
@@ -770,7 +890,7 @@
 				<EXP><![CDATA[$=$Input]]></EXP>
 			</PAR>
 			<PAR Name="ProfileName">
-				<EXP><![CDATA[$C$InputProfile]]></EXP>
+				<EXP><![CDATA[$C$INPUT_IDENT]]></EXP>
 			</PAR>
 			<PAR Name="RunTimeRemark">
 				<EXP><![CDATA[$C$Scegliere di cosa si vuole fare l'update della descrizione estesa]]></EXP>
@@ -804,10 +924,465 @@
 			</PAR>
 			<PAR Name="Options" />
 		</ACTION_CALL>
-		<GROUP Id="RDK:626" Name="CALCOLO" SubType="Generic" Expanded="True">
+		<ACTION_CALL Id="RDK:65299346" Name="RDEngineering_RemoteMsgBox" DesignTimeRemark="{Text}">
+			<PAR Name="RDLibraryName">
+				<EXP><![CDATA[$C$RDEngineering_UI]]></EXP>
+			</PAR>
+			<PAR Name="MsgText">
+				<EXP><![CDATA[$C$<style type="text/css"> 
+HTML CSSResult
+EDIT ON
+    body {
+        font: 1em sans-serif;
+        text-align: center;
+    }
+    .stage {
+        border-bottom: 3px solid #444;
+        display: flex;
+        height: 450px;
+        width: 100%;
+    }
+
+    .trapezoid {
+
+      align-self: flex-end;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      margin: 0 auto 0 auto;
+      width: 275px;
+      height: 100px;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 250px solid #F44336;
+      z-index:-1;
+    }
+    
+    .trianglebottomleft {
+      align-self: flex-end;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        position:absolute;
+        margin-left: calc(50% - 108px);
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 150px 0 0 175px;
+        border-color: transparent transparent transparent #ffffff;
+    }
+    .trianglebottomright{
+       align-self: flex-end;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        position:absolute;
+        margin-left: calc(50% - 108px);
+        width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 150px 175px;
+    border-color: transparent transparent #ffffff transparent;
+    }
+    .bounce-7 {
+        animation-name: bounce-7;
+        animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+    }
+    @keyframes bounce-7 {
+        0%   { transform: scale(1,1)      translateY(0); }
+        10%  { transform: scale(1.1,.9)   translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-100px); }
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        57%  { transform: scale(1,1)      translateY(-7px); }
+        64%  { transform: scale(1,1)      translateY(0); }
+        100% { transform: scale(1,1)      translateY(0); }
+    }
+
+    .bounce-8 {
+        animation-name: bounce-8;
+        animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+    }
+    @keyframes bounce-8 {
+        0%   { transform: scale(1,1)      translateY(0); }
+        10%  { transform: scale(1.1,.9)   translateY(0); }
+        30%  { transform: scale(.9,1.1)   translateY(-87px); }
+        50%  { transform: scale(1.05,.95) translateY(0); }
+        57%  { transform: scale(1,1)      translateY(-7px); }
+        64%  { transform: scale(1,1)      translateY(0); }
+        100% { transform: scale(1,1)      translateY(0); }
+    }
+</style>
+<div class="trainglebottomleft"></div>
+<div class="stage">
+    <div class="trapezoid bounce-7"></div>
+    <div class="trianglebottomleft bounce-8"></div>
+    <div class="trianglebottomright bounce-8"></div>
+</div>]]></EXP>
+			</PAR>
+			<PAR Name="MsgFormat">
+				<EXP><![CDATA[$C$1]]></EXP>
+			</PAR>
+			<PAR Name="MsgStyle">
+				<EXP><![CDATA[$C$4]]></EXP>
+			</PAR>
+			<PAR Name="WaitForInput">
+				<EXP><![CDATA[$C$False]]></EXP>
+			</PAR>
+			<PAR Name="RunTimeRemark" />
+			<PAR Name="WebResourcePath" />
+			<PAR Name="ImgTop" />
+			<PAR Name="ImgBottom" />
+			<PAR Name="ImgLeft" />
+			<PAR Name="ImgRight" />
+			<PAR Name="CSSStyle" />
+			<PAR Name="RDActionTimeOut" />
+			<PAR Name="ButtonsMode">
+				<EXP><![CDATA[$C$16]]></EXP>
+			</PAR>
+			<PAR Name="ButtonList" />
+			<PAR Name="ButtonImgs" />
+			<PAR Name="ButtonAction" />
+			<PAR Name="ButtonOptions" />
+			<PAR Name="ButtonDefs" />
+			<PAR Name="ButtonPressed">
+				<EXP><![CDATA[$V$]]></EXP>
+			</PAR>
+			<PAR Name="HeaderData" />
+			<PAR Name="InputTree">
+				<EXP><![CDATA[$=$]]></EXP>
+			</PAR>
+			<PAR Name="Options" />
+		</ACTION_CALL>
+		<GROUP Id="RDK:626" Name="CALCOLO" SubType="Generic" Expanded="True" LogDisable="$C$True">
 			<VALUECONDITION Value="true">
 				<EXP><![CDATA[$=$Button="CALCOLA"]]></EXP>
 			</VALUECONDITION>
+			<SELECTCASE Id="RDK:65012001" Expanded="True">
+				<EXP><![CDATA[$=$Input.Tipo_agg]]></EXP>
+				<CASEGROUP Id="RDK:65012002" CaseType="0" Expanded="True">
+					<EXP><![CDATA[$C$A]]></EXP>
+					<LIST_ADD Id="RDK:65012008" ListRef="List_ITMREF">
+						<PAR Name="VALUE_TO_ADD">
+							<EXP><![CDATA[$=$Input.ITMREF]]></EXP>
+						</PAR>
+						<PAR Name="POS_TO_ADD" />
+					</LIST_ADD>
+					<SET Id="RDK:65041613" VarRef="LogFileName">
+						<EXP><![CDATA[$=$LogFileName+"_"+Input.ITMREF+".log"]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</CASEGROUP>
+				<CASEGROUP Id="RDK:65012005" CaseType="0" Expanded="True">
+					<EXP><![CDATA[$C$F]]></EXP>
+					<ACTION_CALL Id="RDK:65012011" Name="RDEngineering_DBSelect">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$DB_PDM]]></EXP>
+						</PAR>
+						<PAR Name="SelectQuery">
+							<EXP><![CDATA[$=$"SELECT codCodice FROM CODICI inner join PROPCOD on PROPCOD.codID = CODICI.codID inner join CAMPI on CAMPI.cpID=PROPCOD.cpID where PROPCOD.propValore = '" + Input.TipoArt + "' and PROPCOD.cpID = '329' and codLastRev=1 and codExtract=0 and coDBackup=0 and codStatus=3 order by codCodice"]]></EXP>
+						</PAR>
+						<PAR Name="SelectQueryType">
+							<EXP><![CDATA[$C$2]]></EXP>
+						</PAR>
+						<PAR Name="FirstValue">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FirstRow">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="AllRows">
+							<EXP><![CDATA[$V$List_ITMREF]]></EXP>
+						</PAR>
+						<PAR Name="FirstColumn">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="NumRows">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeader">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeaders">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+					<SET Id="RDK:65041615" VarRef="LogFileName">
+						<EXP><![CDATA[$=$LogFileName+"_"+Input.TipoArt+".log"]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</CASEGROUP>
+				<CASEGROUP Id="RDK:65012007" CaseType="0" Expanded="True">
+					<EXP><![CDATA[$C$T]]></EXP>
+					<ACTION_CALL Id="RDK:65012009" Name="RDEngineering_DBSelect">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+						</PAR>
+						<PAR Name="ConnectionName">
+							<EXP><![CDATA[$C$DB_PDM]]></EXP>
+						</PAR>
+						<PAR Name="SelectQuery">
+							<EXP><![CDATA[$=$"select codCodice from CODICI 
+inner join PROPCOD on PROPCOD.codID = CODICI.codID inner join PROPCOD Y on Y.codID = CODICI.codID
+where codLastRev=1 and codExtract=0 and coDBackup=0 and codStatus=3 and 
+(PROPCOD.cpID = '333'  and PROPCOD.PropValore not Like 'K%' and PROPCOD.PropValore not Like '99%' and PROPCOD.PropValore not Like 'VVER%' and PROPCOD.PropValore not Like '\_%' ESCAPE '\' 
+and PROPCOD.PropValore not Like 'VER%' and PROPCOD.PropValore not Like 'X%' and PROPCOD.PropValore not Like 'Y%' and  PROPCOD.PropValore not Like 'J$$%')
+and (Y.cpID = '328' and Y.PropValore='" + Input.Macrofamiglia + "')"]]></EXP>
+						</PAR>
+						<PAR Name="SelectQueryType">
+							<EXP><![CDATA[$C$2]]></EXP>
+						</PAR>
+						<PAR Name="FirstValue">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FirstRow">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="AllRows">
+							<EXP><![CDATA[$V$List_ITMREF]]></EXP>
+						</PAR>
+						<PAR Name="FirstColumn">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="NumRows">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeader">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="ColumnHeaders">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+					<SET Id="RDK:65041617" VarRef="LogFileName">
+						<EXP><![CDATA[$=$LogFileName+"_"+Input.Macrofamiglia+".log"]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</CASEGROUP>
+			</SELECTCASE>
+			<FOREACHLOOP Id="RDK:65012073" Expanded="True" ItemVarRef="ITMREF" CountVarRef="i" ByRefMode="True">
+				<PAR Name="ArrayValueExp">
+					<EXP><![CDATA[$=$List_ITMREF]]></EXP>
+				</PAR>
+				<PAR Name="ExitCondExp">
+					<EXP><![CDATA[$V$]]></EXP>
+				</PAR>
+				<GROUP Id="RDK:65045888" Name="Get Code Prop" SubType="Generic" Expanded="True" ErrorProtected="True" BlockFailedVarRef="bResult" BlockFailedErrMsgRef="ErrorMessage">
+					<ACTION_CALL Id="RDK:65014600" Name="RDEngineering_GetPropsByCode">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_RULEDESIGNER]]></EXP>
+						</PAR>
+						<PAR Name="Cod">
+							<EXP><![CDATA[$=$List_ITMREF[i-1]]]></EXP>
+						</PAR>
+						<PAR Name="Rev" />
+						<PAR Name="SelectSearchType">
+							<EXP><![CDATA[$C$2]]></EXP>
+						</PAR>
+						<PAR Name="FieldNames">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FieldValues">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FoundItemNumber">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FieldName" />
+						<PAR Name="FieldValue">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FieldStruct">
+							<EXP><![CDATA[$V$TABDATI]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+					<ACTION_CALL Id="RDK:65014602" Name="RDEngineering_GetPropsByCode">
+						<PAR Name="RDLibraryName">
+							<EXP><![CDATA[$C$RDEngineering_RULEDESIGNER]]></EXP>
+						</PAR>
+						<PAR Name="Cod">
+							<EXP><![CDATA[$=$List_ITMREF[i-1]]]></EXP>
+						</PAR>
+						<PAR Name="Rev" />
+						<PAR Name="SelectSearchType">
+							<EXP><![CDATA[$C$2]]></EXP>
+						</PAR>
+						<PAR Name="FieldNames">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FieldValues">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FoundItemNumber">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FieldName" />
+						<PAR Name="FieldValue">
+							<EXP><![CDATA[$V$]]></EXP>
+						</PAR>
+						<PAR Name="FieldStruct">
+							<EXP><![CDATA[$V$TABSAGE]]></EXP>
+						</PAR>
+						<PAR Name="Options" />
+					</ACTION_CALL>
+					<SET Id="RDK:65287444" VarRef="OutDescEst">
+						<EXP><![CDATA[$C$NOTHING]]></EXP>
+						<PAR Name="AdvancedOptions" />
+					</SET>
+				</GROUP>
+				<IFTHENELSE Id="RDK:65045891" Expanded="True">
+					<VALUECONDITION Value="false">
+						<EXP><![CDATA[$=$bResult]]></EXP>
+					</VALUECONDITION>
+					<GROUP Id="RDK:65045892" SubType="Then" Expanded="True">
+						<PROCESS_CALL Id="RDK:1157" Expanded="True">
+							<EXP><![CDATA[$C$../CalcDescEstesa.rdx]]></EXP>
+							<PAR Name="ITMREF">
+								<EXP><![CDATA[$=$]]></EXP>
+							</PAR>
+							<PAR Name="OutDescEst">
+								<EXP><![CDATA[$V$OutDescEst]]></EXP>
+							</PAR>
+							<PAR Name="bResult">
+								<EXP><![CDATA[$V$bResult]]></EXP>
+							</PAR>
+							<PAR Name="ErrorMessage">
+								<EXP><![CDATA[$V$ErrorMessage]]></EXP>
+							</PAR>
+							<PAR Name="TABDATI">
+								<EXP><![CDATA[$V$TABDATI]]></EXP>
+							</PAR>
+							<PAR Name="TABSAGE">
+								<EXP><![CDATA[$V$TABSAGE]]></EXP>
+							</PAR>
+							<PAR Name="PDMConnString">
+								<EXP><![CDATA[$=$PDMConnString]]></EXP>
+							</PAR>
+							<PAR Name="MBKConnString">
+								<EXP><![CDATA[$=$MBKConnString]]></EXP>
+							</PAR>
+							<PAR Name="URL">
+								<EXP><![CDATA[$=$URL]]></EXP>
+							</PAR>
+							<PAR Name="INTAPG">
+								<EXP><![CDATA[$=$INTAPG]]></EXP>
+							</PAR>
+							<PAR Name="ESTAPG">
+								<EXP><![CDATA[$=$ESTAPG]]></EXP>
+							</PAR>
+						</PROCESS_CALL>
+					</GROUP>
+				</IFTHENELSE>
+				<ACTION_CALL Id="RDK:65022337" Name="RDEngineering_AppendTextLine">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_FILE_TEXT]]></EXP>
+					</PAR>
+					<PAR Name="FileName">
+						<EXP><![CDATA[$=$LogFileName]]></EXP>
+					</PAR>
+					<PAR Name="TextLine">
+						<EXP><![CDATA[$=$ITMREF+":
+    - bResult: '"+bResult+"'
+    - OutDescEst: '"+OutDescEst+"' 
+    - ErrorMessage: '"+ErrorMessage+"'" ]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<IFTHENELSE Id="RDK:50644998" Expanded="True">
+					<VALUECONDITION Value="true">
+						<EXP><![CDATA[$=$OutDescEst<>""]]></EXP>
+					</VALUECONDITION>
+					<GROUP Id="RDK:50644999" SubType="Then" Expanded="True">
+						<SET Id="RDK:65304236" VarRef="upd_rows">
+							<EXP><![CDATA[$=$upd_rows+1]]></EXP>
+							<PAR Name="AdvancedOptions" />
+						</SET>
+						<ACTION_CALL Id="RDK:65014117" Name="RDEngineering_AppendTextLine" Suppressed="True">
+							<PAR Name="RDLibraryName">
+								<EXP><![CDATA[$C$RDEngineering_FILE_TEXT]]></EXP>
+							</PAR>
+							<PAR Name="FileName">
+								<EXP><![CDATA[$=$LogFileName]]></EXP>
+							</PAR>
+							<PAR Name="TextLine">
+								<EXP><![CDATA[$=$"La descrizione estesa aggiornata di "+ITMREF+" è: "+OutDescEst]]></EXP>
+							</PAR>
+							<PAR Name="Options" />
+						</ACTION_CALL>
+						<IFTHENELSE Id="RDK:65011975" Expanded="True" Suppressed="True">
+							<VALUECONDITION Value="true">
+								<EXP><![CDATA[$=$Input.Agg_Sage]]></EXP>
+							</VALUECONDITION>
+							<GROUP Id="RDK:65011976" SubType="Then" Expanded="True">
+								<ACTION_CALL Id="RDK:65011980" Name="RDEngineering_DBExecuteStatement">
+									<PAR Name="RDLibraryName">
+										<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+									</PAR>
+									<PAR Name="ConnectionName">
+										<EXP><![CDATA[$C$DB_SAGE]]></EXP>
+									</PAR>
+									<PAR Name="SqlStatement">
+										<EXP><![CDATA[$=$"UPDATE ITMMASTER SET YDESEST_0='"+OutDescEst+"' WHERE ITMREF_0='"+ITMREF+"'"]]></EXP>
+									</PAR>
+									<PAR Name="StatementResult">
+										<EXP><![CDATA[$V$]]></EXP>
+									</PAR>
+									<PAR Name="Options" />
+								</ACTION_CALL>
+								<ACTION_CALL Id="RDK:65011986" Name="RDEngineering_DBExecuteStatement">
+									<PAR Name="RDLibraryName">
+										<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+									</PAR>
+									<PAR Name="ConnectionName">
+										<EXP><![CDATA[$C$DB_PDM]]></EXP>
+									</PAR>
+									<PAR Name="SqlStatement">
+										<EXP><![CDATA[$=$"UPDATE CODICI SET codFullDesc='"+OutDescEst+"' WHERE codCodice='"+ITMREF+"'"]]></EXP>
+									</PAR>
+									<PAR Name="StatementResult">
+										<EXP><![CDATA[$V$]]></EXP>
+									</PAR>
+									<PAR Name="Options" />
+								</ACTION_CALL>
+							</GROUP>
+							<GROUP Id="RDK:65011977" SubType="Else" Expanded="True">
+								<ACTION_CALL Id="RDK:65011988" Name="RDEngineering_DBExecuteStatement">
+									<PAR Name="RDLibraryName">
+										<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+									</PAR>
+									<PAR Name="ConnectionName">
+										<EXP><![CDATA[$C$DB_PDM]]></EXP>
+									</PAR>
+									<PAR Name="SqlStatement">
+										<EXP><![CDATA[$=$"SET DATEFORMAT ymd;
+UPDATE CODICI SET codFullDesc='"+OutDescEst+"', codModDate='"+ToString(Now())+"'  WHERE codCodice='"+ITMREF+"'"]]></EXP>
+									</PAR>
+									<PAR Name="StatementResult">
+										<EXP><![CDATA[$V$]]></EXP>
+									</PAR>
+									<PAR Name="Options" />
+								</ACTION_CALL>
+							</GROUP>
+						</IFTHENELSE>
+					</GROUP>
+					<GROUP Id="RDK:50645000" SubType="Else" Expanded="True">
+						<ACTION_CALL Id="RDK:65014119" Name="RDEngineering_AppendTextLine" Suppressed="True">
+							<PAR Name="RDLibraryName">
+								<EXP><![CDATA[$C$RDEngineering_FILE_TEXT]]></EXP>
+							</PAR>
+							<PAR Name="FileName">
+								<EXP><![CDATA[$=$LogFileName]]></EXP>
+							</PAR>
+							<PAR Name="TextLine">
+								<EXP><![CDATA[$=$"Attenzione, errore per calcolo descizione estesa di "+ITMREF+": "+ErrorMessage]]></EXP>
+							</PAR>
+							<PAR Name="Options" />
+						</ACTION_CALL>
+					</GROUP>
+				</IFTHENELSE>
+			</FOREACHLOOP>
 		</GROUP>
 		<ACTION_CALL Id="RDK:640" Name="RDEngineering_DBClose">
 			<PAR Name="RDLibraryName">
@@ -816,12 +1391,386 @@
 			<PAR Name="ConnectionName">
 				<EXP><![CDATA[$C$DB_PDM]]></EXP>
 			</PAR>
-			<PAR Name="Transaction" />
+			<PAR Name="Transaction">
+				<EXP><![CDATA[$C$-1]]></EXP>
+			</PAR>
+		</ACTION_CALL>
+		<ACTION_CALL Id="RDK:65011984" Name="RDEngineering_DBClose">
+			<PAR Name="RDLibraryName">
+				<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
+			</PAR>
+			<PAR Name="ConnectionName">
+				<EXP><![CDATA[$C$DB_SAGE]]></EXP>
+			</PAR>
+			<PAR Name="Transaction">
+				<EXP><![CDATA[$C$-1]]></EXP>
+			</PAR>
+		</ACTION_CALL>
+		<ACTION_CALL Id="RDK:65304237" Name="RDEngineering_RemoteMsgBox" DesignTimeRemark="{Text}">
+			<PAR Name="RDLibraryName">
+				<EXP><![CDATA[$C$RDEngineering_UI]]></EXP>
+			</PAR>
+			<PAR Name="MsgText">
+				<EXP><![CDATA[$=$"Finito! Sono state aggiornate "+upd_rows+" righe a DataBase"]]></EXP>
+			</PAR>
+			<PAR Name="MsgFormat">
+				<EXP><![CDATA[$C$0]]></EXP>
+			</PAR>
+			<PAR Name="MsgStyle">
+				<EXP><![CDATA[$C$0]]></EXP>
+			</PAR>
+			<PAR Name="WaitForInput">
+				<EXP><![CDATA[$C$true]]></EXP>
+			</PAR>
+			<PAR Name="RunTimeRemark" />
+			<PAR Name="WebResourcePath" />
+			<PAR Name="ImgTop" />
+			<PAR Name="ImgBottom" />
+			<PAR Name="ImgLeft" />
+			<PAR Name="ImgRight" />
+			<PAR Name="CSSStyle" />
+			<PAR Name="RDActionTimeOut" />
+			<PAR Name="ButtonsMode">
+				<EXP><![CDATA[$C$0]]></EXP>
+			</PAR>
+			<PAR Name="ButtonList" />
+			<PAR Name="ButtonImgs" />
+			<PAR Name="ButtonAction" />
+			<PAR Name="ButtonOptions" />
+			<PAR Name="ButtonDefs" />
+			<PAR Name="ButtonPressed">
+				<EXP><![CDATA[$V$]]></EXP>
+			</PAR>
+			<PAR Name="HeaderData" />
+			<PAR Name="InputTree">
+				<EXP><![CDATA[$=$]]></EXP>
+			</PAR>
+			<PAR Name="Options" />
 		</ACTION_CALL>
 	</GROUP>
 	<EXTERNAL_DATA>
 		<PROFILES_DATA>
-			<RELPROFILE Id="RDK:14" TypeName="InputType" Expanded="True">
+			<RELPROFILE Id="RDK:42240783" TypeName="input1" Expanded="True">
+				<PNODE NodeType="profile" ProfileName="INPUT_IDENT" />
+				<PNODE NodeType="field_variant" FieldName="Tipo_agg" VariantName="Variant" />
+				<RP_INITIAL_VALUE>
+					<EXP><![CDATA[$C$F]]></EXP>
+				</RP_INITIAL_VALUE>
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS>
+					<EXP><![CDATA[$C$(FORCERELOAD)]]></EXP>
+				</RP_SETOPTIONS>
+				<UI_INPUT_TYPE TypeForm="DropDown" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45121103" TypeName="input1" Expanded="True">
+				<PNODE NodeType="profile" ProfileName="INPUT_IDENT" />
+				<PNODE NodeType="field_variant" FieldName="Agg_param" VariantName="Variant" />
+				<RP_INITIAL_VALUE>
+					<EXP><![CDATA[$C$true]]></EXP>
+				</RP_INITIAL_VALUE>
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS>
+					<EXP><![CDATA[$C$(FORCERELOAD)]]></EXP>
+				</RP_SETOPTIONS>
+				<UI_INPUT_TYPE Request="True" Visible="False" TypeForm="Yes_No" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Aggiorno anche i parametri?]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45402151" TypeName="input1" Expanded="True">
+				<PNODE NodeType="profile" ProfileName="INPUT_IDENT" />
+				<PNODE NodeType="field_variant" FieldName="Origine" VariantName="Variant" />
+				<RP_INITIAL_VALUE>
+					<EXP><![CDATA[$=$IIF(StrLeft(me.ITMREF, 1)="1","PDM","Sage")]]></EXP>
+				</RP_INITIAL_VALUE>
+				<RP_SETFIELD_VALUE>
+					<EXP><![CDATA[$=$IIF(StrLeft(me.ITMREF, 1)="1","PDM","Sage")]]></EXP>
+				</RP_SETFIELD_VALUE>
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS>
+					<EXP><![CDATA[$C$(FORCERELOAD)]]></EXP>
+				</RP_SETOPTIONS>
+				<UI_INPUT_TYPE Visible="False" TypeForm="RadioButtons" Locked="True" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Origine articoli]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:64635516" TypeName="input1" Expanded="True">
+				<PNODE NodeType="profile" ProfileName="INPUT_IDENT" />
+				<PNODE NodeType="field_variant" FieldName="Agg_Sage" VariantName="Variant" />
+				<RP_INITIAL_VALUE>
+					<EXP><![CDATA[$C$True]]></EXP>
+				</RP_INITIAL_VALUE>
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_TYPE Request="True" TypeForm="Yes_No" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Aggiorno anche sage?]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:65011524" TypeName="input1" Expanded="True">
+				<PNODE NodeType="profile" ProfileName="INPUT_IDENT" />
+				<PNODE NodeType="field_variant" FieldName="Speciali" VariantName="Variant" />
+				<RP_INITIAL_VALUE>
+					<EXP><![CDATA[$C$false]]></EXP>
+				</RP_INITIAL_VALUE>
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_TYPE Request="True" Visible="False" TypeForm="Yes_No" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Considerare anche gli speciali?]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45215613" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Tipo_agg" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Tipo_agg" VariantName="Variant">
+					<EXP><![CDATA[$C$F]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Aggiorna famiglia]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:42240785" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Tipo_agg" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Tipo_agg" VariantName="Variant">
+					<EXP><![CDATA[$C$A]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Aggiorna articolo]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:42240787" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Tipo_agg" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Tipo_agg" VariantName="Variant">
+					<EXP><![CDATA[$C$T]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Aggiorna tutto]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45402972" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Origine" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Origine" VariantName="Variant">
+					<EXP><![CDATA[$C$Sage]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45402973" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Origine" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Origine" VariantName="Variant">
+					<EXP><![CDATA[$C$PDM]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45216105" TypeName="input1" Expanded="True">
+				<PNODE NodeType="value_exp" FieldName="Tipo_agg" VariantName="Variant">
+					<EXP><![CDATA[$C$F]]></EXP>
+				</PNODE>
+				<PNODE NodeType="field_variant" FieldName="TipoArt" VariantName="Variant" />
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_TYPE TypeForm="Combo" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT>
+					<PAR Name="InputPromptExp">
+						<EXP><![CDATA[$C$Tipo Articolo]]></EXP>
+					</PAR>
+					<PAR Name="InputImageExp" />
+					<PAR Name="InputTooltipExp" />
+					<PAR Name="InputStyleExp" />
+				</UI_INPUT_SUPPORT>
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:42302116" TypeName="input1">
+				<PNODE NodeType="value_exp" FieldName="Tipo_agg" VariantName="Variant">
+					<EXP><![CDATA[$C$A]]></EXP>
+				</PNODE>
+				<PNODE NodeType="field_variant" FieldName="ITMREF" VariantName="Variant" />
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS>
+					<EXP><![CDATA[$C$(FORCERELOAD)]]></EXP>
+				</RP_SETOPTIONS>
+				<UI_INPUT_TYPE TypeForm="Text" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45806679" TypeName="input1" Expanded="True">
+				<PNODE NodeType="value_exp" FieldName="Tipo_agg" VariantName="Variant">
+					<EXP><![CDATA[$C$T]]></EXP>
+				</PNODE>
+				<PNODE NodeType="field_variant" FieldName="Macrofamiglia" VariantName="Variant" />
+				<RP_INITIAL_VALUE>
+					<EXP><![CDATA[$C$P]]></EXP>
+				</RP_INITIAL_VALUE>
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS>
+					<EXP><![CDATA[$C$(COLUMNS=1)]]></EXP>
+				</RP_SETOPTIONS>
+				<UI_INPUT_TYPE Request="True" TypeForm="RadioButtons" />
+				<UI_INPUT_VALIDATION ValidationType="none" />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45217903" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="TipoArt" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="TipoArt" VariantName="Variant">
+					<EXP><![CDATA[$=$TableDB(PDMConnString, "select cvalCodice, cvalValore from CODVAL left outer join CAMPI on CODVAL.cpID=CAMPI.cpID where CAMPI.cpNome='TipoArticolo' ORDER BY cvalCodice")
+]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS>
+					<EXP><![CDATA[$C$(SIDEPROMPT)]]></EXP>
+				</RP_SETOPTIONS>
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45806020" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Macrofamiglia" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Macrofamiglia" VariantName="Variant">
+					<EXP><![CDATA[$C$P]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45806021" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Macrofamiglia" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Macrofamiglia" VariantName="Variant">
+					<EXP><![CDATA[$C$J]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45806022" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Macrofamiglia" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Macrofamiglia" VariantName="Variant">
+					<EXP><![CDATA[$C$C]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45806023" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Macrofamiglia" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Macrofamiglia" VariantName="Variant">
+					<EXP><![CDATA[$C$S]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45806024" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Macrofamiglia" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Macrofamiglia" VariantName="Variant">
+					<EXP><![CDATA[$C$D]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45806025" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Macrofamiglia" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Macrofamiglia" VariantName="Variant">
+					<EXP><![CDATA[$C$M]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:45806026" TypeName="input1" Expanded="True">
+				<PNODE NodeType="field_variant" FieldName="Macrofamiglia" VariantName="Variant" />
+				<PNODE NodeType="value_exp" FieldName="Macrofamiglia" VariantName="Variant">
+					<EXP><![CDATA[$C$L]]></EXP>
+				</PNODE>
+				<RP_INITIAL_VALUE />
+				<RP_SETFIELD_VALUE />
+				<RP_SETFIELD_FORCED />
+				<RP_SETOPTIONS />
+				<UI_INPUT_SUPPORT />
+			</RELPROFILE>
+			<RELPROFILE Id="RDK:14" TypeName="InputType">
 				<PNODE NodeType="profile" ProfileName="InputProfile" />
 				<PNODE NodeType="field_variant" FieldName="Input" VariantName="Variant" />
 				<RP_INITIAL_VALUE />
@@ -839,7 +1788,7 @@
 					<PAR Name="InputStyleExp" />
 				</UI_INPUT_SUPPORT>
 			</RELPROFILE>
-			<RELPROFILE Id="RDK:15" TypeName="InputType" Expanded="True">
+			<RELPROFILE Id="RDK:15" TypeName="InputType">
 				<PNODE NodeType="field_variant" FieldName="Input" VariantName="Variant" />
 				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
 					<EXP><![CDATA[$C$Articolo]]></EXP>
@@ -850,7 +1799,7 @@
 				<RP_SETOPTIONS />
 				<UI_INPUT_SUPPORT />
 			</RELPROFILE>
-			<RELPROFILE Id="RDK:16" TypeName="InputType" Expanded="True">
+			<RELPROFILE Id="RDK:16" TypeName="InputType">
 				<PNODE NodeType="field_variant" FieldName="Input" VariantName="Variant" />
 				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
 					<EXP><![CDATA[$C$Famiglia]]></EXP>
@@ -872,7 +1821,7 @@
 				<RP_SETOPTIONS />
 				<UI_INPUT_SUPPORT />
 			</RELPROFILE>
-			<RELPROFILE Id="RDK:611" TypeName="InputType" Expanded="True">
+			<RELPROFILE Id="RDK:611" TypeName="InputType">
 				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
 					<EXP><![CDATA[$C$Articolo]]></EXP>
 				</PNODE>
@@ -892,7 +1841,7 @@
 					<PAR Name="InputStyleExp" />
 				</UI_INPUT_SUPPORT>
 			</RELPROFILE>
-			<RELPROFILE Id="RDK:615" TypeName="InputType" Expanded="True">
+			<RELPROFILE Id="RDK:615" TypeName="InputType">
 				<PNODE NodeType="value_exp" FieldName="Input" VariantName="Variant">
 					<EXP><![CDATA[$C$Famiglia]]></EXP>
 				</PNODE>
