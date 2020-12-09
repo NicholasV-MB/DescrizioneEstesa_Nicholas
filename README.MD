@@ -1,7 +1,7 @@
 # RD per UpdateDescrizioneEstesa
 
 ## Logica 
-La gestione dell'aggiornamento delle descrizioni estese è così strutturata:
+La gestione dell'aggiornamento delle descrizioni estese è così strutturato:
 1. L'utente sceglie uno specifico ITMREF, il tipo articolo di una famiglia o una macrofamiglia da aggiornare
 2. Viene generata la lista di ITMREF per famiglia o macrofamiglia e ciclata
   - ad ogni iterazione del ciclo viene chiamato il processo CalcDescEstesa.rdx che fornisce la descrizione estesa o eventuali errori
