@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PROCESS Id="RDK:2075" Name="CalcDescEstesa" SystemProcess="True" Options="(_LOGDISABLED)" Expanded="True" Bookmarked="True" DesignTimeNotes="30/09/2019 Mario&#xD;&#xA;Aggiunto CCOR">
-	<PROCESSPROPERTY CrUser="lbianchini [ENG-BIANCHINI]" CrDate="2014-09-03T12:24:00" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-09T11:40:17" LanguageVersion="2011.1.1.0" />
+	<PROCESSPROPERTY CrUser="lbianchini [ENG-BIANCHINI]" CrDate="2014-09-03T12:24:00" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-15T12:42:55" LanguageVersion="2011.1.1.0" />
 	<GROUP Id="RDK:2076" Name="Declarations" SubType="Declarations" Expanded="True">
 		<GROUP Id="RDK:2079" Name="Types" SubType="TypeSet" IncludeDate="0" Expanded="True">
 			<GROUP Id="RDK:42172798" Name="MBGEN_Types" SubType="TypeSet" Include="MBGEN_Types.rdx" IncludeDate="131244631620000000" Expanded="True">
@@ -839,7 +839,7 @@
 				<EXIT_PROCESS Id="RDK:41473329" ExitStatus="0" />
 			</GROUP>
 		</GROUP>
-		<GROUP Id="RDK:50646538" Name="Login" SubType="Generic" Expanded="True" Bookmarked="True" ErrorProtected="True">
+		<GROUP Id="RDK:50646538" Name="Login" SubType="Generic" Expanded="True" Suppressed="True" Bookmarked="True" ErrorProtected="True">
 			<ACTION_CALL Id="RDK:50646536" Name="RDEngineering_FUSIONLogin">
 				<PAR Name="RDLibraryName">
 					<EXP><![CDATA[$C$RDEngineering_RULEDESIGNER]]></EXP>
@@ -1391,19 +1391,19 @@
 											<PAR Name="AdvancedOptions" />
 										</SET>
 										<NODE Id="RDK:44753114" Name="Descrizione per piastra">
-											<VAR_COND Id="RDK:50675371" Name="STD6">
+											<VAR_COND Id="RDK:50678052" Name="STD6">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "A"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675372" Name="SPEC8">
+											<VAR_COND Id="RDK:50678053" Name="SPEC8">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base= "B"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675373" Name="SPEC12">
+											<VAR_COND Id="RDK:50678054" Name="SPEC12">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "C"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675374" Name="SPEC10">
+											<VAR_COND Id="RDK:50678055" Name="SPEC10">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "D"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675375" Name="SPEC15">
+											<VAR_COND Id="RDK:50678056" Name="SPEC15">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "E"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:44753107" Name="Choice">
@@ -1453,43 +1453,43 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:44753036" Name="Descrizione per pos.saldatura">
-											<VAR_COND Id="RDK:50675376" Name="Centr">
+											<VAR_COND Id="RDK:50678057" Name="Centr">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675377" Name="Filo_Lato">
+											<VAR_COND Id="RDK:50678058" Name="Filo_Lato">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "1"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675378" Name="Filo_Ang">
+											<VAR_COND Id="RDK:50678059" Name="Filo_Ang">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "2"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675379" Name="Filo_Lato_Lungo">
+											<VAR_COND Id="RDK:50678060" Name="Filo_Lato_Lungo">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "3"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675380" Name="Filo_Ang_SX">
+											<VAR_COND Id="RDK:50678061" Name="Filo_Ang_SX">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "4"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675381" Name="Filo_Ang_DX">
+											<VAR_COND Id="RDK:50678062" Name="Filo_Ang_DX">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "5"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675382" Name="Filo_Ang_SX_2CV">
+											<VAR_COND Id="RDK:50678063" Name="Filo_Ang_SX_2CV">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "6"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675383" Name="Filo_Ang_DX_2CV">
+											<VAR_COND Id="RDK:50678064" Name="Filo_Ang_DX_2CV">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "7"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675384" Name="Filo_Ang_2CV">
+											<VAR_COND Id="RDK:50678065" Name="Filo_Ang_2CV">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "A"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675385" Name="Filo_Lato_2CV">
+											<VAR_COND Id="RDK:50678066" Name="Filo_Lato_2CV">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "B"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675386" Name="Filo_Lato_3CV">
+											<VAR_COND Id="RDK:50678067" Name="Filo_Lato_3CV">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "C"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675387" Name="Centr_2CV">
+											<VAR_COND Id="RDK:50678068" Name="Centr_2CV">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "D"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675388" Name="Centr_4CV">
+											<VAR_COND Id="RDK:50678069" Name="Centr_4CV">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "E"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:44753026" Name="Choice">
@@ -1624,16 +1624,16 @@
 											<VAR Id="RDK:50174643" Name="Desc4" Type="string" />
 										</GROUP>
 										<NODE Id="RDK:50174075" Name="Aggancio Superiore">
-											<VAR_COND Id="RDK:50675389" Name="ST42">
+											<VAR_COND Id="RDK:50678070" Name="ST42">
 												<EXP><![CDATA[$=$TABDATI.AngInterno_Value = "N"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675390" Name="ST47">
+											<VAR_COND Id="RDK:50678071" Name="ST47">
 												<EXP><![CDATA[$=$TABDATI.AngInterno_Value = "C"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675391" Name="ANG">
+											<VAR_COND Id="RDK:50678072" Name="ANG">
 												<EXP><![CDATA[$=$TABDATI.AngInterno_Value = "A"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675392" Name="ST77">
+											<VAR_COND Id="RDK:50678073" Name="ST77">
 												<EXP><![CDATA[$=$TABDATI.AngInterno_Value = "T"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50174070" Name="Choice">
@@ -1678,16 +1678,16 @@
 											<PAR Name="AdvancedOptions" />
 										</SET>
 										<NODE Id="RDK:50175900" Name="Aggancio Inferiore">
-											<VAR_COND Id="RDK:50675393" Name="ST42">
+											<VAR_COND Id="RDK:50678074" Name="ST42">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno_Value = "N"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675394" Name="ST47">
+											<VAR_COND Id="RDK:50678075" Name="ST47">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno_Value = "C"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675395" Name="ANG">
+											<VAR_COND Id="RDK:50678076" Name="ANG">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno_Value = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675396" Name="ST77">
+											<VAR_COND Id="RDK:50678077" Name="ST77">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno_Value = "T"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50175895" Name="Choice">
@@ -1782,25 +1782,25 @@
 													<EXP><![CDATA[$=$TABDATI.DirezConn <> TABDATI.Config_Tralic]]></EXP>
 												</VALUECONDITION>
 												<NODE Id="RDK:50187370" Name="Aggancio DX">
-													<VAR_COND Id="RDK:50675397" Name="STD">
+													<VAR_COND Id="RDK:50678078" Name="STD">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "5"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675398" Name="N">
+													<VAR_COND Id="RDK:50678079" Name="N">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "N"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675399" Name="C">
+													<VAR_COND Id="RDK:50678080" Name="C">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "C"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675400" Name="X">
+													<VAR_COND Id="RDK:50678081" Name="X">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "X"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675401" Name="Y">
+													<VAR_COND Id="RDK:50678082" Name="Y">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "Y"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675402" Name="FREE">
+													<VAR_COND Id="RDK:50678083" Name="FREE">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "0"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675403" Name="CON5N">
+													<VAR_COND Id="RDK:50678084" Name="CON5N">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "W"]]></EXP>
 													</VAR_COND>
 													<CHOICE Id="RDK:50187363" Name="Choice">
@@ -1868,25 +1868,25 @@
 													</CHOICE>
 												</NODE>
 												<NODE Id="RDK:50191355" Name="Aggancio SX">
-													<VAR_COND Id="RDK:50675404" Name="STD">
+													<VAR_COND Id="RDK:50678085" Name="STD">
 														<EXP><![CDATA[$=$TABDATI.Config_Tralic = "5"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675405" Name="N">
+													<VAR_COND Id="RDK:50678086" Name="N">
 														<EXP><![CDATA[$=$TABDATI.Config_Tralic = "N"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675406" Name="C">
+													<VAR_COND Id="RDK:50678087" Name="C">
 														<EXP><![CDATA[$=$TABDATI.Config_Tralic = "C"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675407" Name="X">
+													<VAR_COND Id="RDK:50678088" Name="X">
 														<EXP><![CDATA[$=$TABDATI.Config_Tralic = "X"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675408" Name="Y">
+													<VAR_COND Id="RDK:50678089" Name="Y">
 														<EXP><![CDATA[$=$TABDATI.Config_Tralic = "Y"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675409" Name="FREE">
+													<VAR_COND Id="RDK:50678090" Name="FREE">
 														<EXP><![CDATA[$=$TABDATI.Config_Tralic = "0"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675410" Name="CON5N">
+													<VAR_COND Id="RDK:50678091" Name="CON5N">
 														<EXP><![CDATA[$=$TABDATI.Config_Tralic = "W"]]></EXP>
 													</VAR_COND>
 													<CHOICE Id="RDK:50191346" Name="Choice">
@@ -1963,25 +1963,25 @@
 													<EXP><![CDATA[$=$TABDATI.DirezConn = TABDATI.Config_Tralic]]></EXP>
 												</VALUECONDITION>
 												<NODE Id="RDK:50247707" Name="Aggancio">
-													<VAR_COND Id="RDK:50675411" Name="STD">
+													<VAR_COND Id="RDK:50678092" Name="STD">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "5"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675412" Name="N">
+													<VAR_COND Id="RDK:50678093" Name="N">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "N"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675413" Name="C">
+													<VAR_COND Id="RDK:50678094" Name="C">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "C"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675414" Name="X">
+													<VAR_COND Id="RDK:50678095" Name="X">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "X"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675415" Name="Y">
+													<VAR_COND Id="RDK:50678096" Name="Y">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "Y"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675416" Name="FREE">
+													<VAR_COND Id="RDK:50678097" Name="FREE">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "0"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675417" Name="CON5N">
+													<VAR_COND Id="RDK:50678098" Name="CON5N">
 														<EXP><![CDATA[$=$TABDATI.DirezConn = "W"]]></EXP>
 													</VAR_COND>
 													<CHOICE Id="RDK:50247698" Name="Choice">
@@ -2054,10 +2054,10 @@
 													<EXP><![CDATA[$=$TABDATI.Tipo_rinforzo <> "0"]]></EXP>
 												</VALUECONDITION>
 												<NODE Id="RDK:50194247" Name="Rinf.Interno Corrente">
-													<VAR_COND Id="RDK:50675418" Name="R3510">
+													<VAR_COND Id="RDK:50678099" Name="R3510">
 														<EXP><![CDATA[$=$TABDATI.Tipo_rinforzo = "R"]]></EXP>
 													</VAR_COND>
-													<VAR_COND Id="RDK:50675419" Name="S3515">
+													<VAR_COND Id="RDK:50678100" Name="S3515">
 														<EXP><![CDATA[$=$TABDATI.Tipo_rinforzo = "S"]]></EXP>
 													</VAR_COND>
 													<CHOICE Id="RDK:50194238" Name="Choice">
@@ -2117,16 +2117,16 @@
 										<EXP><![CDATA[$C$PSPL]]></EXP>
 										<GROUP Id="RDK:45774301" Name="Configurazione verniciatura" SubType="Generic">
 											<NODE Id="RDK:45774300" Name="Recupero configurazione" Bookmarked="True">
-												<VAR_COND Id="RDK:50675420" Name="V1">
+												<VAR_COND Id="RDK:50678101" Name="V1">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "1"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675421" Name="V2">
+												<VAR_COND Id="RDK:50678102" Name="V2">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "2"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675422" Name="V3">
+												<VAR_COND Id="RDK:50678103" Name="V3">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "3"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675423" Name="V4">
+												<VAR_COND Id="RDK:50678104" Name="V4">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "4"]]></EXP>
 												</VAR_COND>
 												<CHOICE Id="RDK:45774289" Name="Choice">
@@ -2172,13 +2172,13 @@
 										<EXP><![CDATA[$C$PSPZ]]></EXP>
 										<GROUP Id="RDK:45776356" Name="Configurazione verniciatura" SubType="Generic">
 											<NODE Id="RDK:50087271" Name="Recupero configurazione" Bookmarked="True">
-												<VAR_COND Id="RDK:50675424" Name="V1">
+												<VAR_COND Id="RDK:50678105" Name="V1">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "1"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675425" Name="V2">
+												<VAR_COND Id="RDK:50678106" Name="V2">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "2"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675426" Name="V3">
+												<VAR_COND Id="RDK:50678107" Name="V3">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "3"]]></EXP>
 												</VAR_COND>
 												<CHOICE Id="RDK:50087266" Name="Choice">
@@ -2219,13 +2219,13 @@
 										</GROUP>
 										<GROUP Id="RDK:45776918" Name="Generazione e concatenazione testi" SubType="Generic">
 											<NODE Id="RDK:50087558" Name="Recupero configurazione" Bookmarked="True">
-												<VAR_COND Id="RDK:50675427" Name="V1">
+												<VAR_COND Id="RDK:50678108" Name="V1">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "1"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675428" Name="V2">
+												<VAR_COND Id="RDK:50678109" Name="V2">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "2"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675429" Name="V3">
+												<VAR_COND Id="RDK:50678110" Name="V3">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "3"]]></EXP>
 												</VAR_COND>
 												<CHOICE Id="RDK:50087553" Name="Choice">
@@ -2274,13 +2274,13 @@
 										</GROUP>
 										<GROUP Id="RDK:45777519" Name="Generazione e concatenazione testi" SubType="Generic">
 											<NODE Id="RDK:50088007" Name="Recupero configurazione" Bookmarked="True">
-												<VAR_COND Id="RDK:50675430" Name="V1">
+												<VAR_COND Id="RDK:50678111" Name="V1">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "1"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675431" Name="V2">
+												<VAR_COND Id="RDK:50678112" Name="V2">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "2"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675432" Name="V3">
+												<VAR_COND Id="RDK:50678113" Name="V3">
 													<EXP><![CDATA[$=$TABDATI.Config_Vern = "3"]]></EXP>
 												</VAR_COND>
 												<CHOICE Id="RDK:50088002" Name="Choice">
@@ -2420,16 +2420,16 @@
 												<PAR Name="AdvancedOptions" />
 											</SET>
 											<NODE Id="RDK:50213916" Name="Tipo Connettore">
-												<VAR_COND Id="RDK:50675433" Name="STD">
+												<VAR_COND Id="RDK:50678114" Name="STD">
 													<EXP><![CDATA[$=$StrRight(TABDATI.TipCon, 1)="N"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675434" Name="FS">
+												<VAR_COND Id="RDK:50678115" Name="FS">
 													<EXP><![CDATA[$=$StrRight(TABDATI.TipCon, 1)="F" or TABDATI.TipCon = "FT"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675435" Name="Stretto">
+												<VAR_COND Id="RDK:50678116" Name="Stretto">
 													<EXP><![CDATA[$=$StrRight(TABDATI.TipCon, 1)="T"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675436" Name="SenzaAletta">
+												<VAR_COND Id="RDK:50678117" Name="SenzaAletta">
 													<EXP><![CDATA[$=$StrRight(TABDATI.TipCon, 1)="A"]]></EXP>
 												</VAR_COND>
 												<CHOICE Id="RDK:50213909" Name="Choice">
@@ -2578,16 +2578,16 @@
 												<PAR Name="AdvancedOptions" />
 											</SET>
 											<NODE Id="RDK:50232739" Name="Tipo Connettore" Expanded="True">
-												<VAR_COND Id="RDK:50675437" Name="STD">
+												<VAR_COND Id="RDK:50678118" Name="STD">
 													<EXP><![CDATA[$=$StrRight(TABDATI.TipCon, 1)="N"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675438" Name="FS">
+												<VAR_COND Id="RDK:50678119" Name="FS">
 													<EXP><![CDATA[$=$StrRight(TABDATI.TipCon, 1)="F" or TABDATI.TipCon = "FT"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675439" Name="Stretto">
+												<VAR_COND Id="RDK:50678120" Name="Stretto">
 													<EXP><![CDATA[$=$StrRight(TABDATI.TipCon, 1)="T"]]></EXP>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675440" Name="SenzaAletta">
+												<VAR_COND Id="RDK:50678121" Name="SenzaAletta">
 													<EXP><![CDATA[$=$StrRight(TABDATI.TipCon, 1)="A"]]></EXP>
 												</VAR_COND>
 												<CHOICE Id="RDK:50232732" Name="Choice">
@@ -2666,31 +2666,31 @@
 										<EXP><![CDATA[$C$PSCO]]></EXP>
 										<GROUP Id="RDK:45758023" Name="scelta tipo" SubType="Generic">
 											<NODE Id="RDK:45758226" Name="scelta della Lamiera di acquisto" Bookmarked="True" DynColCount="6">
-												<VAR_COND Id="RDK:50675441" Name="L100" Type="BitMask">
+												<VAR_COND Id="RDK:50678122" Name="L100" Type="BitMask">
 													<EXP><![CDATA[$=$TABDATI.TipoProfilo="07"]]></EXP>
 													<EXTRADATA Count="1"><![CDATA[1]]></EXTRADATA>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675442" Name="L150" Type="BitMask">
+												<VAR_COND Id="RDK:50678123" Name="L150" Type="BitMask">
 													<EXP><![CDATA[$=$TABDATI.TipoProfilo="01"]]></EXP>
 													<EXTRADATA Count="2"><![CDATA[@1]]></EXTRADATA>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675443" Name="L300" Type="BitMask">
+												<VAR_COND Id="RDK:50678124" Name="L300" Type="BitMask">
 													<EXP><![CDATA[$=$TABDATI.TipoProfilo="02"]]></EXP>
 													<EXTRADATA Count="3"><![CDATA[@@1]]></EXTRADATA>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675444" Name="L400" Type="BitMask">
+												<VAR_COND Id="RDK:50678125" Name="L400" Type="BitMask">
 													<EXP><![CDATA[$=$TABDATI.TipoProfilo="04"]]></EXP>
 													<EXTRADATA Count="4"><![CDATA[@@@1]]></EXTRADATA>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675445" Name="L500IS" Type="BitMask">
+												<VAR_COND Id="RDK:50678126" Name="L500IS" Type="BitMask">
 													<EXP><![CDATA[$=$TABDATI.TipoProfilo="IS"]]></EXP>
 													<EXTRADATA Count="5"><![CDATA[@@@@1]]></EXTRADATA>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675446" Name="L500" Type="BitMask">
+												<VAR_COND Id="RDK:50678127" Name="L500" Type="BitMask">
 													<EXP><![CDATA[$=$TABDATI.TipoProfilo="08"]]></EXP>
 													<EXTRADATA Count="6"><![CDATA[@@@@@1]]></EXTRADATA>
 												</VAR_COND>
-												<VAR_COND Id="RDK:50675447" Name="ITMREF" Type="OutVal">
+												<VAR_COND Id="RDK:50678128" Name="ITMREF" Type="OutVal">
 													<EXP><![CDATA[$=$]]></EXP>
 													<EXTRADATA Count="6"><![CDATA[0128500@0016861@0024135@0035890@0152408@0152408]]></EXTRADATA>
 												</VAR_COND>
@@ -2885,13 +2885,13 @@
 									<CASEGROUP Id="RDK:50260954" CaseType="0" DesignTimeRemark="Tiranti CV in tondo">
 										<EXP><![CDATA[$C$JTRN]]></EXP>
 										<NODE Id="RDK:50262807" Name="Descrizione Estesa">
-											<VAR_COND Id="RDK:50675448" Name="BIN">
+											<VAR_COND Id="RDK:50678129" Name="BIN">
 												<EXP><![CDATA[$=$TABDATI.TipoProfilo = "B"  And TABDATI.TipCon = "S"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675449" Name="TND">
+											<VAR_COND Id="RDK:50678130" Name="TND">
 												<EXP><![CDATA[$=$TABDATI.TipoProfilo = "T"  And TABDATI.TipCon = "S"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675450" Name="BIL">
+											<VAR_COND Id="RDK:50678131" Name="BIL">
 												<EXP><![CDATA[$=$TABDATI.TipoProfilo = "B"  And TABDATI.TipCon = "L"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50262798" Name="Choice">
@@ -2923,13 +2923,13 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50517663" Name="Descrizione Estesa" Suppressed="True" DesignTimeNotes="Vecchia desc.aggiuntiva. (obsoleta e ridondante)&#xD;&#xA;Lasciato, in accordo con Micla, solo materiale e disegno.&#xD;&#xA;Per quelli in tondo nervato solo il disegno&#xD;&#xA;22/10/18 Mario">
-											<VAR_COND Id="RDK:50675451" Name="BIN">
+											<VAR_COND Id="RDK:50678132" Name="BIN">
 												<EXP><![CDATA[$=$TABDATI.TipoProfilo = "B"  And TABDATI.TipCon = "S"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675452" Name="TND">
+											<VAR_COND Id="RDK:50678133" Name="TND">
 												<EXP><![CDATA[$=$TABDATI.TipoProfilo = "T"  And TABDATI.TipCon = "S"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675453" Name="BIL">
+											<VAR_COND Id="RDK:50678134" Name="BIL">
 												<EXP><![CDATA[$=$TABDATI.TipoProfilo = "B"  And TABDATI.TipCon = "L"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50517658" Name="Choice">
@@ -2968,19 +2968,19 @@
 											<VAR Id="RDK:45761472" Name="Desc2" Type="string" Expanded="True" />
 										</GROUP>
 										<NODE Id="RDK:45761481" Name="Descrizione per piastra">
-											<VAR_COND Id="RDK:50675454" Name="P200">
+											<VAR_COND Id="RDK:50678135" Name="P200">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "P"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675455" Name="P140">
+											<VAR_COND Id="RDK:50678136" Name="P140">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "R"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675456" Name="A106">
+											<VAR_COND Id="RDK:50678137" Name="A106">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "A"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675457" Name="A126">
+											<VAR_COND Id="RDK:50678138" Name="A126">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "L"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675458" Name="NONE">
+											<VAR_COND Id="RDK:50678139" Name="NONE">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "00"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:45761476" Name="Choice">
@@ -3030,19 +3030,19 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:45761508" Name="Descrizione per pos.saldatura">
-											<VAR_COND Id="RDK:50675459" Name="SX">
+											<VAR_COND Id="RDK:50678140" Name="SX">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo="SX"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675460" Name="DX">
+											<VAR_COND Id="RDK:50678141" Name="DX">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo="DX"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675461" Name="SC">
+											<VAR_COND Id="RDK:50678142" Name="SC">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo="SC"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675462" Name="FL">
+											<VAR_COND Id="RDK:50678143" Name="FL">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo="FL"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675463" Name="STD">
+											<VAR_COND Id="RDK:50678144" Name="STD">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo="00"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:45761483" Name="Choice">
@@ -3201,13 +3201,13 @@
 											<VAR Id="RDK:50059976" Name="Desc3" Type="string" Expanded="True" DesignTimeRemark="fermapallet" />
 										</GROUP>
 										<NODE Id="RDK:50060858" Name="Descrizione per ang.asolato">
-											<VAR_COND Id="RDK:50675464" Name="NO">
+											<VAR_COND Id="RDK:50678145" Name="NO">
 												<EXP><![CDATA[$=$TABDATI.Tipo_tenditore = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675465" Name="UNO">
+											<VAR_COND Id="RDK:50678146" Name="UNO">
 												<EXP><![CDATA[$=$TABDATI.Tipo_tenditore = "S"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675466" Name="DUE">
+											<VAR_COND Id="RDK:50678147" Name="DUE">
 												<EXP><![CDATA[$=$TABDATI.Tipo_tenditore = "D"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50060849" Name="Choice">
@@ -3239,11 +3239,11 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50064678" Name="Descrizione per fermapallet">
-											<VAR_COND Id="RDK:50675467" Name="NO">
+											<VAR_COND Id="RDK:50678148" Name="NO">
 												<EXP><![CDATA[$=$TABDATI.Fermapallet = False
 ]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675468" Name="SI">
+											<VAR_COND Id="RDK:50678149" Name="SI">
 												<EXP><![CDATA[$=$TABDATI.Fermapallet = True]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50064673" Name="Choice">
@@ -3279,10 +3279,10 @@
 											<VAR Id="RDK:50137589" Name="Desc4" Type="string" Suppressed="True" DesignTimeRemark="Foro x copertura" />
 										</GROUP>
 										<NODE Id="RDK:50129644" Name="Descrizione per Bicchiere">
-											<VAR_COND Id="RDK:50675469" Name="NO">
+											<VAR_COND Id="RDK:50678150" Name="NO">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675470" Name="SI">
+											<VAR_COND Id="RDK:50678151" Name="SI">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere <> "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50129639" Name="Choice">
@@ -3305,16 +3305,16 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50134812" Name="Descrizione per APG">
-											<VAR_COND Id="RDK:50675471" Name="NO">
+											<VAR_COND Id="RDK:50678152" Name="NO">
 												<EXP><![CDATA[$=$TABDATI.AngInterno_Value = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675472" Name="DX">
+											<VAR_COND Id="RDK:50678153" Name="DX">
 												<EXP><![CDATA[$=$TABDATI.AngInterno_Value = "D"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675473" Name="SX">
+											<VAR_COND Id="RDK:50678154" Name="SX">
 												<EXP><![CDATA[$=$TABDATI.AngInterno_Value = "S"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675474" Name="DOPPIO">
+											<VAR_COND Id="RDK:50678155" Name="DOPPIO">
 												<EXP><![CDATA[$=$TABDATI.AngInterno_Value = "E"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50134805" Name="Choice">
@@ -3355,11 +3355,11 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50129651" Name="Descrizione per Protezione Frontale">
-											<VAR_COND Id="RDK:50675475" Name="NO">
+											<VAR_COND Id="RDK:50678156" Name="NO">
 												<EXP><![CDATA[$=$TABDATI.Tappata = "0"
 ]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675476" Name="SI">
+											<VAR_COND Id="RDK:50678157" Name="SI">
 												<EXP><![CDATA[$=$TABDATI.Tappata = "1"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50129648" Name="Choice">
@@ -3382,10 +3382,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50138052" Name="Descrizione foro copertura" Suppressed="True">
-											<VAR_COND Id="RDK:50675477" Name="NO">
+											<VAR_COND Id="RDK:50678158" Name="NO">
 												<EXP><![CDATA[$=$TABDATI.ForTub <> "C"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675478" Name="SI">
+											<VAR_COND Id="RDK:50678159" Name="SI">
 												<EXP><![CDATA[$=$TABDATI.ForTub = "C"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50138049" Name="Choice">
@@ -3460,13 +3460,13 @@
 											<VAR Id="RDK:50089182" Name="Desc3" Type="string" Expanded="True" />
 										</GROUP>
 										<NODE Id="RDK:50088842" Name="Descrizione tipo piastra connessione">
-											<VAR_COND Id="RDK:50675479" Name="STD">
+											<VAR_COND Id="RDK:50678160" Name="STD">
 												<EXP><![CDATA[$=$StrLeft(TABDATI.Tipo_piastra_base, 1) = "N"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675480" Name="VECCHIA">
+											<VAR_COND Id="RDK:50678161" Name="VECCHIA">
 												<EXP><![CDATA[$=$StrLeft(TABDATI.Tipo_piastra_base, 1) = "V"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675481" Name="ASSENTE">
+											<VAR_COND Id="RDK:50678162" Name="ASSENTE">
 												<EXP><![CDATA[$=$StrLeft(TABDATI.Tipo_piastra_base, 1) = "X"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50088837" Name="Choice">
@@ -3498,13 +3498,13 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50091545" Name="Descrizione spessore piastra connessione">
-											<VAR_COND Id="RDK:50675482" Name="SP5">
+											<VAR_COND Id="RDK:50678163" Name="SP5">
 												<EXP><![CDATA[$=$StrRight(TABDATI.Tipo_piastra_base, 1) = "5"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675483" Name="SP6">
+											<VAR_COND Id="RDK:50678164" Name="SP6">
 												<EXP><![CDATA[$=$StrRight(TABDATI.Tipo_piastra_base, 1) = "6"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675484" Name="ASSENTE">
+											<VAR_COND Id="RDK:50678165" Name="ASSENTE">
 												<EXP><![CDATA[$=$StrRight(TABDATI.Tipo_piastra_base, 1) = "X"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50091540" Name="Choice">
@@ -3536,13 +3536,13 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50095882" Name="Descrizione piastra fissaggio a terra">
-											<VAR_COND Id="RDK:50675485" Name="FOR13">
+											<VAR_COND Id="RDK:50678166" Name="FOR13">
 												<EXP><![CDATA[$=$TABDATI.ID_Staffa = "P"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675486" Name="FOR17">
+											<VAR_COND Id="RDK:50678167" Name="FOR17">
 												<EXP><![CDATA[$=$TABDATI.ID_Staffa = "G"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675487" Name="ASSENTE">
+											<VAR_COND Id="RDK:50678168" Name="ASSENTE">
 												<EXP><![CDATA[$=$TABDATI.ID_Staffa = "X"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50095877" Name="Choice">
@@ -3586,10 +3586,10 @@
 											<VAR Id="RDK:50103697" Name="Desc3" Type="string" Expanded="True" />
 										</GROUP>
 										<NODE Id="RDK:50103705" Name="Descrizione se APG">
-											<VAR_COND Id="RDK:50675488" Name="PRESENTE">
+											<VAR_COND Id="RDK:50678169" Name="PRESENTE">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "1"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675489" Name="ASSENTE">
+											<VAR_COND Id="RDK:50678170" Name="ASSENTE">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50103700" Name="Choice">
@@ -3612,10 +3612,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50103712" Name="Descrizione se Bicchiere">
-											<VAR_COND Id="RDK:50675490" Name="N0">
+											<VAR_COND Id="RDK:50678171" Name="N0">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675491" Name="NX">
+											<VAR_COND Id="RDK:50678172" Name="NX">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere <> "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50103707" Name="Choice">
@@ -3638,10 +3638,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50103719" Name="Descrizione se connessione vecchia">
-											<VAR_COND Id="RDK:50675492" Name="NEW">
+											<VAR_COND Id="RDK:50678173" Name="NEW">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo = "N"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675493" Name="OLD">
+											<VAR_COND Id="RDK:50678174" Name="OLD">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo = "V"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50103714" Name="Choice">
@@ -3676,10 +3676,10 @@
 											<VAR Id="RDK:50574803" Name="Desc3" Type="string" />
 										</GROUP>
 										<NODE Id="RDK:50574811" Name="Descrizione se APG">
-											<VAR_COND Id="RDK:50675494" Name="PRESENTE">
+											<VAR_COND Id="RDK:50678175" Name="PRESENTE">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "1"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675495" Name="ASSENTE">
+											<VAR_COND Id="RDK:50678176" Name="ASSENTE">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50574808" Name="Choice">
@@ -3702,10 +3702,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50574818" Name="Descrizione se Bicchiere">
-											<VAR_COND Id="RDK:50675496" Name="N0">
+											<VAR_COND Id="RDK:50678177" Name="N0">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675497" Name="NX">
+											<VAR_COND Id="RDK:50678178" Name="NX">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere <> "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50574815" Name="Choice">
@@ -3728,10 +3728,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50574825" Name="Descrizione se connessione vecchia">
-											<VAR_COND Id="RDK:50675498" Name="NEW">
+											<VAR_COND Id="RDK:50678179" Name="NEW">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo = "N"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675499" Name="OLD">
+											<VAR_COND Id="RDK:50678180" Name="OLD">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo = "V"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50574822" Name="Choice">
@@ -3766,10 +3766,10 @@
 											<VAR Id="RDK:50575521" Name="Desc3" Type="string" />
 										</GROUP>
 										<NODE Id="RDK:50575529" Name="Descrizione se APG">
-											<VAR_COND Id="RDK:50675500" Name="PRESENTE">
+											<VAR_COND Id="RDK:50678181" Name="PRESENTE">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "1"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675501" Name="ASSENTE">
+											<VAR_COND Id="RDK:50678182" Name="ASSENTE">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50575526" Name="Choice">
@@ -3792,10 +3792,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50575536" Name="Descrizione se Bicchiere">
-											<VAR_COND Id="RDK:50675502" Name="N0">
+											<VAR_COND Id="RDK:50678183" Name="N0">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675503" Name="NX">
+											<VAR_COND Id="RDK:50678184" Name="NX">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere <> "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50575533" Name="Choice">
@@ -3818,10 +3818,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50575543" Name="Descrizione se connessione vecchia">
-											<VAR_COND Id="RDK:50675504" Name="NEW">
+											<VAR_COND Id="RDK:50678185" Name="NEW">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo = "N"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675505" Name="OLD">
+											<VAR_COND Id="RDK:50678186" Name="OLD">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo = "V"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50575540" Name="Choice">
@@ -3856,10 +3856,10 @@
 											<VAR Id="RDK:50569926" Name="Desc3" Type="string" />
 										</GROUP>
 										<NODE Id="RDK:50569934" Name="Descrizione se APG">
-											<VAR_COND Id="RDK:50675506" Name="PRESENTE">
+											<VAR_COND Id="RDK:50678187" Name="PRESENTE">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "1"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675507" Name="ASSENTE">
+											<VAR_COND Id="RDK:50678188" Name="ASSENTE">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50569931" Name="Choice">
@@ -3882,10 +3882,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50569941" Name="Descrizione se Bicchiere">
-											<VAR_COND Id="RDK:50675508" Name="N0">
+											<VAR_COND Id="RDK:50678189" Name="N0">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675509" Name="NX">
+											<VAR_COND Id="RDK:50678190" Name="NX">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere <> "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50569938" Name="Choice">
@@ -3908,10 +3908,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50569948" Name="Descrizione se connessione vecchia">
-											<VAR_COND Id="RDK:50675510" Name="NEW">
+											<VAR_COND Id="RDK:50678191" Name="NEW">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo = "N"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675511" Name="OLD">
+											<VAR_COND Id="RDK:50678192" Name="OLD">
 												<EXP><![CDATA[$=$TABDATI.Tipologia_utilizzo = "V"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50569945" Name="Choice">
@@ -3961,16 +3961,16 @@
 											<VAR Id="RDK:50121006" Name="Desc4" Type="string" />
 										</GROUP>
 										<NODE Id="RDK:50114261" Name="Descrizione se APG">
-											<VAR_COND Id="RDK:50675512" Name="DX">
+											<VAR_COND Id="RDK:50678193" Name="DX">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "D"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675513" Name="SX">
+											<VAR_COND Id="RDK:50678194" Name="SX">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "S"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675514" Name="DOPPIO">
+											<VAR_COND Id="RDK:50678195" Name="DOPPIO">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "E"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675515" Name="NOAPG">
+											<VAR_COND Id="RDK:50678196" Name="NOAPG">
 												<EXP><![CDATA[$=$TABDATI.AngEsterno = "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50114258" Name="Choice">
@@ -4011,10 +4011,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50114268" Name="Descrizione se Bicchiere">
-											<VAR_COND Id="RDK:50675516" Name="N0">
+											<VAR_COND Id="RDK:50678197" Name="N0">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere = "0"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675517" Name="NX">
+											<VAR_COND Id="RDK:50678198" Name="NX">
 												<EXP><![CDATA[$=$TABDATI.Bicchiere <> "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50114265" Name="Choice">
@@ -4037,10 +4037,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50114275" Name="Descrizione se connessione vecchia">
-											<VAR_COND Id="RDK:50675518" Name="NEW">
+											<VAR_COND Id="RDK:50678199" Name="NEW">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "N"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675519" Name="OLD">
+											<VAR_COND Id="RDK:50678200" Name="OLD">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piastra_base = "V"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50114272" Name="Choice">
@@ -4063,10 +4063,10 @@
 											</CHOICE>
 										</NODE>
 										<NODE Id="RDK:50121865" Name="Descrizione SpessPiastra">
-											<VAR_COND Id="RDK:50675520" Name="STD">
+											<VAR_COND Id="RDK:50678201" Name="STD">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "5"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675521" Name="SPEC">
+											<VAR_COND Id="RDK:50678202" Name="SPEC">
 												<EXP><![CDATA[$=$TABDATI.Tipo_piede = "6"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50121862" Name="Choice">
@@ -4096,10 +4096,10 @@
 									<CASEGROUP Id="RDK:50269774" CaseType="0">
 										<EXP><![CDATA[$C$JUCP]]></EXP>
 										<NODE Id="RDK:50270898" Name="Descrizione x foro/no foro">
-											<VAR_COND Id="RDK:50675522" Name="FOR">
+											<VAR_COND Id="RDK:50678203" Name="FOR">
 												<EXP><![CDATA[$=$TABDATI.Foratura = "F"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675523" Name="NOFOR">
+											<VAR_COND Id="RDK:50678204" Name="NOFOR">
 												<EXP><![CDATA[$=$TABDATI.Foratura = "0"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50270895" Name="Choice">
@@ -4171,52 +4171,52 @@
 														<EXP><![CDATA[$=$TABDATI.DirezConn = TABDATI.Config_Tralic]]></EXP>
 													</VALUECONDITION>
 													<NODE Id="RDK:50475791" Name="--" DesignTimeRemark="DescUguale: AggancioDX=AggancioSX">
-														<VAR_COND Id="RDK:50675524" Name="C3N">
+														<VAR_COND Id="RDK:50678205" Name="C3N">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "3N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675525" Name="N">
+														<VAR_COND Id="RDK:50678206" Name="N">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675526" Name="C">
+														<VAR_COND Id="RDK:50678207" Name="C">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "C"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675527" Name="X">
+														<VAR_COND Id="RDK:50678208" Name="X">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "X"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675528" Name="Y">
+														<VAR_COND Id="RDK:50678209" Name="Y">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "Y"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675529" Name="C4N">
+														<VAR_COND Id="RDK:50678210" Name="C4N">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "4N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675530" Name="C5N">
+														<VAR_COND Id="RDK:50678211" Name="C5N">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "5N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675531" Name="C5F">
+														<VAR_COND Id="RDK:50678212" Name="C5F">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "5F"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675532" Name="C3T">
+														<VAR_COND Id="RDK:50678213" Name="C3T">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "3T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675533" Name="C4T">
+														<VAR_COND Id="RDK:50678214" Name="C4T">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "4T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675534" Name="C5T">
+														<VAR_COND Id="RDK:50678215" Name="C5T">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "5T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675535" Name="FT">
+														<VAR_COND Id="RDK:50678216" Name="FT">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "FT"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675536" Name="C3A">
+														<VAR_COND Id="RDK:50678217" Name="C3A">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "3A"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675537" Name="C5A">
+														<VAR_COND Id="RDK:50678218" Name="C5A">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "5A"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675538" Name="FA">
+														<VAR_COND Id="RDK:50678219" Name="FA">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "FA"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675539" Name="VUOTO">
+														<VAR_COND Id="RDK:50678220" Name="VUOTO">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "0"]]></EXP>
 														</VAR_COND>
 														<CHOICE Id="RDK:50475762" Name="Choice">
@@ -4370,52 +4370,52 @@
 														<EXP><![CDATA[$=$TABDATI.DirezConn <> TABDATI.Config_Tralic]]></EXP>
 													</VALUECONDITION>
 													<NODE Id="RDK:50381337" Name="--" DesignTimeRemark="DescDX: Aggancio DX">
-														<VAR_COND Id="RDK:50675540" Name="C3N">
+														<VAR_COND Id="RDK:50678221" Name="C3N">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "3N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675541" Name="N">
+														<VAR_COND Id="RDK:50678222" Name="N">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675542" Name="C">
+														<VAR_COND Id="RDK:50678223" Name="C">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "C"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675543" Name="X">
+														<VAR_COND Id="RDK:50678224" Name="X">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "X"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675544" Name="Y">
+														<VAR_COND Id="RDK:50678225" Name="Y">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "Y"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675545" Name="C4N">
+														<VAR_COND Id="RDK:50678226" Name="C4N">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "4N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675546" Name="C5N">
+														<VAR_COND Id="RDK:50678227" Name="C5N">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "5N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675547" Name="C5F">
+														<VAR_COND Id="RDK:50678228" Name="C5F">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "5F"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675548" Name="C3T">
+														<VAR_COND Id="RDK:50678229" Name="C3T">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "3T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675549" Name="C4T">
+														<VAR_COND Id="RDK:50678230" Name="C4T">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "4T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675550" Name="C5T">
+														<VAR_COND Id="RDK:50678231" Name="C5T">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "5T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675551" Name="FT">
+														<VAR_COND Id="RDK:50678232" Name="FT">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "FT"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675552" Name="C3A">
+														<VAR_COND Id="RDK:50678233" Name="C3A">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "3A"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675553" Name="C5A">
+														<VAR_COND Id="RDK:50678234" Name="C5A">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "5A"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675554" Name="FA">
+														<VAR_COND Id="RDK:50678235" Name="FA">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "FA"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675555" Name="VUOTO">
+														<VAR_COND Id="RDK:50678236" Name="VUOTO">
 															<EXP><![CDATA[$=$TABDATI.DirezConn = "0"]]></EXP>
 														</VAR_COND>
 														<CHOICE Id="RDK:50381326" Name="Choice">
@@ -4564,52 +4564,52 @@
 														</CHOICE>
 													</NODE>
 													<NODE Id="RDK:50409903" Name="--" DesignTimeRemark="DescSX: Aggancio SX">
-														<VAR_COND Id="RDK:50675556" Name="C3N">
+														<VAR_COND Id="RDK:50678237" Name="C3N">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "3N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675557" Name="N">
+														<VAR_COND Id="RDK:50678238" Name="N">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675558" Name="C">
+														<VAR_COND Id="RDK:50678239" Name="C">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "C"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675559" Name="X">
+														<VAR_COND Id="RDK:50678240" Name="X">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "X"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675560" Name="Y">
+														<VAR_COND Id="RDK:50678241" Name="Y">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "Y"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675561" Name="C4N">
+														<VAR_COND Id="RDK:50678242" Name="C4N">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic= "4N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675562" Name="C5N">
+														<VAR_COND Id="RDK:50678243" Name="C5N">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "5N"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675563" Name="C5F">
+														<VAR_COND Id="RDK:50678244" Name="C5F">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "5F"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675564" Name="C3T">
+														<VAR_COND Id="RDK:50678245" Name="C3T">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "3T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675565" Name="C4T">
+														<VAR_COND Id="RDK:50678246" Name="C4T">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "4T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675566" Name="C5T">
+														<VAR_COND Id="RDK:50678247" Name="C5T">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "5T"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675567" Name="FT">
+														<VAR_COND Id="RDK:50678248" Name="FT">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "FT"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675568" Name="C3A">
+														<VAR_COND Id="RDK:50678249" Name="C3A">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "3A"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675569" Name="C5A">
+														<VAR_COND Id="RDK:50678250" Name="C5A">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "5A"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675570" Name="FA">
+														<VAR_COND Id="RDK:50678251" Name="FA">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "FA"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675571" Name="VUOTO">
+														<VAR_COND Id="RDK:50678252" Name="VUOTO">
 															<EXP><![CDATA[$=$TABDATI.Config_Tralic = "0"]]></EXP>
 														</VAR_COND>
 														<CHOICE Id="RDK:50409874" Name="Choice">
@@ -4763,10 +4763,10 @@
 														<EXP><![CDATA[$=$TABDATI.Tipo_rinforzo <> "_"]]></EXP>
 													</VALUECONDITION>
 													<NODE Id="RDK:50384153" Name="Rinf.Interno Corrente">
-														<VAR_COND Id="RDK:50675572" Name="R3510">
+														<VAR_COND Id="RDK:50678253" Name="R3510">
 															<EXP><![CDATA[$=$TABDATI.Tipo_rinforzo = "R"]]></EXP>
 														</VAR_COND>
-														<VAR_COND Id="RDK:50675573" Name="S3515">
+														<VAR_COND Id="RDK:50678254" Name="S3515">
 															<EXP><![CDATA[$=$TABDATI.Tipo_rinforzo = "S"]]></EXP>
 														</VAR_COND>
 														<CHOICE Id="RDK:50384150" Name="Choice">
@@ -5079,13 +5079,13 @@
 											</VAR>
 										</GROUP>
 										<NODE Id="RDK:50532371" Name="Variabilità fori" DesignTimeNotes="LL = lato lungo&#xD;&#xA;LC = lato corto">
-											<VAR_COND Id="RDK:50675574" Name="LLFORI">
+											<VAR_COND Id="RDK:50678255" Name="LLFORI">
 												<EXP><![CDATA[$=$TABDATI.Inclinazione <> "1"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675575" Name="LCFORI">
+											<VAR_COND Id="RDK:50678256" Name="LCFORI">
 												<EXP><![CDATA[$=$TABDATI.OffsetCon <> 1]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675576" Name="UNICO">
+											<VAR_COND Id="RDK:50678257" Name="UNICO">
 												<EXP><![CDATA[$=$TABDATI.Inclinazione = "1"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50532364" Name="Choice">
@@ -5224,10 +5224,10 @@
 									<CASEGROUP Id="RDK:50357463" CaseType="0" Suppressed="True" DesignTimeNotes="Inutile e ridondante dopo aver cambiato descrizione &#xD;&#xA;23/02/18 Mario">
 										<EXP><![CDATA[$C$RPSR]]></EXP>
 										<NODE Id="RDK:50359381" Name="Descrizione x foro/no foro">
-											<VAR_COND Id="RDK:50675577" Name="MF">
+											<VAR_COND Id="RDK:50678258" Name="MF">
 												<EXP><![CDATA[$=$TABDATI.Mono_bifronte = "M"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675578" Name="BF">
+											<VAR_COND Id="RDK:50678259" Name="BF">
 												<EXP><![CDATA[$=$TABDATI.Mono_bifronte = "B"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50359378" Name="Choice">
@@ -5253,10 +5253,10 @@
 									<CASEGROUP Id="RDK:50470305" CaseType="0" Suppressed="True" DesignTimeNotes="Inutile e ridondante dopo aver cambiato descrizione &#xD;&#xA;23/02/18 Mario">
 										<EXP><![CDATA[$C$RKPS]]></EXP>
 										<NODE Id="RDK:50470304" Name="Descrizione x foro/no foro">
-											<VAR_COND Id="RDK:50675579" Name="MF">
+											<VAR_COND Id="RDK:50678260" Name="MF">
 												<EXP><![CDATA[$=$TABDATI.Mono_bifronte = "M"]]></EXP>
 											</VAR_COND>
-											<VAR_COND Id="RDK:50675580" Name="BF">
+											<VAR_COND Id="RDK:50678261" Name="BF">
 												<EXP><![CDATA[$=$TABDATI.Mono_bifronte = "B"]]></EXP>
 											</VAR_COND>
 											<CHOICE Id="RDK:50470301" Name="Choice">

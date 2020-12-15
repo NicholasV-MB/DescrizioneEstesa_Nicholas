@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PROCESS Id="RDK:0001" Name="UpdateDescEstesa" Expanded="True">
-	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-12-01T16:04:14" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-09T14:00:47" LanguageVersion="2011.1.1.0" />
+	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-12-01T16:04:14" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-15T13:51:02" LanguageVersion="2011.1.1.0" />
 	<GROUP Id="RDK:0002" Name="Declarations" SubType="Declarations" Expanded="True">
 		<GROUP Id="RDK:0003" Name="Types" SubType="TypeSet" IncludeDate="0" Expanded="True">
 			<GROUP Id="RDK:435" Name="MBGEN_Types" SubType="TypeSet" Include="../MBGEN_Types.rdx" IncludeDate="131244631620000000" Suppressed="True">
@@ -759,6 +759,8 @@
 				<VAR Id="RDK:50644987" Name="bResult" Type="boolean" Expanded="True" />
 				<VAR Id="RDK:50644988" Name="ErrorMessage" Type="string" Expanded="True" />
 			</GROUP>
+			<VAR Id="RDK:65316290" Name="CodiceParlante" Type="string" Expanded="True" />
+			<VAR Id="RDK:65317387" Name="speciale" Type="boolean" Expanded="True" />
 		</GROUP>
 		<GROUP Id="RDK:0006" Name="Profiles" SubType="ProfileSet" Expanded="True">
 			<PROFILE Id="RDK:12" Name="InputProfile" TypeName="InputType" Suppressed="True" />
@@ -818,7 +820,7 @@
 					</SET>
 				</GROUP>
 			</IFTHENELSE>
-			<GROUP Id="RDK:65011923" Name="Login" SubType="Generic" Suppressed="True" Bookmarked="True" ErrorProtected="True">
+			<GROUP Id="RDK:65011923" Name="Login" SubType="Generic" Expanded="True" Bookmarked="True" ErrorProtected="True">
 				<ACTION_CALL Id="RDK:65011921" Name="RDEngineering_FUSIONLogin">
 					<PAR Name="RDLibraryName">
 						<EXP><![CDATA[$C$RDEngineering_RULEDESIGNER]]></EXP>
@@ -888,42 +890,44 @@
 				</PAR>
 				<PAR Name="Options" />
 			</ACTION_CALL>
-			<ACTION_CALL Id="RDK:65309419" Name="RDEngineering_CopyFile" DesignTimeRemark="{Source File} --&gt; {Destination File}">
-				<PAR Name="RDLibraryName">
-					<EXP><![CDATA[$C$RDEngineering_MISC]]></EXP>
-				</PAR>
-				<PAR Name="FileName">
-					<EXP><![CDATA[$=$ParentPath(ProcPath())+StrAfter(CalcDescEstesa, "/")]]></EXP>
-				</PAR>
-				<PAR Name="NewFileName">
-					<EXP><![CDATA[$=$ProcPath()+"CalcDescEstesa.txt"]]></EXP>
-				</PAR>
-				<PAR Name="AcceptWildcards" />
-				<PAR Name="Overwrite">
-					<EXP><![CDATA[$C$True]]></EXP>
-				</PAR>
-				<PAR Name="Options" />
-			</ACTION_CALL>
-			<SET Id="RDK:65309425" VarRef="CalcDescEstesa_content">
-				<EXP><![CDATA[$=$ReadTextFile("CalcDescEstesa.txt")]]></EXP>
-				<PAR Name="AdvancedOptions" />
-			</SET>
-			<SET Id="RDK:65309426" VarRef="ListFam">
-				<EXP><![CDATA[$=$XmlList(CalcDescEstesa_content, "//EXP[text()='$=$TABDATI.TipoArticolo']/parent::*/CASEGROUP/EXP")]]></EXP>
-				<PAR Name="AdvancedOptions" />
-			</SET>
-			<SET Id="RDK:65314350" VarRef="ListFam">
-				<EXP><![CDATA[$=$ListDiff(ListFam, XmlList(CalcDescEstesa_content, "//EXP[text()='$=$TABDATI.TipoArticolo']/parent::*/CASEGROUP[@Suppressed='True']/EXP"))]]></EXP>
-				<PAR Name="AdvancedOptions" />
-			</SET>
-			<SET Id="RDK:65309618" VarRef="ListFam">
-				<EXP><![CDATA[$=$ExecOnValues(ListFam, "StrAfter(Me, "+QtCh()+"$C$"+QtCh()+")", "")]]></EXP>
-				<PAR Name="AdvancedOptions" />
-			</SET>
-			<SET Id="RDK:65310190" VarRef="ListFam">
-				<EXP><![CDATA[$=$SortListStr(ListRemove(ListFam, ""), False)]]></EXP>
-				<PAR Name="AdvancedOptions" />
-			</SET>
+			<GROUP Id="RDK:65316273" Name="GENERAZIONE LISTA FAMIGLIE SULLA BASE DEL RDX CalcDescEstesa" SubType="Generic" Expanded="True">
+				<ACTION_CALL Id="RDK:65309419" Name="RDEngineering_CopyFile" DesignTimeRemark="{Source File} --&gt; {Destination File}">
+					<PAR Name="RDLibraryName">
+						<EXP><![CDATA[$C$RDEngineering_MISC]]></EXP>
+					</PAR>
+					<PAR Name="FileName">
+						<EXP><![CDATA[$=$ParentPath(ProcPath())+StrAfter(CalcDescEstesa, "/")]]></EXP>
+					</PAR>
+					<PAR Name="NewFileName">
+						<EXP><![CDATA[$=$ProcPath()+"CalcDescEstesa.txt"]]></EXP>
+					</PAR>
+					<PAR Name="AcceptWildcards" />
+					<PAR Name="Overwrite">
+						<EXP><![CDATA[$C$True]]></EXP>
+					</PAR>
+					<PAR Name="Options" />
+				</ACTION_CALL>
+				<SET Id="RDK:65309425" VarRef="CalcDescEstesa_content">
+					<EXP><![CDATA[$=$ReadTextFile("CalcDescEstesa.txt")]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:65309426" VarRef="ListFam">
+					<EXP><![CDATA[$=$XmlList(CalcDescEstesa_content, "//EXP[text()='$=$TABDATI.TipoArticolo']/parent::*/CASEGROUP/EXP")]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:65314350" VarRef="ListFam">
+					<EXP><![CDATA[$=$ListDiff(ListFam, XmlList(CalcDescEstesa_content, "//EXP[text()='$=$TABDATI.TipoArticolo']/parent::*/CASEGROUP[@Suppressed='True']/EXP"))]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:65309618" VarRef="ListFam">
+					<EXP><![CDATA[$=$ExecOnValues(ListFam, "StrAfter(Me, "+QtCh()+"$C$"+QtCh()+")", "")]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<SET Id="RDK:65310190" VarRef="ListFam">
+					<EXP><![CDATA[$=$SortListStr(ListRemove(ListFam, ""), False)]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+			</GROUP>
 		</GROUP>
 		<ACTION_CALL Id="RDK:624" Name="RDEngineering_RemoteGetInput" DesignTimeRemark="{VarName}">
 			<PAR Name="RDLibraryName">
@@ -1287,8 +1291,8 @@ and (Y.cpID = '328' and Y.PropValore='" + Input.Macrofamiglia + "')"]]></EXP>
 				<PAR Name="ExitCondExp">
 					<EXP><![CDATA[$V$]]></EXP>
 				</PAR>
-				<GROUP Id="RDK:65045888" Name="Get Code Prop" SubType="Generic" Suppressed="True" ErrorProtected="True" BlockFailedVarRef="bResult" BlockFailedErrMsgRef="ErrorMessage">
-					<ACTION_CALL Id="RDK:65014600" Name="RDEngineering_GetPropsByCode">
+				<GROUP Id="RDK:65045888" Name="Get Code Prop" SubType="Generic" Expanded="True" ErrorProtected="True" BlockFailedVarRef="bResult" BlockFailedErrMsgRef="ErrorMessage">
+					<ACTION_CALL Id="RDK:65014600" Name="RDEngineering_GetPropsByCode" DesignTimeRemark="TABDATI">
 						<PAR Name="RDLibraryName">
 							<EXP><![CDATA[$C$RDEngineering_RULEDESIGNER]]></EXP>
 						</PAR>
@@ -1317,47 +1321,102 @@ and (Y.cpID = '328' and Y.PropValore='" + Input.Macrofamiglia + "')"]]></EXP>
 						</PAR>
 						<PAR Name="Options" />
 					</ACTION_CALL>
-					<ACTION_CALL Id="RDK:65014602" Name="RDEngineering_GetPropsByCode">
-						<PAR Name="RDLibraryName">
-							<EXP><![CDATA[$C$RDEngineering_RULEDESIGNER]]></EXP>
-						</PAR>
-						<PAR Name="Cod">
-							<EXP><![CDATA[$=$List_ITMREF[i]]]></EXP>
-						</PAR>
-						<PAR Name="Rev" />
-						<PAR Name="SelectSearchType">
-							<EXP><![CDATA[$C$2]]></EXP>
-						</PAR>
-						<PAR Name="FieldNames">
-							<EXP><![CDATA[$V$]]></EXP>
-						</PAR>
-						<PAR Name="FieldValues">
-							<EXP><![CDATA[$V$]]></EXP>
-						</PAR>
-						<PAR Name="FoundItemNumber">
-							<EXP><![CDATA[$V$]]></EXP>
-						</PAR>
-						<PAR Name="FieldName" />
-						<PAR Name="FieldValue">
-							<EXP><![CDATA[$V$]]></EXP>
-						</PAR>
-						<PAR Name="FieldStruct">
-							<EXP><![CDATA[$V$TABSAGE]]></EXP>
-						</PAR>
-						<PAR Name="Options" />
-					</ACTION_CALL>
-					<SET Id="RDK:65287444" VarRef="OutDescEst">
-						<EXP><![CDATA[$C$NOTHING]]></EXP>
-						<PAR Name="AdvancedOptions" />
-					</SET>
+					<IFTHENELSE Id="RDK:65316944" Expanded="True" DesignTimeRemark="CONTROLLO SPECIALI">
+						<VALUECONDITION Value="true">
+							<EXP><![CDATA[$=$TABDATI.Speciale="2"]]></EXP>
+						</VALUECONDITION>
+						<GROUP Id="RDK:65316945" SubType="Then" Expanded="True">
+							<SET Id="RDK:65316972" VarRef="speciale">
+								<EXP><![CDATA[$C$True]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+						</GROUP>
+						<GROUP Id="RDK:65316946" SubType="Else" Expanded="True">
+							<SET Id="RDK:65316291" VarRef="CodiceParlante">
+								<EXP><![CDATA[$=$TABDATI.CodiceParlante]]></EXP>
+								<PAR Name="AdvancedOptions" />
+							</SET>
+							<IFTHENELSE Id="RDK:65316300" Expanded="True" DesignTimeRemark="Gestione articoli speciali PER CODICE PARLANTE">
+								<VALUECONDITION Value="true" Oper="OR">
+									<EXP><![CDATA[$=$StrFromTo(CodiceParlante, 4, 5)="O"]]></EXP>
+								</VALUECONDITION>
+								<VALUECONDITION Value="true" Oper="OR">
+									<EXP><![CDATA[$=$StrFromTo(CodiceParlante, 4, 5)="V"]]></EXP>
+								</VALUECONDITION>
+								<VALUECONDITION Value="true" Oper="OR">
+									<EXP><![CDATA[$=$StrFromTo(CodiceParlante, 4, 5)="C"]]></EXP>
+								</VALUECONDITION>
+								<VALUECONDITION Value="true" Oper="OR">
+									<EXP><![CDATA[$=$StrFromTo(CodiceParlante, 4, 5)="B"]]></EXP>
+								</VALUECONDITION>
+								<VALUECONDITION Value="true" Oper="OR">
+									<EXP><![CDATA[$=$StrFromTo(CodiceParlante, 4, 5)="R"]]></EXP>
+								</VALUECONDITION>
+								<VALUECONDITION Value="true" Oper="OR">
+									<EXP><![CDATA[$=$StrFromTo(CodiceParlante, 4, 5)="S"]]></EXP>
+								</VALUECONDITION>
+								<VALUECONDITION Value="true">
+									<EXP><![CDATA[$=$StrFromTo(CodiceParlante, 4, 5)="W"]]></EXP>
+								</VALUECONDITION>
+								<GROUP Id="RDK:65316309" SubType="Then" Expanded="True">
+									<SET Id="RDK:65317389" VarRef="speciale">
+										<EXP><![CDATA[$C$True]]></EXP>
+										<PAR Name="AdvancedOptions" />
+									</SET>
+								</GROUP>
+								<GROUP Id="RDK:65316335" SubType="Else" Expanded="True">
+									<ACTION_CALL Id="RDK:65014602" Name="RDEngineering_GetPropsByCode" DesignTimeRemark="TABSAGE">
+										<PAR Name="RDLibraryName">
+											<EXP><![CDATA[$C$RDEngineering_RULEDESIGNER]]></EXP>
+										</PAR>
+										<PAR Name="Cod">
+											<EXP><![CDATA[$=$List_ITMREF[i]]]></EXP>
+										</PAR>
+										<PAR Name="Rev" />
+										<PAR Name="SelectSearchType">
+											<EXP><![CDATA[$C$2]]></EXP>
+										</PAR>
+										<PAR Name="FieldNames">
+											<EXP><![CDATA[$V$]]></EXP>
+										</PAR>
+										<PAR Name="FieldValues">
+											<EXP><![CDATA[$V$]]></EXP>
+										</PAR>
+										<PAR Name="FoundItemNumber">
+											<EXP><![CDATA[$V$]]></EXP>
+										</PAR>
+										<PAR Name="FieldName" />
+										<PAR Name="FieldValue">
+											<EXP><![CDATA[$V$]]></EXP>
+										</PAR>
+										<PAR Name="FieldStruct">
+											<EXP><![CDATA[$V$TABSAGE]]></EXP>
+										</PAR>
+										<PAR Name="Options" />
+									</ACTION_CALL>
+									<SET Id="RDK:65317391" VarRef="speciale">
+										<EXP><![CDATA[$C$False]]></EXP>
+										<PAR Name="AdvancedOptions" />
+									</SET>
+								</GROUP>
+							</IFTHENELSE>
+						</GROUP>
+					</IFTHENELSE>
 				</GROUP>
-				<IFTHENELSE Id="RDK:65045891" Suppressed="True">
+				<SET Id="RDK:65287444" VarRef="OutDescEst">
+					<EXP><![CDATA[$C$NOTHING]]></EXP>
+					<PAR Name="AdvancedOptions" />
+				</SET>
+				<IFTHENELSE Id="RDK:65045891" Expanded="True">
 					<VALUECONDITION Value="false">
 						<EXP><![CDATA[$=$bResult]]></EXP>
 					</VALUECONDITION>
-					<GROUP Id="RDK:65045892" SubType="Then">
-						<PROCESS_CALL Id="RDK:1157">
-							<EXP><![CDATA[$C$../CalcDescEstesa.rdx]]></EXP>
+					<VALUECONDITION Value="false">
+						<EXP><![CDATA[$=$speciale]]></EXP>
+					</VALUECONDITION>
+					<GROUP Id="RDK:65045892" SubType="Then" Expanded="True">
+						<PROCESS_CALL Id="RDK:1157" Expanded="True">
+							<EXP><![CDATA[$V$CalcDescEstesa]]></EXP>
 							<PAR Name="ITMREF">
 								<EXP><![CDATA[$=$]]></EXP>
 							</PAR>
@@ -1394,42 +1453,6 @@ and (Y.cpID = '328' and Y.PropValore='" + Input.Macrofamiglia + "')"]]></EXP>
 						</PROCESS_CALL>
 					</GROUP>
 				</IFTHENELSE>
-				<PROCESS_CALL Id="RDK:65306902" Expanded="True">
-					<EXP><![CDATA[$V$CalcDescEstesa]]></EXP>
-					<PAR Name="ITMREF">
-						<EXP><![CDATA[$=$List_ITMREF[i]]]></EXP>
-					</PAR>
-					<PAR Name="OutDescEst">
-						<EXP><![CDATA[$V$OutDescEst]]></EXP>
-					</PAR>
-					<PAR Name="bResult">
-						<EXP><![CDATA[$V$bResult]]></EXP>
-					</PAR>
-					<PAR Name="ErrorMessage">
-						<EXP><![CDATA[$V$ErrorMessage]]></EXP>
-					</PAR>
-					<PAR Name="TABDATI">
-						<EXP><![CDATA[$V$TABDATI]]></EXP>
-					</PAR>
-					<PAR Name="TABSAGE">
-						<EXP><![CDATA[$V$TABSAGE]]></EXP>
-					</PAR>
-					<PAR Name="PDMConnString">
-						<EXP><![CDATA[$=$PDMConnString]]></EXP>
-					</PAR>
-					<PAR Name="MBKConnString">
-						<EXP><![CDATA[$=$MBKConnString]]></EXP>
-					</PAR>
-					<PAR Name="URL">
-						<EXP><![CDATA[$=$URL]]></EXP>
-					</PAR>
-					<PAR Name="INTAPG">
-						<EXP><![CDATA[$=$INTAPG]]></EXP>
-					</PAR>
-					<PAR Name="ESTAPG">
-						<EXP><![CDATA[$=$ESTAPG]]></EXP>
-					</PAR>
-				</PROCESS_CALL>
 				<ACTION_CALL Id="RDK:65022337" Name="RDEngineering_AppendTextLine" Suppressed="True">
 					<PAR Name="RDLibraryName">
 						<EXP><![CDATA[$C$RDEngineering_FILE_TEXT]]></EXP>
@@ -1531,7 +1554,7 @@ UPDATE CODICI SET codModDate='"+ToString(Now())+"'  WHERE codCodice='"+List_ITMR
 								<EXP><![CDATA[$=$LogFileName]]></EXP>
 							</PAR>
 							<PAR Name="TextLine">
-								<EXP><![CDATA[$=$"Attenzione! Descizione estesa vuota per ITMREF "+List_ITMREF[i]+", "+IIF(ErrorMessage="", "nessun errore trovato", "trovato questo errore: "+ErrorMessage)]]></EXP>
+								<EXP><![CDATA[$=$"Attenzione! Descizione estesa vuota per ITMREF "+List_ITMREF[i]+", "+IIF(ErrorMessage="", IIF(speciale, "articolo speciale!", "nessun errore trovato"), "trovato questo errore: "+ErrorMessage)]]></EXP>
 							</PAR>
 							<PAR Name="Options" />
 						</ACTION_CALL>
