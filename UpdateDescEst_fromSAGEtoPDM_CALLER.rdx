@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PROCESS Id="RDK:0001" Name="UpdateDescEst_fromSAGEtoPDM_CALLER" Expanded="True">
+	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-12-16T14:21:27" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-17T14:46:54" LanguageVersion="2011.1.1.0" />
+	<GROUP Id="RDK:0002" Name="Declarations" SubType="Declarations" Expanded="True">
+		<GROUP Id="RDK:0003" Name="Types" SubType="TypeSet" IncludeDate="0" Expanded="True" />
+		<GROUP Id="RDK:0004" Name="Parameters" SubType="ParameterDefs" Expanded="True" />
+		<GROUP Id="RDK:0005" Name="Global Variables" SubType="VarSet" IncludeDate="0" Expanded="True">
+			<VAR Id="RDK:14" Name="start" Type="date" Expanded="True" />
+		</GROUP>
+		<GROUP Id="RDK:0006" Name="Profiles" SubType="ProfileSet" Expanded="True" />
+		<GROUP Id="RDK:0007" Name="Functions" SubType="FunctionSet" IncludeDate="0" Expanded="True" />
+	</GROUP>
+	<GROUP Id="RDK:0008" Name="Main Group" SubType="Generic" Expanded="True">
+		<SET Id="RDK:15" VarRef="start">
+			<EXP><![CDATA[$=$Now()]]></EXP>
+			<PAR Name="AdvancedOptions" />
+		</SET>
+		<PROCESS_CALL Id="RDK:12" Expanded="True">
+			<EXP><![CDATA[$C$UpdateDescEst_fromSAGEtoPDM.rdx]]></EXP>
+		</PROCESS_CALL>
+		<ACTION_CALL Id="RDK:16" Name="RDEngineering_MsgBox" DesignTimeRemark="{Text}">
+			<PAR Name="RDLibraryName">
+				<EXP><![CDATA[$C$RDEngineering_UI]]></EXP>
+			</PAR>
+			<PAR Name="MsgText">
+				<EXP><![CDATA[$=$"Execution took "+DateTimeSpan(start, Now(), "sec")+" seconds"]]></EXP>
+			</PAR>
+			<PAR Name="MsgStyle">
+				<EXP><![CDATA[$C$-1]]></EXP>
+			</PAR>
+			<PAR Name="BtnLayout">
+				<EXP><![CDATA[$C$-1]]></EXP>
+			</PAR>
+			<PAR Name="MsgCaption" />
+			<PAR Name="BaloonType" />
+			<PAR Name="BtnPressed">
+				<EXP><![CDATA[$V$]]></EXP>
+			</PAR>
+		</ACTION_CALL>
+	</GROUP>
+	<EXTERNAL_DATA>
+		<PROFILES_DATA />
+		<BOM_DATA />
+	</EXTERNAL_DATA>
+</PROCESS>
