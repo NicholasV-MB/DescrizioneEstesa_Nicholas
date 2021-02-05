@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PROCESS Id="RDK:0001" Name="UpdateDescEstesa" Expanded="True">
-	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-12-01T16:04:14" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-16T12:46:33" LanguageVersion="2011.1.1.0" />
+	<PROCESSPROPERTY CrUser="nicholas.vittor [LAPT-IT07]" CrDate="2020-12-01T16:04:14" ModUser="nicholas.vittor [LAPT-IT07]" ModDate="2020-12-22T08:56:06" LanguageVersion="2011.1.1.0" />
 	<GROUP Id="RDK:0002" Name="Declarations" SubType="Declarations" Expanded="True">
 		<GROUP Id="RDK:0003" Name="Types" SubType="TypeSet" IncludeDate="0" Expanded="True">
 			<GROUP Id="RDK:435" Name="MBGEN_Types" SubType="TypeSet" Include="../MBGEN_Types.rdx" IncludeDate="131244631620000000" Suppressed="True">
@@ -1215,7 +1215,7 @@ EDIT ON
 							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
 						</PAR>
 						<PAR Name="ConnectionName">
-							<EXP><![CDATA[$C$DB_PDM]]></EXP>
+							<EXP><![CDATA[$=$PDMConnString]]></EXP>
 						</PAR>
 						<PAR Name="SelectQuery">
 							<EXP><![CDATA[$=$"SELECT codCodice FROM CODICI inner join PROPCOD on PROPCOD.codID = CODICI.codID inner join CAMPI on CAMPI.cpID=PROPCOD.cpID where PROPCOD.propValore = '" + Input.TipoArt + "' and PROPCOD.cpID = '329' and codLastRev=1 and codExtract=0 and coDBackup=0 and codStatus=3  and CODICI.codID in (SELECT codID from PROPCOD as p2 where p2.propValore<>'2' and p2.cpID=(SELECT cpID FROM CAMPI as c2 where c2.cpNome='Speciale')) order by codCodice"]]></EXP>
@@ -1278,7 +1278,7 @@ EDIT ON
 							<EXP><![CDATA[$C$RDEngineering_DB_OLEDB]]></EXP>
 						</PAR>
 						<PAR Name="ConnectionName">
-							<EXP><![CDATA[$=$DB_PDM]]></EXP>
+							<EXP><![CDATA[$=$PDMConnString]]></EXP>
 						</PAR>
 						<PAR Name="SelectQuery">
 							<EXP><![CDATA[$=$"SELECT codCodice FROM CODICI inner join PROPCOD on PROPCOD.codID = CODICI.codID inner join CAMPI on CAMPI.cpID=PROPCOD.cpID where PROPCOD.propValore in ('" +strListFam+ "') and PROPCOD.cpID = '329' and codLastRev=1 and codExtract=0 and coDBackup=0 and codStatus=3 and CODICI.codID in (SELECT codID from PROPCOD as p2 where p2.propValore<>'2' and p2.cpID=(SELECT cpID FROM CAMPI as c2 where c2.cpNome='Speciale')) order by codCodice"]]></EXP>
